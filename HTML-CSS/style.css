@@ -13,6 +13,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: monospace;
+    position: relative;
 }
 
 a,
