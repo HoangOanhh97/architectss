@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Karma');
+
+html.theme-purple {
+    background-color: #fff;
+    color: #dd95fa;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+}
+
+a,
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.set-row-width {
+    width: 90% !important;
+    margin: auto;
+}
+
+.wp_nav,
+.wp_bottom {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.wp_nav {
+    top: 0;
+    height: 350px;
+    background-image: url("./img/dallas_3.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: contrast(1.1);
+}
+
+.wp_bottom {
+    bottom: 0
+}
+
+.wp_left {
+    float: left !important
+}
+
+.wp_right {
+    float: right !important
+}
+
+.wp_center .wp_bar {
+    display: inline-block;
+    width: auto
+}
+
+.wp_center {
+    text-align: center !important
+}
+
+/* Nav */
+.menu__item {
+    all: unset;
+    flex-grow: 1;
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+    padding-top: 0.5em;
+    position: relative;
+    align-items: center;
+    color: var(--color-1);
+    justify-content: center;
+    transition: flex-grow var(--duration) var(--cubic);
+    font-family: 'Nunito' !important;
+}
+
+.menu__icon {
+    font-size: 1.25em;
+    stroke: currentColor;
+    transition: transform var(--duration) var(--cubic);
+}
+
+.menu__item::before {
+    top: 9%;
+    left: 18.4%;
+    width: 1.5em;
+    height: 1.5em;
+    content: " ";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transform-origin: center;
+    background-color: #fdecef;
+    transition: transform var(--duration) var(--cubic);
+}
+
+.menu__item::after {
+    left: 0;
+    bottom: 0;
+    content: " ";
+    height: 0.25em;
+    position: absolute;
+    border-radius: 2em;
+    transform-origin: left center;
+    background-color: currentColor;
+    width: calc(var(--lineWidth) + 5px);
+    transform: translate3d(3em, 0, 0) scaleX(0);
+    transition: transform calc(var(--duration) + .2s) var(--cubic);
+}
+
+.icon {
+    --duration-icon: 1s;
+    fill: none;
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    stroke-width: 15;
+    stroke-miterlimit: 10;
+}
+
+#title-svg {
+    transform: scaleX(.85);
+    transform-origin: center;
+}
+
+.active #title-svg {
+    animation: strategy var(--duration-icon);
+}
+
+@keyframes strategy {
+    50% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(.85);
+    }
+}
+
+.active #crown-cir1 {
+    animation: crown-cir1 var(--duration-icon);
+}
+
+.active #crown-cir2 {
+    animation: crown-cir2 var(--duration-icon) .1s;
+}
+
+.active #crown-cir3 {
+    animation: crown-cir3 var(--duration-icon) .2s;
+}
+
+@keyframes crown-cir1 {
+    50% {
+        transform: translate3d(-.7em, -0.7em, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes crown-cir2 {
+    35% {
+        transform: translate3d(0, -0.7em, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes crown-cir3 {
+    35% {
+        transform: translate3d(.7em, -0.7em, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+
+    }
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.mt-3 {
+    margin-top: 3.25rem !important;
+}
+
+.item_text {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    font-size: 20px;
+    opacity: 0.8;
+    background: rgb(9 9 9 / 50%);
+    padding: 5px;
+    font-family: monospace !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item_text p {
+    margin: 0 !important;
+}
+
+.typing {
+    width: 100%;
+    animation: typing 5s steps(100), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.typing_sub {
+    width: 100%;
+    opacity: 0;
+    animation: opacity 5s infinite, typing 5s steps(100), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    animation-delay: 5s;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+}
+
+.item_text .item_text_sub {
+    margin-left: 5rem !important;
+}
+
+@media screen and (max-width: 576px) {
+    .item_text .item_text_sub {
+        margin: 0 !important;
+    }
+}
+
+/* Body */
+.content {
+    width: 100%;
+    display: inline-flex;
+}
+
+h3.title {
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: overline;
+}
+
+.row {
+    width: 100%;
+    display: flex
+}
+
+.col-3 {
+    width: 30%;
+}
+
+.col-4 {
+    width: 40%;
+}
+
+.col-6 {
+    width: 60%;
+}
+
+.col-8 {
+    width: 80%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.image_col {
+    cursor: pointer;
+}
+
+.description {
+    background-image: url(./img/dallas_5.jpg);
+    background-position: center center;
+    background-size: cover;
+    margin-left: 7px;
+    position: relative;
+}
+
+.description ul.desc_text {
+    line-height: 1.5;
+    margin-left: 2rem;
+}
+
+.description ul>li {
+    color: #fff !important;
+}
+
+.description ul.desc_text> li {
+    font-size: 12px !important;
+    line-height: 1;
+    text-align: right;
+    padding-right: 15px;
+    width: 50%;
+    float: right;
+}
+
+#direction {
+    margin-top: 2rem;
+    padding-left: 10px;
+    font-size: 13px !important;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+}
+
+#gallery {
+    margin-top: 2rem;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+ul>li {
+    color: #000 !important;
+    font-size: 13px;
+}
+
+.img_gallery {
+    max-width: 300px;
+}
+
+/* Footer */
+.footer {
+    border-top: double;
+    border-top-color: #ccc !important;
+    margin-top: 3rem;
+    padding-block: 0.5rem;
+}
+
+[color-black] {
+    color: #000 !important;
+}
+
+.badge {
+    background-color: #dd95fa;
+    color: #fff !important;
+    padding: 2px;
+}
