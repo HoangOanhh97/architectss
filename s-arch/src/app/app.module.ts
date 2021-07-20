@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AgencyModule } from './agency/agency.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    AgencyModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
