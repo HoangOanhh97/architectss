@@ -14,8 +14,7 @@ export class ExchangeRatesComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
-    this.apollo
-      .watchQuery({
+    this.apollo.watchQuery({
         query: gql`
           {
             rates(currency: "USD") {
@@ -24,8 +23,7 @@ export class ExchangeRatesComponent implements OnInit {
             }
           }
         `,
-      })
-      .valueChanges.subscribe((result: any) => {
+      }).valueChanges.subscribe((result: any) => {
         this.rates = result?.data?.rates;
         this.loading = result.loading;
         this.error = result.error;

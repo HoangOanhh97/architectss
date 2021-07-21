@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { GraphQLModule } from './graphql.module';
-import { HttpClientModule } from '@angular/common/http';
 import { AgencyModule } from './agency/agency.module';
 import { SharedModule } from './shared/shared.module';
-import { InMemoryCache } from '@apollo/client/core';
-import { APOLLO_NAMED_OPTIONS, NamedOptions } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
+// Apollo
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -17,12 +14,10 @@ import { HttpLink } from 'apollo-angular/http';
   imports: [
     BrowserModule,
     GraphQLModule,
-    HttpClientModule,
     AgencyModule,
     SharedModule
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
