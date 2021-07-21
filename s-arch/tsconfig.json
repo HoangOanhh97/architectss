@@ -4,11 +4,6 @@
     "module": "esnext",
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "paths": {
-      "tslib": [
-        "node_modules/tslib/tslib.d.ts"
-      ]
-    },
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
