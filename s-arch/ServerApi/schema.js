@@ -1,22 +1,9 @@
 const { gql } = require('apollo-server-express');
 const { Members } = require('./repo/members');
-
-const books = [{
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-},
-{
-    title: 'City of Glass',
-    author: 'Paul Auster',
-},
-];
+const { Awards } = require('./repo/awards')
 
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
-    type Book {
-        title: String
-        author: String
-    }
     type Award {
         name: String
         content1: String
@@ -31,7 +18,6 @@ exports.typeDefs = gql`
         image: String
     }
     type Query {
-        books: [Book]
         awards: [Award]
         members: [Member]
     }
@@ -43,8 +29,8 @@ exports.typeDefs = gql`
 // Provide resolver functions for your schema fields
 exports.resolvers = {
     Query: {
-        books: () => books,
-        members: () => Members
+        members: () => Members,
+        awards: () => Awards
     },
     Mutation: {
         createMember: (id, name, role) => Member,
