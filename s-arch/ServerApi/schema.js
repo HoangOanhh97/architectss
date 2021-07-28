@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-express');
 const { Members } = require('./repo/members');
-const { Awards } = require('./repo/awards')
+const { Awards } = require('./repo/awards');
+const { News } = require('./repo/news');
+const { ProjectTypes, Projects } = require('./repo/projects');
 
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
@@ -17,12 +19,52 @@ exports.typeDefs = gql`
         role: String
         image: String
     }
+    type News {
+        title: String
+        image: String
+        descriptionHTML: String
+    }
+    type Project {
+        idNumber: Int
+        name: String
+        client: String
+        acreage: String
+        location: String
+        country: String
+        overallView: String
+        overallView1920: String
+        listView: [ItemView]
+        description1: String
+        description2: String
+        participants: [Member]
+        status: String
+        yearDone: String
+        typeId: Int
+        typeName: String
+        done: Boolean
+    }
+    type ProjectType {
+        typeId: Int
+        typeName: String
+        mainBg: String
+    }
+    type ItemView {
+        id: Int
+        url: String
+    }
     type Query {
         awards: [Award]
         members: [Member]
+        news: [News]
+        projectTypes: [ProjectType]
+        projects: [Project]
+    }
+    input MemberInput {
+        name: String!
+        role: String
     }
     type Mutation {
-        createMember(id: Int, name: String, role: String): Member
+        createMember(input: MemberInput!): Member
     }
 `;
 
@@ -30,9 +72,12 @@ exports.typeDefs = gql`
 exports.resolvers = {
     Query: {
         members: () => Members,
-        awards: () => Awards
+        awards: () => Awards,
+        news: () => News,
+        projectTypes: () => ProjectTypes,
+        projects: () => Projects
     },
     Mutation: {
-        createMember: (id, name, role) => Member,
+        createMember: (input) => Member,
     }
 };

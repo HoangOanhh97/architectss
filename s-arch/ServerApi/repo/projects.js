@@ -64,16 +64,16 @@ exports.Ptojects = [{
         description1: "descResort1",
         description2: "descResort2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "completed",
@@ -111,16 +111,16 @@ exports.Ptojects = [{
         description1: "descMyLai1",
         description2: "descMyLai2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "completed",
@@ -158,16 +158,16 @@ exports.Ptojects = [{
         description1: "descCoffeet1",
         description2: "descCoffeet2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "inprogress",
@@ -205,16 +205,16 @@ exports.Ptojects = [{
         description1: "descSpa1",
         description2: "descSpa2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "completed",
@@ -248,16 +248,16 @@ exports.Ptojects = [{
         description1: "descOffice1",
         description2: "descOffice2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "inprogress",
@@ -316,16 +316,16 @@ exports.Ptojects = [{
         description1: "2359Media1",
         description2: null,
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "completed",
@@ -363,16 +363,16 @@ exports.Ptojects = [{
         description1: "AnCoffee1",
         description2: "AnCoffee2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "inprogress",
@@ -406,16 +406,16 @@ exports.Ptojects = [{
         description1: "KT1",
         description2: "KT2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "designing",
@@ -472,12 +472,12 @@ exports.Ptojects = [{
         description1: "descNienHouse1",
         description2: "descNienHouse2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "design",
@@ -501,12 +501,12 @@ exports.Ptojects = [{
         description1: "descHDOffice1",
         description2: "descHDOffice2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "design",
@@ -539,12 +539,12 @@ exports.Ptojects = [{
         description1: "descCMT8Rest1",
         description2: "descCMT8Rest2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "completed",
@@ -605,19 +605,19 @@ exports.Ptojects = [{
         description1: "descHTPOffice1",
         description2: "descHTPOffice2",
         participants: [{
-                MemberId: 1,
-                MemberName: "Truong Dai Thanh"
+                id: 1,
+                name: "Truong Dai Thanh"
             }, {
-                memberId: 2,
-                MemberName: "Nguyen Ngoc Thanh"
+                id: 2,
+                name: "Nguyen Ngoc Thanh"
             },
             {
-                memberId: 4,
-                MemberName: "Nguyen Thanh Binh"
+                id: 4,
+                name: "Nguyen Thanh Binh"
             },
             {
-                MemberId: 6,
-                MemberName: "Nguyen Van Dat"
+                id: 6,
+                name: "Nguyen Van Dat"
             }
         ],
         status: "design",
