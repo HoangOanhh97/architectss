@@ -1,0 +1,22 @@
+/* TABS */
+
+a.inactive, 
+a.fb-project {
+  color: #000;
+  opacity: 0.7 !important;
+
+  &:hover {
+    opacity: 1 !important;
+  }
+}
+
+a.active {
+  color: #000;
+  font-weight: 600 !important;
+  opacity: 1 !important
+}
+
+.showImgs {
+  top: 50%;
+  left: 50%;
+}

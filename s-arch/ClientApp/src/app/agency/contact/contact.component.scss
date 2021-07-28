@@ -1,0 +1,39 @@
+.fp-contact {
+    height: 647px;
+}
+
+@media screen and (max-width: 1024px) {
+    .fp-contact {
+        height: auto !important;
+    }
+}
+
+.fp-contact-grid .fp-cg--content .map-bg {
+    background-image: url('../../../assets/img/company/map-transparent.png');
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
+
+.fp-contact-grid .fp-cg--copy a,
+.fp-contact-grid .fp-cg--copy p {
+    font-weight: 400 !important;
+}
+
+.fp-contact-grid .fp-cg--title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 767px) {
+    li.contact__pic {
+        display: none;
+    }
+
+    a#viewMap {
+        background-color: #d2d2d2 !important;
+    }
+}

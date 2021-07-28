@@ -1,0 +1,14 @@
+.award_img_height {
+    height: 200px
+}
+
+@media screen and (min-width: 1124px) { 
+    .award_img_height {
+        height: 300px !important
+    }
+}
+@media screen and (max-width: 924px) {
+    .award_img_height {
+        height: 300px !important
+    }
+}

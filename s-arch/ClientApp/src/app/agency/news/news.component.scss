@@ -1,0 +1,123 @@
+/* TABS */
+
+a.inactive {
+  color: #000;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+a.active {
+  color: #000;
+  border-bottom: 5px solid #000;
+  font-weight: 600;
+  opacity: 1
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 0.4s;
+  -moz-animation: fadeIn ease-in 0.4s;
+  animation: fadeIn ease-in 0.4s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  // background-color: #56baed;
+  background-color: #000;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
+
+.underlineHover:hover:after {
+  width: 100%;
+}
+
+.fb-events {
+  float: unset !important;
+}
+
+.sa_img {
+  width: fit-content;
+  height: auto;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: 30px
+}
+@media screen and (min-width: 768px) {
+  .sa_img {
+    margin-left: 0
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sa_img {
+    width: fit-content;
+    height: auto;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+.empty-data {
+  // position: fixed !important;
+  // left: 35%;
+  display: block;
+}

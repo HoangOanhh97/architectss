@@ -1,0 +1,118 @@
+<main id="news" class="js news fp-custom-scrollbar theme-white no-touchevents" data-pageclassname="news"
+  data-pagetheme="theme-white">
+
+  <app-header></app-header>
+
+  <div id="container-fluid">
+    <div class="page">
+      <div class="fp-news">
+        <!-- CategoryName -->
+        <div class="component fp-section-tab" data-component-name="section-tab" data-content-reference="news"
+          data-is-search-bar="false" data-is-sticky="true" style="opacity: 1;">
+          <div class="fp-st-wrap">
+            <ul class="fp-st-list">
+              <li class="fp-st-list-item" *ngFor="let c of categories">
+                <a class="fp-st-link" (click)="getArticlesByCategoryName(c.title)"
+                  [ngClass]="{'active': c.title == 'News' }" data-toggle="tab" role="tab" href="#tabDetails"
+                  id="{{c.title}}">{{c.title | translate}}</a>
+              </li>
+              <!-- <li class="fp-st-list-item">
+                <a class="fp-st-link inactive" [ngClass]="{'underlineHover': tabSelected ===1 }"
+                  (click)="tabSelected = 2; removeActiveClass('#news-tab-button')" data-toggle="tab" role="tab"
+                  href="#events-tab" id="events-tab-button">{{'Events' | translate}}</a>
+              </li> -->
+            </ul>
+            <div class="fp-st-indicator">
+              <span class="fp-st-pointer"></span>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Articles -->
+        <div class="fp-section-slide component" data-component-name="section-slide" data-history-managed="true"
+          data-content-reference="news" data-page-scrollable="true" data-swipe-behaviour="true">
+          <div class="fp-section-loader"></div>
+          <div class="fp-section-slide-wrap">
+            <div class="tab-pane fade show active" id="tabDetails">
+              <div>
+                <div class="fadeIn first">
+                  <div class="fp-section-slide-item" data-tab="news">
+                    <section class="component fp-news-grid">
+                      <div class="fp-ng-wrap">
+                        <div *ngIf="news" class="component fp-news-grid-row fp-universal-grid">
+                          <ul class="fp-ng-list fp-grid">
+                            <li class="fp-ng-item fp-grid__item fp-grid-item__single no-zoom" data-width="2732"
+                              data-height="1360" *ngFor="let n of news">
+                              <a class="fp-grid-item-single-wrap row" style="width: 100%" (click)="openNewsDetail(n)">
+                                <div class="col-md-6" style="z-index: 2; background-color: #FFFFFF ">
+                                  <div class="fp-ng-content">
+                                    <!-- <span class="fp-ng-date">{{n.createdAt | date:'shortDate'}}</span> -->
+                                    <span class="fp-ng-date">23/11/2019</span>
+                                    <div class="fp-ng-content-wrap" style="display: grid">
+                                      <span class="fp-ng-title ">{{n.title}}</span>
+                                      <div class="fp-ng-content-copy">
+                                        <span [innerHTML]="n.description"></span>
+                                        <span class="fp-ng-content-link">{{ 'Read article' | translate}}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="sa_img col-md-5">
+                                  <img src="{{n.image}}" alt="view" style="width: 100% !important;">
+                                </div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <!-- News == null -->
+                        <!-- <div *ngIf="!news" class="fp-news-grid-row empty-data">
+                          <span class="fp-events-item__subtitle">2019, HCMC</span>
+                          <h3 class="fp-events-item__title">({{'updating' | translate}})</h3>
+                        </div> -->
+                      </div>
+                    </section>
+                  </div>
+
+
+                </div>
+              </div>
+
+        <!-- <div>
+                <div class="fadeIn first" id="events-tab">
+                  <div class="fp-section-slide-item fb-events" data-tab="events">
+                    <section class="component fp-events-grid" data-component-name="events-grid" data-endpoint="#"
+                      data-results-total="4" data-page-size="5">
+                      <div class="fp-ng-wrap">
+                        <div class="component fp-universal-grid">
+                          <ul class="fp-events-grid-width fp-grid">
+                            <li class=" fp-events-grid-item no-zoom fp-grid__item fp-grid-item__single">
+                              <section>
+                                <a class="fp-events-item click-trigger">
+                                  <div class="fp-events-item__content">
+                                    <span class="fp-events-item__subtitle">2019, HCMC</span>
+                                    <h3 class="fp-events-item__title">({{'updating' | translate}})
+                                    </h3>
+                                  </div>
+                                </a>
+                              </section>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-footer></app-footer>
+    </div>
+  </div>
+</main>

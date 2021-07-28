@@ -1,0 +1,186 @@
+<main id="theme" class="js tilegridpage fp-custom-scrollbar theme-black no-touchevents"
+  data-pageclassname="tilegridpage" data-pagetheme="theme-black">
+
+  <app-header></app-header>
+
+  <div class="component fp-tile-page fp-media-title">
+    <!--Company page header -->
+    <div>
+      <div class="fp-tp-hero">
+        <div class="fp-tp-hero-img fp-grid-item__single no-zoom" data-width="2732" data-height="1360">
+          <div class="fp-dominant-colour" style="background:#575b58"></div>
+          <div class="fp-content" style="position: unset;">
+            <img class="fp-content__img is-hidden" [ngClass]="{'centre-centre': true}" sizes="100vw" src="../../../assets/img/company/overallView.jpg"
+              alt="Studio">
+            <div style="position: absolute; bottom: 10%; left:3%; color: white;">
+
+              <div class="fp-tp-intro-content">
+                <div class="fp-media-header">
+                  <h2 class="fp-media-title tile-heading">S Architects</h2>
+                </div>
+                <h2 class="tile-name">
+                  <div class="s4" [innerHTML]="'NameCompany' | translate"></div>
+                </h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sologan -->
+    <div class="fp-tp-intro">
+      <div class="fp-tp-intro-content">
+        <div class="fp-media-header">
+          <h2 class="fp-media-title">{{'Sologan' | translate}}</h2>
+        </div>
+      </div>
+      <div class="fp-media-content">
+        <h3 class="sologan">"{{'Sologan-content' | translate}}"</h3>
+      </div>
+      <br>
+    </div>
+
+    <!-- Core values -->
+    <div class="fp-tp-intro">
+      <div class="fp-tp-intro-content">
+        <div class="fp-media-header">
+          <h2 class="fp-media-title">{{'Title' | translate}}</h2>
+        </div>
+      </div>
+
+      <div class="fp-tp-grid" style="padding: 0 50px;">
+        <div class="row" id="people" style="width: 100%">
+          <div class="col-md-4" style="margin-bottom: 15px;">
+            <div class="fp-media-header">
+              <h2 class="fp-media-title underline">{{'Vision' | translate}}</h2>
+            </div>
+            <div class="fp-media-content">
+              <p><span>{{'Vision-content' | translate}}</span></p>
+            </div>
+          </div>
+
+          <div class="col-md-4" style="margin-bottom: 15px;">
+            <div class="fp-media-header">
+              <h2 class="fp-media-title underline">{{'Mission' | translate}}</h2>
+            </div>
+            <div class="fp-media-content">
+              <p><span>{{'Mission-content' | translate}}</span></p>
+            </div>
+          </div>
+
+          <div class="col-md-4" style="margin-bottom: 15px;">
+            <div class="fp-media-header ">
+              <h2 class="fp-media-title underline">{{'Core Values' | translate}}</h2>
+            </div>
+            <div class="fp-media-content">
+              <ul>
+                <li style="padding-left:0;">
+                  <strong>{{'Passion' | translate}}: </strong>
+                  {{'Passion-content' | translate}}
+                </li>
+                <li style="padding-left:0;">
+                  <strong>{{'Unity' | translate}}: </strong>
+                  {{'Unity-content' | translate}}
+                </li>
+                <li style="padding-left:0;">
+                  <strong>{{'Creativity' | translate}}: </strong>
+                  {{'Creativity-content' | translate}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- People -->
+    <div class="fp-tp-intro ">
+      <div class="fp-tp-intro-content">
+        <div class="fp-media-header">
+          <h2 class="fp-media-title">{{'Team S Architects' | translate}}</h2>
+        </div>
+      </div>
+      <div class="fp-tp-grid ">
+        <div id="people" style="width: 100%" style="background: #575b58">
+          <div class="row member">
+            <div class="fp-media-header team-title">
+              <h2 class="fp-media-title">{{'Founding Partner' | translate}}</h2>
+            </div>
+            <div class="fp-media-content">
+              <ul class="row">
+                <li *ngFor="let m of members" class="col-md-4 member">
+                  <img src="../../../{{m.imageUrl}}" class="portrait-team">
+                  <p>{{m.position | translate}}</p>
+                  <h3 class="text-uppercase">{{m.name | translate}}</h3>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="row staff teammate">
+            <div class="fp-media-header team-title">
+              <h2 class="fp-media-title">{{'Staff List' | translate}}</h2>
+            </div>
+            <div class="fp-media-content">
+              <ul>
+                <li class="text-white">Lê Thị Ba</li>
+                <li class="text-white">Đặng Thị Đoan Thư</li>
+                <li class="text-white">Nguyễn Thành Đạt</li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="row partner teammate">
+            <div class="fp-media-header team-title">
+              <h2 class="fp-media-title">{{'Inter' | translate}}</h2>
+            </div>
+            <div class="fp-media-content">
+              <ul>
+                <li class="text-white">Trần Khắc Phi</li>
+                <li class="text-white">Hà Thị Cẩm Tú</li>
+                <li class="text-white">Võ Thanh Trâm</li>
+                <li class="text-white">Thái Cao Đại Lợi</li>
+                <li class="text-white">Phạm Hoàng Minh</li>
+                <li class="text-white">Nguyễn Cao Khôi Nguyên</li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="fp-tp-intro " data-animation-type="staggerOnScroll">
+      <div class="fp-tp-intro-content">
+        <div class="fp-media-header">
+          <h2 class="fp-media-title">{{'About' | translate}}</h2>
+        </div>
+      </div>
+      <div class="fp-media-content">
+        <ul id="worked" class="row">
+          <li class="col-md-6">
+            <h3>2019 - {{'Foundation' | translate}}</h3>
+          </li>
+          <li class="col-md-6">
+            <h3>{{'Collaboration' | translate}}</h3>
+            <ol type="i">
+              <li>{{'HIDS' | translate}}</li>
+              <li>{{'VTN-Architects' | translate}}</li>
+              <li>{{'SAGEN' | translate}}</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+</main>

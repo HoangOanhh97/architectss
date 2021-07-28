@@ -1,0 +1,71 @@
+<div class="full-screen">
+  <!-- Gallery -->
+  <div class="component fp-project-hero-video">
+    <div class="fp-gallery-overlay" style="opacity: 1; display: block;">
+      <div class="fp-gallery-full row">
+        <!-- right -->
+        <!-- <div class="fp-gallery-swiper col-md-10">
+          <div
+            class="pswp pswp--open pswp--notouch pswp--css_animation pswp--svg pswp--animated-in pswp--zoom-allowed pswp--visible pswp--has_mouse"
+            tabindex="-1" role="dialog" aria-hidden="false" style="position: fixed; opacity: 1;">
+            <div class="pswp__bg" style="opacity: 1;"></div>
+
+            <div class="pswp__scroll-wrap">
+              <div class="pswp__container" style="transform: translate3d(0px, 0px, 0px);">
+                <div class="pswp__item">
+                  <div class="pswp__zoom-wrap">
+                    <div class="pswp__img pswp__img--placeholder pswp__img--placeholder--blank"
+                      style="width: 923px; height: 519px; display: none;"></div>
+                    <img class="pswp__img" src="../../../../{{selectedView.url}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="swiper-container fp-gallery-swiper swiper_gallery">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide" *ngFor="let view of galleryList">
+                <img class="selected__img" src="../../../../{{view.url}}" >
+              </div>
+          </div>
+          <!-- Add Scrollbar -->
+          <div class="swiper-scrollbar"></div>
+        </div>
+
+        <!-- left -->
+        <!-- <div class="swiper-container fp-gallery-tiles" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+          <div class="fp-gallery-tiles__wrapper swiper-wrapper">
+            <div *ngFor="let view of projectDetails.listView"
+              style="height: 146px; background: #83776F; margin-bottom: 2px;">
+              <div class="fp-gallery-tile fp-ph-image fp-grid-item__single white is-loaded "
+                (click)="selectedView = view">
+                <div class="swiper-slide fp-content">
+                  <img src="../../../../{{view.url}}" class="fp-content__img" style="width: 250px; height: auto;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- responsive -->
+      <div class="fp-gallery-small row">
+        <div class="swiper-container swiper-responsive__project swiper-res_gallery">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let view of galleryList">
+              <img src="../../../../{{view.url}}" class="img__gallery">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-gallery-overlay__close">
+        <button (click)="closeDialog()" class="fp-button-icon icon-close theme-white">
+          <span class="icon__i"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

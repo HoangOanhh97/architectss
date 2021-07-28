@@ -1,0 +1,189 @@
+<main id="theme" class="js project fp-custom-scrollbar theme-black no-touchevents" data-pageclassname="projects"
+  data-pagetheme="theme-black">
+  <app-header></app-header>
+
+  <div id="container-fluid">
+    <div class="page">
+      <section class="component fp-project-detail" data-component-name="project-detail" *ngIf="projectDetail">
+        <!-- Header  -->
+        <section class="component fp-project-hero-video ">
+          <div class="fp-ph-image fp-grid-item__single no-zoom">
+            <div class="fp-dominant-colour" style="background-color: #998E7B;"></div>
+            <div class="fp-content">
+              <picture>
+                <img class="fp-content__img centre-centre" src="../../../{{projectDetail.overallView}}">
+              </picture>
+            </div>
+            <div class="fp-ph-gradient"></div>
+            <div class="fp-ph-copy">
+              <h6 class="fp-ph-strapline">{{projectDetail.yearDone}} </h6>
+              <h1 class="fp-ph-title">{{projectDetail.name | translate}}</h1>
+            </div>
+          </div>
+          <div class="fp-ph-project-types" (click)="seeMoreProjects(projectDetail.typeName)">
+            <a class="fp-button-primary fp-bp-white fp-ph-project-type"
+              style="color: #fff;">{{projectDetail.typeName | translate}}</a>
+          </div>
+        </section>
+
+        <!-- responsive btn -->
+        <div class="fp-pd-project-types">
+          <h6 class="fp-pd-types-title">{{'Projects' | translate}}</h6>
+          <button class="fp-button-primary fp-pd-project-type" (click)="seeMoreProjects(projectDetail.typeName)">
+            <a>{{projectDetail.typeName | translate}}</a>
+          </button>
+        </div>
+
+        <!-- btn show Gallery -->
+        <div class="fp-pg-dropback">
+          <div class="fp-section-title fp-pg-dropback__cta">
+            <p>{{'moreImg' | translate}}</p>
+            <button type="button" class="fp-button-primary"
+              (click)="openGalleryDialog()">{{'Gallery' | translate}}</button>
+          </div>
+        </div>
+
+        <!-- project description -->
+        <section class="component fp-project-description" data-component-name="project-description">
+          <div class="fp-pd-copy " data-animation-type="staggerFirstN">
+            <p>{{projectDetail.description1 | translate}}</p>
+            <br><br>
+            <p>{{projectDetail.description2 | translate}}</p>
+          </div>
+        </section>
+
+        <!-- TABS -->
+        <section class="component fp-project-tabs ">
+
+          <div class="component fp-section-tab" style="opacity: 1;">
+            <div class="fp-st-wrap">
+              <ul class="fp-st-list">
+                <li class="fp-st-list-item">
+                  <a class="fp-st-link active" (click)="minitabSelected = 1; removeActiveClass('#team-tab-button')"
+                    data-toggle="tab" role="tab" href="#faf-tab"
+                    id="faf-tab-button">{{'Facts And Figures' | translate}}</a>
+                </li>
+                <li class="fp-st-list-item">
+                  <a class="fp-st-link inactive" (click)="minitabSelected = 2; removeActiveClass('#faf-tab-button')"
+                    data-toggle="tab" role="tab" href="#team-tab" id="team-tab-button">Team</a>
+                </li>
+              </ul>
+              <div class="fp-st-indicator">
+                <span class="fp-st-pointer"></span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="fp-section-slide component">
+            <div class="fp-section-loader"></div>
+            <div class="fp-section-slide-wrap">
+              <div class="tab-pane fade show active" id="faf-tab">
+                <div *ngIf="minitabSelected == 1">
+                  <div class="fadeIn first">
+                    <div class="fp-section-slide-item" style="float: unset;" data-tab="factsfigures">
+                      <section class="fp-pd-stats">
+                        <div class="fp-at-content">
+                          <ul class="fp-pd-stats__dl-list" *ngIf="projectDetail">
+                            <li class="fp-pd-stats__dl-item">
+                              <span class="fp-pd-stats__dl-dt">{{'Client' | translate}}</span>
+                              <span class="fp-pd-stats__dl-dd">{{projectDetail.client | translate}}</span>
+                            </li>
+                            <li class="fp-pd-stats__dl-item">
+                              <span class="fp-pd-stats__dl-dt">{{'Status' | translate}}</span>
+                              <span class="fp-pd-stats__dl-dd">{{projectDetail.status | translate}}</span>
+                            </li>
+                            <li class="fp-pd-stats__dl-item">
+                              <span class="fp-pd-stats__dl-dt">{{'Acreage' | translate}}</span>
+                              <span class="fp-pd-stats__dl-dd">{{projectDetail.acreage}}</span>
+                            </li>
+                            <li class="fp-pd-stats__dl-item">
+                              <span class="fp-pd-stats__dl-dt">{{'Location' | translate}}</span>
+                              <span class="fp-pd-stats__dl-dd">{{projectDetail.location | translate}}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </section>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade " id="team-tab">
+                <div *ngIf="minitabSelected == 2">
+                  <div class="fadeIn first">
+                    <div class="fp-section-slide-item" style="float: unset;" data-tab="team">
+                      <section class="fp-pd-stats">
+                        <div class="fp-team-grid">
+                          <div class="fp-tg-wrap">
+                            <ul class="fp-tg-list">
+                              <li class="fp-tg-list-item" *ngFor="let i of projectDetail.participants">
+                                {{i.MemberName | translate}}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- another projects with same type -->
+        <section class="component fp-discipline-carousel" *ngIf="anotherProjects && anotherProjects.length > 0">
+          <h2 class="fp-h3 fp-dc-title">{{'More projects' | translate}}</h2>
+          <div class="swiper-container swiper__project">
+            <div class=" swiper-wrapper">
+              <div class=" swiper-slide proj__dt swiper-item" *ngFor="let pt of anotherProjects">
+                <img src="../../../../{{pt.overallView1920}}" class="img__proj" (click)="goProject(pt.idNumber)">
+                <div class="swiper-content" style="padding: 30px;">
+                  <span style="font-size: 1.2rem">{{pt.name | translate}}</span>
+
+                  <h2>{{pt.country | translate}}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper-container swiper-responsive__project">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide proj__dt swiper-item" *ngFor="let pt of anotherProjects">
+                <div class="swiper-content">
+                  <!-- <img src="../../../../{{pt.overallView1920}}" class="img__proj img-center" (click)="goProject(pt.idNumber)">
+                  <div class="title">
+                    <span style="font-size: 1.2rem">{{pt.name | translate}}</span>
+  
+                    <h2>{{'HCMC' | translate}}</h2>
+                  </div> -->
+                  <div class=" fp-universal-grid">
+                    <ul class="fp-grid" style="margin: unset;">
+                      <li class="fp-grid__item is-loaded">
+                        <a class="fp-content" (click)="goProject(pt.idNumber)">
+                          <img class=" fp-content__img center-center" src="../../../../{{pt.overallView1920}}">
+                          <div class="fp-content-header">
+                            <div class="fp-content-header__wrapper title">
+                              <span style="font-size: 1.2rem">{{pt.name | translate}}</span>
+                              <h2>{{'HCMC' | translate}}</h2>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+        
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <app-footer></app-footer>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,43 @@
+<!-- Project types list -->
+<main id="projects" class="js projects fp-custom-scrollbar theme-white no-touchevents" data-pageclassname="projects"
+  data-pagetheme="theme-white">
+
+  <app-header></app-header>
+
+  <div id="container-fluid">
+    <div class="page">
+      <div class="fp-projects">
+        <!-- project types -->
+        <div>
+          <div class="fp-p-bar">
+            <h1 class="fp-p-title">{{'Project types' | translate}}</h1>
+            <span class="fp-button-primary fp-p-all"
+              (click)="getProjectsByType('All')">{{'View all projects' | translate}}</span>
+          </div>
+
+          <div class="component fp-universal-grid">
+            <ul class="fp-grid" style="margin: unset;">
+
+              <li class="fp-grid__item is-loaded" *ngFor="let t of types">
+                <div class="fp-dominant-colour" style="background-color: #575b58;"></div>
+                <a class="fp-content" (click)="getProjectsByType(t.typeName)">
+                  <img *ngIf="t.mainBg != null" class=" fp-content__img center-center" src="../../../{{t.mainBg}}">
+                  <div class="fp-content-header">
+                    <div class="fp-content-header__wrapper">
+                      <span class="fp-content-header__title">{{t.typeName | translate}}</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,83 @@
+/* TABS */
+
+a.inactive,
+a.fb-project {
+  color: #000;
+  opacity: 0.7 !important;
+
+  &:hover {
+    opacity: 1 !important;
+  }
+}
+
+a.active {
+  color: #000;
+  font-weight: 600 !important;
+  opacity: 1 !important
+}
+
+////////////////////////////////////////////////////////
+
+.swiper-slide.proj__dt {
+  max-height: 477px;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-block;
+  display: block;
+  // align-items: center;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-content {
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  background-color: #4A4847;
+
+  .title {
+    height: 25%;
+    padding: 30px;
+    background-color: #4A4847;
+    color: #fff;
+    margin: 0 !important;
+  }
+}
+
+.swiper-responsive__project {
+  display: block;
+  height: 437px;
+  padding: 0 35px;
+}
+
+.swiper__project {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .img__proj {
+    height: 350px !important;
+  }
+}
+
+.img__proj {
+  width: 100%;
+  height: 250px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+
+  .swiper-responsive__project {
+    display: none;
+  }
+
+  .swiper__project {
+    display: block;
+  }
+
+}

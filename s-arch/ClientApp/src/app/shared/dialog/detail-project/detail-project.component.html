@@ -1,0 +1,201 @@
+<main *ngIf="proId != null" id="theme" class="js project fp-custom-scrollbar theme-black no-touchevents"
+  data-pageclassname="project" data-pagetheme="theme-black">
+
+  <div id="container-fluid">
+    <div class="page .leaving">
+      <section class="component fp-project-detail" data-component-name="project-detail">
+        <div *ngIf="openGallery == false">
+          <!-- header -->
+          <section class="component fp-project-hero-video ">
+            <div class="fp-ph-image fp-grid-item__single no-zoom" data-width="1920" data-height="1284"
+              data-mobile-media="(orientation: portrait)" data-mobile-width="1920" data-mobile-height="1284">
+              <div class="fp-dominant-colour" style="background-color: #998E7B;"></div>
+              <div class="fp-content">
+                <picture>
+                  <img class="fp-content__img centre-centre" src="../../../{{projectDetail.overallView}}"
+                    alt="5 Star Resort">
+                </picture>
+              </div>
+              <div class="fp-ph-gradient"></div>
+              <div class="fp-ph-copy">
+                <h6 class="fp-ph-strapline">2019 </h6>
+                <h1 class="fp-ph-title">{{projectDetail.name}}</h1>
+              </div>
+            </div>
+            <div class="fp-ph-project-types">
+              <a class="fp-button-primary fp-bp-white fp-ph-project-type">{{projectDetail.typeName}}</a>
+            </div>
+          </section>
+
+          <!-- rosponsive btn -->
+          <div class="fp-pd-project-types">
+            <h6 class="fp-pd-types-title">Categories</h6>
+            <a type="button" class="fp-button-primary fp-bp-black fp-pd-project-type">{{projectDetail.typeName}}</a>
+          </div>
+
+          <!-- btn show Gallery -->
+          <div class="fp-pg-dropback">
+            <div class="fp-section-title fp-pg-dropback__cta">
+              <button type="button" class="fp-button-primary" (click)="openGallery = true;">Gallery</button>
+            </div>
+          </div>
+
+          <!-- project description -->
+          <section class="component fp-project-description" data-component-name="project-description">
+            <div class="fp-pd-copy " data-animation-type="staggerFirstN">
+              <p>Đang cập nhật.</p>
+              <br>
+            </div>
+            <button type="button" class="fp-button-primary fp-pd-expand " data-expand-copy="Read more"
+              data-close-copy="Close">
+              Read more
+            </button>
+          </section>
+
+          <!-- Tab FnF - Team -->
+          <section class="component fp-project-tabs " data-animation-type="fadeUp" data-component-name="project-tabs">
+
+            <div class="component fp-section-tab" data-component-name="section-tab" data-content-reference="project"
+              style="opacity: 1;">
+              <div class="fp-st-wrap">
+                <ul class="fp-st-list">
+                  <li class="fp-st-list-item">
+                    <a class="fp-st-link active" (click)="minitabSelected = 1; removeActiveClass('#team-tab-button')"
+                      data-toggle="tab" role="tab" href="#faf-tab" id="faf-tab-button">Facts And Figures</a>
+                  </li>
+                  <li class="fp-st-list-item">
+                    <a class="fp-st-link inactive" (click)="minitabSelected = 2; removeActiveClass('#faf-tab-button')"
+                      data-toggle="tab" role="tab" href="#team-tab" id="team-tab-button">Team</a>
+                  </li>
+                </ul>
+                <div class="fp-st-indicator">
+                  <span class="fp-st-pointer"></span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="fp-section-slide component" data-component-name="section-slide" data-history-managed="false"
+              data-content-reference="project" data-swipe-behaviour="true">
+              <div class="fp-section-loader"></div>
+              <div class="fp-section-slide-wrap">
+                <div class="tab-pane fade show active" id="faf-tab">
+                  <div *ngIf="minitabSelected === 1">
+                    <div class="fadeIn first">
+                      <div class="fp-section-slide-item" style="float: unset;" data-tab="factsfigures">
+                        <section class="fp-pd-stats">
+                          <div class="fp-at-content">
+                            <ul class="fp-pd-stats__dl-list">
+                              <li class="fp-pd-stats__dl-item">
+                                <span class="fp-pd-stats__dl-dt">Appointment</span>
+                                <span class="fp-pd-stats__dl-dd">2019</span>
+                              </li>
+                              <li class="fp-pd-stats__dl-item">
+                                <span class="fp-pd-stats__dl-dt">Completion</span>
+                                <span class="fp-pd-stats__dl-dd">...</span>
+                              </li>
+                              <li class="fp-pd-stats__dl-item">
+                                <span class="fp-pd-stats__dl-dt">Client</span>
+                                <span class="fp-pd-stats__dl-dd">{{projectDetail.name}}</span>
+                              </li>
+
+                              <li class="fp-pd-stats__dl-item">
+                                <span class="fp-pd-stats__dl-dt">Website</span>
+                                <span class="fp-pd-stats__dl-dd fp-pd-stats__dl-dd_website">
+                                  ...
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </section>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade " id="team-tab">
+                  <div *ngIf="minitabSelected === 2">
+                    <div class="fadeIn first">
+                      <div class="fp-section-slide-item" style="float: unset;" data-tab="team">
+                        <section class="fp-pd-stats">
+                          <div class="fp-team-grid">
+                            <div class="fp-tg-wrap">
+                              <ul class="fp-tg-list">
+                                <li class="fp-tg-list-item">
+                                  Truong Dai Thanh
+                                </li>
+                                <li class="fp-tg-list-item">
+                                  Nguyen Thanh Binh
+                                </li>
+                                <li class="fp-tg-list-item">
+                                  Ly Thien Ngan
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- another project btn -->
+          <mat-dialog-actions align="end" style="padding-bottom: 40px; padding-right: 20px;">
+            <a class="fp-button-primary fp-pd-project-type fb-project" (click)="seeMoreProjects()">
+              <h2 class="fp-h3 fp-dc-title" style="padding: 0; margin-bottom: 0;">See more projects..</h2>
+              <span class="icon__i"></span>
+            </a>
+          </mat-dialog-actions>
+        </div>
+
+        <!-- Gallery -->
+        <div *ngIf="openGallery == true" class="component fp-project-hero-video ">
+          <div class="fp-gallery-overlay" style="opacity: 1; display: block;">
+            <div class="fp-gallery-swiper parent" >
+              <div
+                class="pswp pswp--open pswp--notouch pswp--css_animation pswp--svg pswp--animated-in pswp--zoom-allowed pswp--visible pswp--has_mouse"
+                tabindex="-1" role="dialog" aria-hidden="false" style="position: fixed; opacity: 1;">
+                <div class="pswp__bg" style="opacity: 1;"></div>
+
+                <div class="pswp__scroll-wrap">
+                  <div class="pswp__container" style="transform: translate3d(0px, 0px, 0px);">
+                    <div class="pswp__item" >
+                      <div class="pswp__zoom-wrap" style="transform: translate3d(421px, 44px, 0px) scale(1);">
+                        <div class="pswp__img pswp__img--placeholder pswp__img--placeholder--blank"
+                          style="width: 923px; height: 519px; display: none;"></div>
+                        <img class="pswp__img" src="../../../../{{selectedView.url}}" style="width: 923px; height: 519px;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fp-gallery-tiles" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+              <div class="fp-gallery-tiles__wrapper">
+                <div *ngFor="let view of projectDetail.listView"
+                  style="height: 146px; background: #83776F; margin-bottom: 2px;">
+                  <div class="fp-gallery-tile fp-ph-image fp-grid-item__single white is-loaded "
+                    (click)="selectedView = view">
+                    <div class="fp-content">
+                      <img src="../../../../{{view.url}}" class="fp-content__img" style="width: auto; height: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fp-gallery-overlay__close">
+              <button mat-button (click)="openGallery = false" class="fp-button-icon icon-close theme-white">
+                <span class="icon__i"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </div>
+</main>

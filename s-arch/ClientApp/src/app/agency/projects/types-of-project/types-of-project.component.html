@@ -1,0 +1,97 @@
+<main id="projectstypelist" class="js projectstypelist fp-custom-scrollbar theme-white no-touchevents"
+  data-pageclassname="projectstypelist" data-pagetheme="theme-white">
+
+  <app-header></app-header>
+
+  <div id="container-fluid">
+    <div class="page">
+      <!-- projects list view-->
+
+      <section class="component fp-mega-filter fp-mega-filter-sticky" data-component-name="mega-filter" ngbDropdown>
+        <div class="fp-filter-bar">
+          <div class="fp-bar-item fp-bar-elm-animate">
+            <button class="fp-bar-button fp-trigger" data-controls="type" type="button" id="dropdownTypes"
+              (click)="showDropdown = !showDropdown">
+              <span class="fp-bar-button__text">{{projectTypeName | translate}}</span><span class="arrow-down"></span>
+            </button>
+          </div>
+          <div class="fp-bar-total fp-bar-elm-animate">{{total}} {{'projects' | translate}}</div>
+        </div>
+
+        <div *ngIf="showDropdown == true" class="fp-filter-drawer" data-source="type">
+          <ul class="fp-filter-options-list">
+            <li class="fp-filter-set " (click)="getProjectsByType('All')">
+              <ul>
+                <li>
+                  <div class="fp-filter-option " id="All">
+                    <a class="fp-filter-link">
+                      {{'All project types' | translate}}
+                    </a>
+                  </div>
+
+                </li>
+                <li class="fp-filter-option " *ngFor="let t of types">
+                  <a class="fp-filter-link " *ngIf="t.typeId == '00002'" (click)="getProjectsByType(t.typeName)">
+                    {{t.typeName | translate}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="fp-filter-set">
+              <ul>
+                <li class="fp-filter-option " *ngFor="let t of types">
+                  <a class="fp-filter-link " *ngIf="t.typeId == '00003' || t.typeId == '00004'"
+                    (click)="getProjectsByType(t.typeName)">
+                    {{t.typeName | translate}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="fp-filter-set">
+              <ul>
+                <li class="fp-filter-option " *ngFor="let t of types">
+                  <a class="fp-filter-link " *ngIf="t.typeId == '00005' || t.typeId == '00006'"
+                    (click)="getProjectsByType(t.typeName)">
+                    {{t.typeName | translate}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="component fp-filter-loader" [ngClass]="{'open-load': showDropdown == true}"
+        data-component-name="filter-loader"></div>
+
+      <div class="fp-project-types">
+        <div class="component fp-universal-grid" data-component-name="universal-grid">
+          <ul class="fp-grid" style="margin: unset;">
+            <li class="fp-grid__item is-loaded" *ngFor="let p of filterProjects">
+              <div class="fp-dominant-colour" style="background-color: #7E6E5B;"></div>
+              <a class="fp-content" (click)="getProjectDetail(p.idNumber)">
+                <img class="fp-content__img" src="../../../{{p.overallView}}" alt="{{p.name}}">
+                <div class="fp-content-header">
+                  <div class="fp-content-header__wrapper">
+                    <span class="fp-content-header__subtitle">{{p.country | translate}}</span>
+                    <span class="fp-content-header__title">{{p.name | translate}}</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <li class="fp-grid__item fp-grid__item-placeholder">
+              <div class="fp-content"></div>
+              <div class="fp-spacer"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <app-footer></app-footer>
+
+    </div>
+  </div>
+
+</main>

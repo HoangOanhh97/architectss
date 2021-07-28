@@ -1,0 +1,48 @@
+<main id="theme" class="js disciplines fp-custom-scrollbar theme-black no-touchevents" data-pageclassname="disciplines"
+  data-pagetheme="theme-black">
+
+  <app-header></app-header>
+
+  <div class="fp-disciplines">
+    <section class="component fp-modular-video fp-tile-page fp-media-title">
+      <div class="fp-tp-hero">
+        <div class="fp-tp-hero-img fp-grid-item__single no-zoom" data-width="2732" data-height="1360">
+          <div class="fp-dominant-colour" style="background:#575b58"></div>
+          <div class="fp-content" style="position: unset;">
+            <img class="fp-content__img is-hidden" [ngClass]="{'centre-centre': true}" sizes="100vw" src="../../../assets/img/company/overallView.jpg"
+              alt="Awards">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="fp-disciplines-description " data-animation-type="staggerFirstN" data-animation-stagger-n="2"
+      data-animation-trigger="1" style="text-align: center;">
+      <h1>S Architects - {{'Awards' | translate}}</h1>
+      <!-- <p class="p-emphasis">({{'updating' | translate}})<br /> </p> -->
+    </div>
+
+    <!-- awards -->
+    <div class="fp-tile-page">
+      <div class="fp-tp-grid " data-animation-type="staggerOnScroll">
+        <div class="fp-media-tile" *ngFor="let a of awards">
+          <a class="fp-media-tile__a" (click)="openDetailAward(a.name)" >
+            <div class="fp-media-header" style="height: 50px;">
+              <h2 class="fp-media-title">{{a.name | translate}}</h2>
+            </div>
+            <!-- <div class="fp-media-content">
+              <img class="fp-media-image award_img_height" sizes="100vw" src="../../../{{a.imageUrl}}" alt="Award1">
+            </div> -->
+              <div class="fp-tp-hero-img fp-grid-item__single no-zoom award_img_height" >
+                <div class="fp-content" style="position: unset;">
+                  <img class="fp-content__img is-hidden" [ngClass]="{'centre-centre': true}" sizes="100vw" src="../../../{{a.imageUrl}}">
+                </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</main>

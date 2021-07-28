@@ -1,0 +1,152 @@
+@media screen and (min-width: 992px) {
+  .col-md-4 {
+    padding-left: 100px !important;
+  }
+
+  .col-md-8 {
+    padding-left: 100px !important;
+  }
+
+  .col-md-6 {
+    padding-left: 100px !important;
+  }
+
+  .fp-tp-intro-content {
+    .tile-heading {
+      font-size: 60px !important;
+    }
+
+    .tile-name {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 40px !important;
+    }
+  }
+
+  .sologan {
+    text-align: center !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .col-md-4 {
+    padding-left: 50px !important;
+  }
+
+  .col-md-8 {
+    padding-left: 50px !important;
+  }
+
+  .col-md-6 {
+    padding-left: 50px !important;
+  }
+
+  .fp-tp-intro-content {
+    .tile-heading {
+      font-size: 25px !important;
+    }
+
+    .tile-name {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 15px !important;
+    }
+  }
+
+  .sologan {
+    text-align: center !important;
+  }
+}
+
+@media screen and (min-width: 435px) and (max-width: 767px) {
+  .fp-tp-intro-content {
+    .tile-name {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 25px !important;
+    }
+  }
+
+}
+
+@media screen and (max-width: 365px) {
+  .fp-tp-intro-content {
+    .tile-name {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      font-size: 18px !important;
+    }
+  }
+}
+
+.fp-tp-intro-content {
+  .tile-heading {
+    font-size: 30px;
+    text-shadow: 2px 3px 4px black;
+  }
+
+  .tile-name {
+    margin: 0cm;
+    margin-bottom: .0001pt;
+    font-size: 20px;
+    text-shadow: 2px 3px 3px black;
+  }
+}
+
+.sologan {
+  text-align: center;
+  font-weight: 600;
+  padding-left: 50px;
+  padding-right: 60px;
+}
+
+.portrait-team {
+  padding-top: 10px;
+  border-radius: 50%;
+  border-color: transparent;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4);
+  width: 50%;
+  background: #807d77;
+  margin-bottom: 10px
+}
+
+#people {
+  h2 {
+    font-weight: 600
+  }
+
+  li.member {
+    text-align: center;
+    margin-top: 35px;
+    padding-left: 30px !important;
+
+    p {
+      color: #fff;
+    }
+
+    h3 {
+      color: #fff;
+      font-weight: 600
+    }
+  }
+}
+
+.s4 {
+  display: inline-block;
+}
+
+@media screen and (max-width: 668px) {
+  .s4 {
+    display: inline-grid;
+  }
+}
+
+.teammate {
+  ul>li {
+    padding-left: 0 !important;
+  }
+  .fp-media-content {
+    width: 100%;
+    text-align: center !important;
+  }
+}
