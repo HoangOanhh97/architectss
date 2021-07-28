@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("./assets/font/UTM-Avo-font/style.css");
+
+@import url("./assets/css/main.css");
+@import url("./assets/css/style.css");
+
+a {
+  color: #000 !important;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  color: black;
+}
+
+ol, ul {
+  padding: 0px !important;
+}
+
+.swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after,
+.swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
+  opacity: 0 !important;
+}

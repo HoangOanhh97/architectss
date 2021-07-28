@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 's-arch';
@@ -12,9 +12,9 @@ export class AppComponent {
 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('vi');
-    translate.use('vi');
+    translate.use('en');
     if (!localStorage.getItem('currentLang')) {
-      localStorage.setItem('currentLang', 'vi');
+      localStorage.setItem('currentLang', 'en');
     }
 
   }

@@ -1,167 +1,167 @@
 <div class="" [ngClass]="{'showLine': hide == false}">
-    <div class="component fp-header nav-down" [ngClass]="{'hashidden': hide == true}" [ngStyle]="{'background': getBgHeader(hide)}">
-  
-      <!-- Logo with MenuDropdown-->
-      <app-logo-svg></app-logo-svg>
+  <div class="component fp-header nav-down" [ngClass]="{'hashidden': hide == true}"
+    [ngStyle]="{'background': getBgHeader(hide)}">
+
+    <!-- Logo with MenuDropdown-->
+    <app-logo-svg></app-logo-svg>
+    <div>
+      <h1 class="fp-header__logo">
+        <a class="component fp-logo" data-component-name="logo" (click)="goHomePage()">
+          <div class="img__logo" [ngStyle]="{'background-image': setImgLogo(navActive)}"></div>
+        </a>
+      </h1>
+    </div>
+
+    <!-- Search btn -->
+    <div class="component fp-header-search fp-hs-header" [ngClass]="{'search-is-open': openHeaderSearch == true}">
+      <button class="fp-hs-toggle" type="button" (click)="openSearch()">
+        Search
+      </button>
       <div>
-        <h1 class="fp-header__logo">
-          <a class="component fp-logo" data-component-name="logo" (click)="goHomePage()">
-            <div class="img__logo" [ngStyle]="{'background-image': setImgLogo(navActive)}" ></div>  
-          </a>
-        </h1>
-      </div>
-  
-      <!-- Search btn -->
-      <div class="component fp-header-search fp-hs-header" [ngClass]="{'search-is-open': openHeaderSearch == true}">
-        <button class="fp-hs-toggle" type="button" (click)="openSearch()">
-          Search
-        </button>
-        <div>
-          <div class="fp-hs-search-wrapper" id="hs-search">
-            <div class="fp-hs-search-content" style="width: 576px;">
-              <form action="/search" class="fp-hs-form">
-                <label for="fp-search-term" class="fp-hs-label">{{'Search' }} S Architects</label>
-                <input type="search" id="fp-search-term" class="fp-hs-term"
-                  placeholder="{{'Search' }} S Architects" data-original-value="" tabindex="-1" />
-                <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
-                <input type="reset" value="Clear" class="fp-hs-search-clear" (click)="clear()" />
-              </form>
-            </div>
-          </div>
-  
-          <div class="fp-instant-search">
-            <div class="fp-is-container">
-              <p class="fp-is-title">{{'Recommended searches' }}</p>
-  
-              <ul class="fp-is-list">
-                <li class="fp-is-list-item">
-                  <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' }}</span>
-                </li>
-                <li class="fp-is-list-item">
-                  <span target="_blank" class="fp-is-link" tabindex="-1">{{'Privacy Notice' }}</span>
-                </li>
-                <li class="fp-is-list-item">
-                  <span target="_blank" class="fp-is-link"
-                    tabindex="-1">{{'Salary and Human Resource' }}</span>
-                </li>
-              </ul>
-            </div>
+        <div class="fp-hs-search-wrapper" id="hs-search">
+          <div class="fp-hs-search-content" style="width: 576px;">
+            <form action="/search" class="fp-hs-form">
+              <label for="fp-search-term" class="fp-hs-label">{{'Search' }} S Architects</label>
+              <input type="search" id="fp-search-term" class="fp-hs-term" placeholder="{{'Search' }} S Architects"
+                data-original-value="" tabindex="-1" />
+              <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
+              <input type="reset" value="Clear" class="fp-hs-search-clear" (click)="clear()" />
+            </form>
           </div>
         </div>
-  
+
+        <div class="fp-instant-search">
+          <div class="fp-is-container">
+            <p class="fp-is-title">{{'Recommended searches' }}</p>
+
+            <ul class="fp-is-list">
+              <li class="fp-is-list-item">
+                <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' }}</span>
+              </li>
+              <li class="fp-is-list-item">
+                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Privacy Notice' }}</span>
+              </li>
+              <li class="fp-is-list-item">
+                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Salary and Human Resource' }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-  
-      <div class="component fp-navigation closed"
-        [ngClass]="{'enabled': openHeaderSearch == false , 'fp-search-is-open fp-navigation-is-open open': (hide == false)}">
-        <!-- toggle when responsive -->
-        <a *ngIf="opensearchNav == false" class="fp-nav-toggle" role="button"
-          (click)="hide = !hide; setFill('#svg__logo')">
-          <span class="fp-toggle-content" [ngClass]="{'open': 'width: 1024px'}">
-            <span class="fp-pulse" [ngStyle]="{'opacity': (hide == true) ? '1' : '0'}">
-              <svg class="fp-pulse-svg" width="24" height="24">
-                <circle id="pulse" cx="12" cy="12" r="6" fill="none" stroke="#fff" stroke-width="1px">
-                  <animate attributeName="r" values="0; 11; 6; 5" delay="0.5s" dur="6s" calcMode="linear"
-                    repeatCount="indefinite" />
-                </circle>
-              </svg>
-            </span>
-  
-            <span class="fp-toggle-opened" [ngStyle]="{'opacity': (hide == true)? '0':'1'}">
-              <span *ngIf="opensearchNav == false" class="fp-icon-cross-wrap" style="opacity: 1;">
-                <span class="fp-icon-cross" style="transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);"></span>
-              </span>
-  
-            </span>
+
+    </div>
+
+    <div class="component fp-navigation closed"
+      [ngClass]="{'enabled': openHeaderSearch == false , 'fp-search-is-open fp-navigation-is-open open': (hide == false)}">
+      <!-- toggle when responsive -->
+      <a *ngIf="opensearchNav == false" class="fp-nav-toggle" role="button"
+        (click)="hide = !hide; setFill('#svg__logo')">
+        <span class="fp-toggle-content" [ngClass]="{'open': 'width: 1024px'}">
+          <span class="fp-pulse" [ngStyle]="{'opacity': (hide == true) ? '1' : '0'}">
+            <svg class="fp-pulse-svg" width="24" height="24">
+              <circle id="pulse" cx="12" cy="12" r="6" fill="none" stroke="#fff" stroke-width="1px">
+                <animate attributeName="r" values="0; 11; 6; 5" delay="0.5s" dur="6s" calcMode="linear"
+                  repeatCount="indefinite" />
+              </circle>
+            </svg>
           </span>
-        </a>
-        <a *ngIf="opensearchNav == true" class="fp-nav-toggle" role="button" (click)="clearNav()">
-          <span class="fp-icon-slide" style="opacity: 1;"></span>
-        </a>
-  
-        <div class="fp-nav-list-mask"></div>
-        <div class="fp-nav-list-wrap">
-          <ul class="fp-nav-list" style="height: 0">
-            <li class="fp-nav-list-item fp-nav-list-search" [ngClass]="{'opened-nav': hide == false}">
-              <div class="component fp-header-search fp-hs-navigation"
-                [ngClass]="{'search-is-open': opensearchNav == true}" data-component-name="header-search"
-                data-is-navigation="true" [ngStyle]="{'left': (opensearchNav == true)? '30px':'unset'}">
-                <button class="fp-hs-toggle" type="button" (click)="openSearchNav()">
-                  Search
-                </button>
-                <div>
-                  <div class="fp-hs-search-wrapper closed-nav" id="nav-search">
-                    <div class="fp-hs-search-content">
-                      <form action="/search" class="fp-hs-form">
-  
-                        <label for="fp-search-term-navigation" class="fp-hs-label">{{'Search' }} S
-                          Architects</label>
-                        <input type="search" id="fp-search-term-navigation" class="fp-hs-term"
-                          placeholder="{{'Search' }} S Architects" data-original-value="" tabindex="-1" />
-  
-                        <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
-                        <input type="reset" value="Clear" class="fp-hs-search-clear" />
-  
-                      </form>
-                    </div>
-                  </div>
-                  <div class="fp-instant-search " style="top: 60px;">
-                    <div class="fp-is-container">
-                      <p class="fp-is-title">{{'Recommended searches' }}</p>
-  
-                      <ul class="fp-is-list" style="display: inline-grid; float: left;">
-                        <li class="fp-is-list-item">
-                          <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' }}</span>
-                        </li>
-                        <li class="fp-is-list-item">
-                          <span target="_blank" class="fp-is-link no-auto-detection"
-                            tabindex="-1">{{'Privacy Notice' }}</span>
-                        </li>
-                        <li class="fp-is-list-item">
-                          <span target="_blank" class="fp-is-link no-auto-detection"
-                            tabindex="-1">{{'Salary and Human Resource' }}</span>
-                        </li>
-                      </ul>
-  
-                    </div>
+
+          <span class="fp-toggle-opened" [ngStyle]="{'opacity': (hide == true)? '0':'1'}">
+            <span *ngIf="opensearchNav == false" class="fp-icon-cross-wrap" style="opacity: 1;">
+              <span class="fp-icon-cross" style="transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);"></span>
+            </span>
+
+          </span>
+        </span>
+      </a>
+      <a *ngIf="opensearchNav == true" class="fp-nav-toggle" role="button" (click)="clearNav()">
+        <span class="fp-icon-slide" style="opacity: 1;"></span>
+      </a>
+
+      <div class="fp-nav-list-mask"></div>
+      <div class="fp-nav-list-wrap">
+        <ul class="fp-nav-list" style="height: 0">
+          <li class="fp-nav-list-item fp-nav-list-search" [ngClass]="{'opened-nav': hide == false}">
+            <div class="component fp-header-search fp-hs-navigation"
+              [ngClass]="{'search-is-open': opensearchNav == true}" data-component-name="header-search"
+              data-is-navigation="true" [ngStyle]="{'left': (opensearchNav == true)? '30px':'unset'}">
+              <button class="fp-hs-toggle" type="button" (click)="openSearchNav()">
+                Search
+              </button>
+              <div>
+                <div class="fp-hs-search-wrapper closed-nav" id="nav-search">
+                  <div class="fp-hs-search-content">
+                    <form action="/search" class="fp-hs-form">
+
+                      <label for="fp-search-term-navigation" class="fp-hs-label">{{'Search' }} S
+                        Architects</label>
+                      <input type="search" id="fp-search-term-navigation" class="fp-hs-term"
+                        placeholder="{{'Search' }} S Architects" data-original-value="" tabindex="-1" />
+
+                      <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
+                      <input type="reset" value="Clear" class="fp-hs-search-clear" />
+
+                    </form>
                   </div>
                 </div>
-  
+                <div class="fp-instant-search " style="top: 60px;">
+                  <div class="fp-is-container">
+                    <p class="fp-is-title">{{'Recommended searches' }}</p>
+
+                    <ul class="fp-is-list" style="display: inline-grid; float: left;">
+                      <li class="fp-is-list-item">
+                        <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' }}</span>
+                      </li>
+                      <li class="fp-is-list-item">
+                        <span target="_blank" class="fp-is-link no-auto-detection"
+                          tabindex="-1">{{'Privacy Notice' }}</span>
+                      </li>
+                      <li class="fp-is-list-item">
+                        <span target="_blank" class="fp-is-link no-auto-detection"
+                          tabindex="-1">{{'Salary and Human Resource' }}</span>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
               </div>
-  
-            </li>
-  
-            <li class="fp-nav-list-item"
-              [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-              <a [routerLink]="[ '/company']" [ngClass]="{'selected': navActive === 'company'}" title="Company"
-                class="no-auto-detection fp-nav-link ">{{'Company' }}</a>
-            </li>
-  
-            <li class="fp-nav-list-item"
-              [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-              <a [routerLink]="[ '/award']" [ngClass]="{'selected': navActive === 'award'}" title="Awards"
-                class="no-auto-detection fp-nav-link  ">{{'Awards' }}</a>
-            </li>
-  
-            <li class="fp-nav-list-item"
-              [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-              <a [routerLink]="[ '/projects']"
-                [ngClass]="{'selected': navActive == 'projects' || navActive === 'projectDetail'}" title="Projects"
-                class="no-auto-detection fp-nav-link  ">{{'Projects' }}</a>
-            </li>
-  
-            <li class="fp-nav-list-item"
-              [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-              <a [routerLink]="[ '/news']" [ngClass]="{'selected': navActive === 'news'}" title="News"
-                class="no-auto-detection fp-nav-link  ">{{'News' }}</a>
-            </li>
-  
-            <li class="fp-nav-list-item"
-              [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-              <a [routerLink]="[ '/contact']" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
-                class="no-auto-detection fp-nav-link  ">{{'Contact' }}</a>
-            </li>
-  
-            <li class="fp-nav-list-item fp-nav-list-language-selector"
+
+            </div>
+
+          </li>
+
+          <li class="fp-nav-list-item"
+            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
+            <a [routerLink]="[ '/company']" [ngClass]="{'selected': navActive === 'company'}" title="Company"
+              class="no-auto-detection fp-nav-link ">{{'Company' }}</a>
+          </li>
+
+          <li class="fp-nav-list-item"
+            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
+            <a [routerLink]="[ '/award']" [ngClass]="{'selected': navActive === 'award'}" title="Awards"
+              class="no-auto-detection fp-nav-link  ">{{'Awards' }}</a>
+          </li>
+
+          <li class="fp-nav-list-item"
+            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
+            <a [routerLink]="[ '/projects']"
+              [ngClass]="{'selected': navActive == 'projects' || navActive === 'projectDetail'}" title="Projects"
+              class="no-auto-detection fp-nav-link  ">{{'Projects' }}</a>
+          </li>
+
+          <li class="fp-nav-list-item"
+            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
+            <a [routerLink]="[ '/news']" [ngClass]="{'selected': navActive === 'news'}" title="News"
+              class="no-auto-detection fp-nav-link  ">{{'News' }}</a>
+          </li>
+
+          <li class="fp-nav-list-item"
+            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
+            <a [routerLink]="[ '/contact']" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
+              class="no-auto-detection fp-nav-link  ">{{'Contact' }}</a>
+          </li>
+
+          <!-- <li class="fp-nav-list-item fp-nav-list-language-selector"
               [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}"
               (click)="changeLang()">
               <div class="component fp-language-selector fp-ls-navigation fp-ls-navigation"
@@ -189,19 +189,18 @@
                   <span class="fp-bp-chevron"></span>
                 </button>
               </div>
-            </li>
-          </ul>
-        </div>
-  
+            </li> -->
+        </ul>
       </div>
+
     </div>
   </div>
-  
-  <div class="fp-header-top-gradient"></div>
-  
-  <div class="fp-header-search-gradient"></div>
-  
-  <div class="fp-search-overlay"></div>
-  
-  <div class="fp-navigation-gradient" [ngClass]="{'opened-nav fadeIn': (hide == false)}"></div>
-  
+</div>
+
+<div class="fp-header-top-gradient"></div>
+
+<div class="fp-header-search-gradient"></div>
+
+<div class="fp-search-overlay"></div>
+
+<div class="fp-navigation-gradient" [ngClass]="{'opened-nav fadeIn': (hide == false)}"></div>

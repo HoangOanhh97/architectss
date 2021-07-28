@@ -10,18 +10,21 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es6",
     "typeRoots": [
       "node_modules/@types",
       "src/@types"
     ],
     "lib": [
-      "es2017",
+      "es2016",
       "dom",
       "esnext.asynciterable"
     ],
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
   }
 }

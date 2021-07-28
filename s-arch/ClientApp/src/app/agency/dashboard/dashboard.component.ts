@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 declare var Swiper: any;
 
@@ -9,7 +10,7 @@ declare var Swiper: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   projects: any;
   language = "Tiếng Việt";
   anotherLang = "English";
@@ -17,14 +18,14 @@ export class DashboardComponent implements OnInit {
   swiper: any;
 
   constructor(
-    // cf: NgbDropdownConfig, 
+    cf: NgbDropdownConfig,
     private elementRef: ElementRef,
-    private http: HttpClient, 
-    private translate: TranslateService, 
+    private http: HttpClient,
+    private translate: TranslateService,
     private router: Router, private route: ActivatedRoute) {
 
-    // cf.placement = 'top-left';
-    // cf.autoClose = true;
+    cf.placement = 'top-left';
+    cf.autoClose = true;
 
     const currentLang = localStorage.getItem('currentLang');
     this.language = currentLang === 'vi' ? "Tiếng Việt" : 'English';
@@ -32,16 +33,11 @@ export class DashboardComponent implements OnInit {
 
     this.http.get('assets/data/projects.json').subscribe(r => {
       this.projects = r;
-      // console.log(this.projects)
     })
 
     this.lang = currentLang;
     this.translate.setDefaultLang(this.lang);
     this.translate.use(this.lang)
-  }
-
-  ngOnInit() {
-
   }
 
   ngAfterViewInit() {
@@ -90,6 +86,6 @@ export class DashboardComponent implements OnInit {
   }
 
   openProject(id) {
-    this.router.navigate([`/projects/${id}`], {relativeTo: this.route})
+    this.router.navigate([`/projects/${id}`], { relativeTo: this.route })
   }
 }
