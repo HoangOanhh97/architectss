@@ -12,7 +12,7 @@
 .dialog-content {
   text-align: justify;
   padding: 0 10px;
-  max-height: 400px;
+  max-height: 300px;
   overflow: auto;
 
   span {
@@ -54,7 +54,7 @@
 //     padding: 0 10px;
 //     max-height: 218px;
 //     overflow: auto;
-  
+
 //     span {
 //       font-size: 16px;
 //     }
@@ -65,7 +65,7 @@
   .res_award-dialog {
     max-height: 300px;
   }
-  
+
   .is-hidden.award {
     display: none;
   }
@@ -80,9 +80,9 @@
   .dialog-content {
     text-align: justify;
     padding: 0 10px;
-    max-height: 225px;
+    max-height: 220px;
     overflow: auto;
-  
+
     span {
       font-size: 16px;
     }
@@ -93,8 +93,8 @@
   height: auto
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 1024px) {
   .award_img {
-      height: 400px !important
+    height: 250px !important
   }
-} 
+}
