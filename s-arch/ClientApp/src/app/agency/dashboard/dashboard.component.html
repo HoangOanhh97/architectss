@@ -1,5 +1,83 @@
-<section>
-    <div class="row">
-        Dashboard
+<main id="theme" class="js homepage theme-black no-touchevents" data-pageclassname="homepage"
+  data-pagetheme="theme-black">
+
+  <app-header></app-header>
+
+  <div id="container-fluid">
+    <div class="page">
+      <div class="fp-carousel-overlay"></div>
+      <div class="component fp-carousel" data-component-name="carousel">
+
+        <!-- Swiper -->
+        <div class="swiper-homepage swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide swiper-item" [routerLink]="['/projects/2']"
+              style="background-image: url('../../../assets/img/projects/PlanAndLand/my-lai-project/OverallView.jpg')">
+              <div class="carousel-caption d-md-block">
+                <h3 class="fp-hp-figure__title fp-hp-figure-no-quote__title">{{'My Lai Project' }}</h3>
+              </div>
+            </div>
+
+            <div class="swiper-slide swiper-item" [routerLink]="['/projects/8']"
+              style="background-image: url('../../../assets/img/projects/ArchAndFurn/Interior/HBSpa/OverallView1920.jpg')">
+              <div class="carousel-caption d-md-block">
+                <h3 class="fp-hp-figure__title fp-hp-figure-no-quote__title">{{'HB Spa Design Project' }}
+                </h3>
+              </div>
+            </div>
+
+            <div class="swiper-slide swiper-item" [routerLink]="['/projects/12']"
+              style="background-image: url('../../../assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg')">
+              <div class="carousel-caption d-md-block">
+                <h3 class="fp-hp-figure__title fp-hp-figure-no-quote__title">2359 Media Office</h3>
+              </div>
+            </div>
+
+            <div class="swiper-slide swiper-item" [routerLink]="['/projects/13']"
+              style="background-image: url('../../../assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg')">
+              <div class="carousel-caption d-md-block">
+                <h3 class="fp-hp-figure__title fp-hp-figure-no-quote__title">An Coffee
+                </h3>
+              </div>
+            </div>
+
+            <!-- <div class="swiper-slide swiper-item" [routerLink]="['/projects/6']"
+              style="background-image: url('../../../assets/img/projects/ArchAndFurn/Architecture/PrivateHouseProject/OverallView1920.jpg')">
+              <div class="carousel-caption d-md-block">
+                <h3 class="fp-hp-figure__title fp-hp-figure-no-quote__title">{{'Private House Project' }}</h3>
+              </div>
+            </div> -->
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination swiper-pagination__home"></div>
+
+          <!-- Add Arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+        <!-- </swiper> -->
+
+        <div class="component fp-language-selector fp-ls-standalone fp-ls-main-section" ngbDropdown>
+          <button class="btn fp-button-primary fp-ls-btn" id="dropdownConfig" ngbDropdownToggle
+            style="border-radius: 20px;">
+            <span class="fp-bp-content">{{language}}</span>
+            <span class="fp-bp-chevron"></span>
+          </button>
+          <div class="fp-ls-overlay" ngbDropdownMenu aria-labelledby="dropdownConfig">
+            <div class="fl-ls-overlay-content">
+              <ul class="fp-ls-list">
+                <li class="fp-ls-item" ngbDropdownItem>
+                  <span class="fp-ls-link" (click)="useLanguage(language)">{{language}}</span>
+                </li>
+                <li class="fp-ls-item" ngbDropdownItem>
+                  <a class="fp-ls-link" (click)="useLanguage(anotherLang)">{{anotherLang}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </div>
+</main>

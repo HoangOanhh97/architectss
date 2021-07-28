@@ -1,0 +1,105 @@
+<div class="component fp-footer">
+  <div class="fp-footer-columns">
+    <div class="fp-footer-column" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);" data-index="0">
+      <div class="fp-footer-header">
+        <h4 (click)="projectsPage()" class="fp-fh-title" style="cursor: pointer;">{{ 'Project' }}</h4>
+
+      </div>
+      <div class="fp-footer-links">
+        <div class="fp-footer-link-container" *ngFor="let t of types">
+          <a class="fp-footer-link no-auto-detection" (click)="getProjectsByType(t.typeName)">
+            {{t.typeName }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp-footer-column" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);" data-index="1">
+      <div class="fp-footer-header">
+        <h4 (click)="newsPage()" class="fp-fh-title" style="cursor: pointer;">{{'News' }}</h4>
+
+      </div>
+      <div class="fp-footer-links">
+        <div class="fp-footer-link-container">
+          <span class="fp-footer-link no-auto-detection">
+            {{'News' }}
+          </span>
+        </div>
+        <div class="fp-footer-link-container">
+          <span class="fp-footer-link no-auto-detection">
+            {{'Events' }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="fp-footer-column" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);" data-index="2">
+      <div class="fp-footer-header">
+        <h4 (click)="contactPage()" class="fp-fh-title" style="cursor: pointer;">{{'About us' }}</h4>
+
+      </div>
+      <div class="fp-footer-links">
+        <div class="fp-footer-link-container">
+          <a class="fp-footer-link no-auto-detection" (click)="contactPage()">
+            {{'Contact' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fp-footer-lower" style="opacity: 1;">
+    <div class="fp-footer-hygine">
+      <span class="fp-footer-copyright">&#169; Copyright 2019 S Architects. Powered by <a href="https://dotnets.org/"
+          target="_blank">dotnets.org</a> .</span>
+      <!-- <a class="fp-hygine-link">Privacy</a>
+        <a class="fp-hygine-link">Slavery and Human Trafficking Statement</a> -->
+    </div>
+    <div class="fp-footer-social" style="position: relative !important;">
+      <!-- Facebook -->
+      <a class="fp-ftr-social-link fp-button-icon icon-facebook track-on-click" target="_blank"
+        data-track-click-sub-type="share_facebook_click" data-track-click-section="footer"
+        data-track-click-detail="channel_link" href="https://www.facebook.com/S-Architects-104547267591672/">
+        <span class="icon__i"></span>
+      </a>
+      <!-- Twitter -->
+      <a class="fp-ftr-social-link fp-button-icon icon-twitter track-on-click" target="_blank"
+        data-track-click-sub-type="share_twitter_click" data-track-click-section="footer"
+        data-track-click-detail="channel_link" href="https://twitter.com/SArchitects_vn">
+        <span class="icon__i"></span>
+      </a>
+      <!-- LinkedIn -->
+      <a class="fp-ftr-social-link fp-button-icon icon-linkedin track-on-click" target="_blank"
+        data-track-click-sub-type="share_linkedin_click" data-track-click-section="footer"
+        data-track-click-detail="channel_link" href="https://www.linkedin.com/company/28748022">
+        <span class="icon__i"></span>
+      </a>
+      <!-- Instagram -->
+      <a class="fp-ftr-social-link fp-button-icon icon-instagram track-on-click" target="_blank"
+        data-track-click-sub-type="share_instagram_click" data-track-click-section="footer"
+        data-track-click-detail="channel_link" href="https://www.instagram.com/s_architects_studio/">
+        <span class="icon__i"></span>
+      </a>
+
+      <div class="component fp-language-selector fp-ls-standalone fp-ls-footer d-inline-block" ngbDropdown
+        placement="top-right">
+        <button class="btn fp-button-primary fp-ls-btn" id="dropdownConfig" ngbDropdownToggle
+          style="border-radius: 20px; color: #000">
+          <a class="fp-bp-content">{{language}}</a>
+          <span class="fp-bp-chevron"></span>
+        </button>
+        <div class="fp-ls-overlay" ngbDropdownMenu aria-labelledby="dropdownConfig">
+          <div class="fl-ls-overlay-content">
+            <ul class="fp-ls-list">
+              <li class="fp-ls-item" ngbDropdownItem>
+                <a class="fp-ls-link" (click)="useLanguage(language)">{{language}}</a>
+              </li>
+              <li class="fp-ls-item" ngbDropdownItem>
+                <a class="fp-ls-link" (click)="useLanguage(anotherLang)">{{anotherLang}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

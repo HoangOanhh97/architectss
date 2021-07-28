@@ -10,15 +10,11 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class NewsService {
-
-    private _baseURl = environment.baseUrl;
+    private _baseURl = environment.api;
     private cache = {
 
     }
     private handleError(error: Response) {
-        // if (error.status === 401) {
-        //     this.myLocalStorageService.setItem('currentCustomer', null);
-        // }
         return throwError(error);
     }
 
@@ -26,23 +22,23 @@ export class NewsService {
 
     }
 
-    getArticles(): Observable<any> {
-        return this
-            .http
-            .get(this._baseURl + "api/public-articles");
-    }
+    // getArticles(): Observable<any> {
+    //     return this
+    //         .http
+    //         .get(this._baseURl + "api/public-articles");
+    // }
 
-    getCategories(): Observable<any>  {
-        return this
-            .http
-            .get(this._baseURl + "api/public-categories");
+    // getCategories(): Observable<any>  {
+    //     return this
+    //         .http
+    //         .get(this._baseURl + "api/public-categories");
             
-    }
+    // }
 
-    getArticle(id: any): Observable<any>  {
-        return this
-            .http
-            .get(this._baseURl + "api/public-article/" + id);
-    }
+    // getArticle(id: any): Observable<any>  {
+    //     return this
+    //         .http
+    //         .get(this._baseURl + "api/public-article/" + id);
+    // }
 
 }

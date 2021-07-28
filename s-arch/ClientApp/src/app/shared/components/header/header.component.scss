@@ -1,0 +1,374 @@
+.open {
+  display: block;
+}
+
+.opened-nav {
+  display: inline-block !important;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 0;
+  -webkit-animation: fadeIn ease-out 0.6s;
+  -moz-animation: fadeIn ease-out 0.6s;
+  animation: fadeIn ease-out 0.6s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 0.6s;
+  -moz-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+}
+
+.myOpacity {
+  opacity: 0;
+  transform: translate(100%, 0%) matrix(1, 0, 0, 1, 0, 0);
+}
+
+.nav-close {
+  display: none;
+  opacity: 0 !important;
+  transform: matrix(1, 0, 0, 1, 0, -500);
+}
+
+.active-link {
+  font-weight: 600;
+}
+
+.nav-up {
+  top: -900px !important;
+  background: black;
+  transition: background-color 2s;
+  transform: translate(0, 100%);
+}
+
+.nav-down-bg {
+  background: black;
+  transition: background-color 4s;
+  transform: translate(0, 100%);
+  top: -80px;
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  -webkit-animation: fadeIn ease-out 0.4s;
+  -moz-animation: fadeIn ease-out 0.4s;
+  animation: fadeIn ease-out 0.4s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  opacity: 1;
+  -webkit-animation: fadeOut ease-in 0.4s;
+  -moz-animation: fadeOut ease-in 0.4s;
+  animation: fadeOut ease-in 0.4s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: .4s;
+  animation-duration: .4s;
+}
+
+.nav-wrapper {
+  //width: 0
+  -webkit-animation: fullWidth ease-out 1s;
+  -moz-animation: fullWidth ease-out 1s;
+  -o-animation: fullWidth ease-out 1s;
+  animation: fullWidth ease-out 1s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+.hs-wrapper {
+  // width: 0;
+  -webkit-animation: fullhsWidth ease-out 1s;
+  -moz-animation: fullhsWidth ease-out 1s;
+  -o-animation: fullhsWidth ease-out 1s;
+  animation: fullhsWidth ease-out 1s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+@keyframes fullWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@-moz-keyframes fullWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes fullWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fullhsWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 576px;
+  }
+}
+
+@-moz-keyframes fullhsWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 576px;
+  }
+}
+
+@-webkit-keyframes fullhsWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 576px;
+  }
+}
+
+@keyframes hideWidth {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+@-moz-keyframes hideWidth {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+@-webkit-keyframes hideWidth {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+.hs-hidden {
+  width: 100%;
+  -webkit-animation: hideWidth ease-in-out 1s;
+  -moz-animation: hideWidth ease-in-out 1s;
+  -o-animation: hideWidth ease-in-out 1s;
+  animation: hideWidth ease-in-out 1s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+////----------Styling BtnLanguage----------////
+.dropdown-menu {
+  border: unset;
+  background: transparent;
+}
+
+.dropdown-item {
+  padding: unset;
+}
+
+.dropdown-item:hover {
+  border-radius: 8px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+////----------Styling Mat-Menu----------////
+// .mat-menu-panel {
+// background: rgba(255, 255, 255, 0.35);
+// }
+
+.mat-menu-content:not(:empty) {
+  padding: unset !important;
+}
+
+.mat-menu-item-submenu-trigger {
+  font-family: 'UTM avo';
+}
+
+.mat-menu-item-highlighted:not([disabled]),
+.mat-menu-item.cdk-keyboard-focused:not([disabled]),
+.mat-menu-item.cdk-program-focused:not([disabled]),
+.mat-menu-item:hover:not([disabled]) {
+  background: rgba(255, 255, 255, .8);
+  font-weight: 600;
+}
+
+.mat-menu-item {
+  font-family: 'UTM Avo' !important;
+}
+
+.mat-menu-item-submenu-trigger::after {
+  display: none !important;
+}
+
+////-------------------------------------////
+
+.closed-nav {
+  display: none;
+}
+
+.img__logoSA {
+  width: auto;
+  height: 80px;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-down-bg {
+    background: black;
+    transition: background-color 4s;
+    transform: translate(0, 100%);
+    top: -75px;
+  }
+
+  .img__logo {
+    height: 65px !important;
+  }
+}
+
+.img__logo {
+  width: auto;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

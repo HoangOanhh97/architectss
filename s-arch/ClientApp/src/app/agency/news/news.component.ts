@@ -25,30 +25,30 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getArticles();
-    this.getCategories();
+    // this.getArticles();
+    // this.getCategories();
 
   }
 
-  getArticles() {
-    this.newsService.getArticles().subscribe(r => {
-      r.forEach(e => {
-        // if (e.description != "" || e.description != null) {
-          this.articles.push(e);
-        // }
-      });
-      this.articles = _.groupBy(this.articles, 'category.title');
-      this.getArticlesByCategoryName("News");
-    });
-  }
+  // getArticles() {
+  //   this.newsService.getArticles().subscribe(r => {
+  //     r.forEach(e => {
+  //       // if (e.description != "" || e.description != null) {
+  //         this.articles.push(e);
+  //       // }
+  //     });
+  //     this.articles = _.groupBy(this.articles, 'category.title');
+  //     this.getArticlesByCategoryName("News");
+  //   });
+  // }
 
-  getCategories() {
-    this.newsService.getCategories().subscribe(r => {
-      console.log(r);
-      this.categories = _.sortBy(r, 'title');
+  // getCategories() {
+  //   this.newsService.getCategories().subscribe(r => {
+  //     console.log(r);
+  //     this.categories = _.sortBy(r, 'title');
 
-    })
-  }
+  //   })
+  // }
 
   getArticlesByCategoryName(title) {
     this.news = null;

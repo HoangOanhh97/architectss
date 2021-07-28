@@ -1,0 +1,162 @@
+.carousel-caption {
+  bottom: 4% !important;
+  left: 4%;
+  text-align: left;
+
+  h3 {
+    font-size: 32px;
+    color: white;
+    // text-shadow: 4px 3px 3px black;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .carousel-caption {
+    bottom: 2% !important;
+    left: 15%;
+    text-align: center;
+
+    h3 {
+      font-size: 30px;
+      color: white;
+      // text-shadow: 4px 3px 3px black;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+////------------Btn Language-------------////
+.dropup {
+  position: absolute !important;
+}
+
+.dropdown-menu {
+  border: unset;
+  background: transparent;
+}
+
+.dropdown-item {
+  padding: unset;
+}
+
+.dropdown-item:hover {
+  border-radius: 8px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu.show {
+  display: block;
+  bottom: -8rem !important;
+  top: auto !important;
+}
+
+////-------------------------------------////
+
+////------------Swiper Homepage-------------////
+.swiper-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.path {
+  display: none;
+}
+
+.swiper-pagination-bullet {
+  background: unset !important;
+  position: relative;
+  width: 28px;
+  height: 20px;
+  display: inline-block;
+  margin: 0 3px;
+  opacity: 0.4;
+
+  &:focus {
+    border: unset !important;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background: unset !important;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active .path {
+  display: inline-block;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  animation: dash linear 150s;
+  animation-iteration-count: unset;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.swiper-homepage.swiper-container {
+  width: 100% !important;
+  height: 100vh;
+}
+
+.swiper-slide {
+  width: 100% !important;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-button-next {
+  background: url('../../../assets/img/ico/angel-right-thin.png') no-repeat center center transparent !important;
+  right: 0;
+}
+
+.swiper-button-prev {
+  background: url('../../../assets/img/ico/angel-left-thin.png') no-repeat center center transparent !important;
+  left: 0;
+}
+
+@media screen and (max-width: 767px) {
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 120px !important;
+  height: 100% !important;
+  top: 0% !important;
+}
+
+.swiper-button-prev:focus,
+.swiper-button-next:focus {
+  outline: none;
+}
+
+////-------------------------------------////

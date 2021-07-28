@@ -1,0 +1,31 @@
+.fp-ls-standalone .fp-ls-overlay {
+  width: 110px !important;
+}
+
+////------------Btn Language-------------////
+.dropup {
+  position: unset !important;
+}
+
+.dropdown-menu {
+  border: unset;
+  background: transparent;
+}
+
+.dropdown-item {
+  padding: unset;
+}
+
+.dropdown-item:hover {
+  border-radius: 8px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu.show {
+  display: block;
+  bottom: -8rem !important;
+  top: auto !important;
+}

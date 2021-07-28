@@ -10,7 +10,6 @@ import { NewsService } from 'src/app/shared/services/news.service';
   styleUrls: ['./news-detail-dialog.component.scss']
 })
 export class NewsDetailDialogComponent implements OnInit {
-
   nameOfNews: string = '';
   selectedNews: any;
   newsId: string = '';
@@ -26,17 +25,17 @@ export class NewsDetailDialogComponent implements OnInit {
 
   getDetailByName(id) {
     // this.http.get("assets/data/news.json").subscribe(r => {
-    //   var list = r.json();
+    //   var list = r..json();
     //   this.selectedNews = list.find(x => x.title == name);
     //   console.log(this.selectedNews);
     //   if (this.selectedNews) {
     //     document.getElementById("selectedNewsDetail").children[0].children[0].innerHTML = this.selectedNews.descriptionHTML;
     //   }
     // })
-    this.newsService.getArticle(id).subscribe(r=>{
-      var selectedNewsDetail=  document.getElementById("selectedNewsDetail")  as any;
-      selectedNewsDetail.children[0].children[0].innerHTML = r.content;
-    })
+    // this.newsService.getArticle(id).subscribe(r=>{
+    //   var selectedNewsDetail=  document.getElementById("selectedNewsDetail")  as any;
+    //   selectedNewsDetail.children[0].children[0].innerHTML = r.content;
+    // })
   }
 
 }
