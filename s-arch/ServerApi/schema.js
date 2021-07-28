@@ -1,8 +1,8 @@
 const { gql } = require('apollo-server-express');
-const { Members } = require('./repo/members');
-const { Awards } = require('./repo/awards');
-const { News } = require('./repo/news');
-const { ProjectTypes, Projects } = require('./repo/projects');
+const { Members } = require('./dataSources/members');
+const { Awards } = require('./dataSources/awards');
+const { News } = require('./dataSources/news');
+const { ProjectTypes, Projects } = require('./dataSources/projects');
 
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 // Apollo
 import { Apollo } from "apollo-angular";

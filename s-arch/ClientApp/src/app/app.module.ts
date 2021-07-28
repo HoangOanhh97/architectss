@@ -56,7 +56,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ProjectComponent,
     TypesOfProjectComponent,
     ProjectsComponent,
-    DetailProjectComponent, 
+    DetailProjectComponent,
     GalleryComponent
   ],
   imports: [
@@ -75,9 +75,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     }),
     MatMenuModule,
     MatButtonModule,
-    MatDialogModule, 
+    MatDialogModule,
     NgbModule,
-    NgbPaginationModule, 
+    NgbPaginationModule,
     NgbAlertModule,
   ],
   providers: [
@@ -97,8 +97,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FooterComponent,
   ],
   entryComponents: [
-    DetailProjectComponent, 
-    GalleryComponent, 
+    DetailProjectComponent,
+    GalleryComponent,
     AwardDetailComponent,
     NewsDetailDialogComponent
   ],

@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import * as $ from 'jquery';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +16,8 @@ export class ProjectsComponent implements OnInit {
   types: any = [];
   filterProjects: any = [];
 
-  constructor(private router: Router, cf: NgbDropdownConfig, private http: HttpClient) {
+  constructor(private router: Router, cf: NgbDropdownConfig, private http: HttpClient,
+    private apiService: ApiService) {
     cf.placement = 'bottom-left';
 
     this.http.get('assets/data/projects.json').subscribe(r => {
@@ -27,7 +29,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.apiService.books)
   }
 
   getProjectsByType(type) {
