@@ -29,7 +29,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.apiService.books)
   }
 
   getProjectsByType(type) {

@@ -14,7 +14,7 @@ export class ApiService {
     return apolloServer().query({
       query: gql`
       query getAllMembers {
-        members {
+        getAllMembers {
           id
           name
           role
