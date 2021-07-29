@@ -53,8 +53,8 @@ exports.typeDefs = gql`
         url: String
     }
     type Query {
-        awards: [Award]
-        getAllMembers: [Member]
+        getAwards: [Award]
+        getMembers: [Member]
         news: [News]
         projectTypes: [ProjectType]
         projects: [Project]
@@ -71,8 +71,8 @@ exports.typeDefs = gql`
 // Provide resolver functions for your schema fields
 exports.resolvers = {
     Query: {
-        getAllMembers: () => Members,
-        awards: () => Awards,
+        getMembers: () => Members,
+        getAwards: () => Awards,
         news: () => News,
         projectTypes: () => ProjectTypes,
         projects: () => Projects

@@ -19,9 +19,8 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiService.getAllMembers().then(res => {
-      this.members = res.data['getAllMembers'];
-      console.log(this.members);
+    this.apiService.getMembers().then(res => {
+      this.members = res.data.getMembers;
     })
   }
 

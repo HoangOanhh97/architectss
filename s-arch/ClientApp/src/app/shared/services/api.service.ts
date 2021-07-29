@@ -10,15 +10,30 @@ export class ApiService {
   constructor() {
   }
 
-  public getAllMembers() {
+  public getMembers() {
     return apolloServer().query({
       query: gql`
-      query getAllMembers {
-        getAllMembers {
+      query getMembers {
+        getMembers {
           id
           name
           role
           image
+        }
+      }`
+    });
+  }
+
+  public getAwards() {
+    return apolloServer().query({
+      query: gql`
+      query getAwards {
+        getAwards {
+          name
+          content1
+          content2
+          content3
+          imageUrl
         }
       }`
     });
