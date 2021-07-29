@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
 import * as _ from "lodash";
 import { Router } from '@angular/router';
-
-import { NewsService } from '../../shared/services/news.service';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-news',
@@ -17,7 +16,7 @@ export class NewsComponent implements OnInit {
   categories : any= [];
   articles: any = [];
 
-  constructor(private http: HttpClient, private router: Router, private newsService: NewsService) {
+  constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {
     // this.http.get("assets/data/news.json").subscribe(r => {
     //   this.news = r.json();
     //   console.log(this.news);
@@ -27,7 +26,10 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     // this.getArticles();
     // this.getCategories();
-
+    this.apiService.getNews().then(res => {
+      this.categories = res.data.getNews;
+      console.log(this.categories);
+    })
   }
 
   // getArticles() {

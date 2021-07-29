@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { gql } from 'apollo-angular';
+import { throwError } from 'rxjs';
 import { apolloServer } from 'src/app/graphql.module';
 
 @Injectable({
@@ -8,6 +9,10 @@ import { apolloServer } from 'src/app/graphql.module';
 export class ApiService {
 
   constructor() {
+  }
+
+  private handleError(error: Response) {
+    return throwError(error);
   }
 
   public getMembers() {
@@ -34,6 +39,19 @@ export class ApiService {
           content2
           content3
           imageUrl
+        }
+      }`
+    });
+  }
+
+  public getNews() {
+    return apolloServer().query({
+      query: gql`
+      query getNews {
+        getNews {
+          title
+          image
+          descriptionHTML
         }
       }`
     });

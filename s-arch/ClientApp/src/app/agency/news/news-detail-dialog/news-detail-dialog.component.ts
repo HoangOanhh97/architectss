@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NewsService } from 'src/app/shared/services/news.service';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-news-detail-dialog',
@@ -14,7 +14,7 @@ export class NewsDetailDialogComponent implements OnInit {
   selectedNews: any;
   newsId: string = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private newsService: NewsService) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private apiService: ApiService) {
     this.route.params.subscribe((params: Params) => this.newsId = params['id']);
     // console.log(this.nameOfNews);
   }

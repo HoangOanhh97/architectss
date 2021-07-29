@@ -55,7 +55,7 @@ exports.typeDefs = gql`
     type Query {
         getAwards: [Award]
         getMembers: [Member]
-        news: [News]
+        getNews: [News]
         projectTypes: [ProjectType]
         projects: [Project]
     }
@@ -73,7 +73,7 @@ exports.resolvers = {
     Query: {
         getMembers: () => Members,
         getAwards: () => Awards,
-        news: () => News,
+        getNews: () => News,
         projectTypes: () => ProjectTypes,
         projects: () => Projects
     },

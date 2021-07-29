@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NewsService } from './shared/services/news.service';
 import { SharedService } from './shared/services/shared.service';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -90,7 +89,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: LOCALE_ID,
       useValue: 'vi-VN' // 'en-EN' for English-US...
     },
-    NewsService
   ],
   exports: [
     HeaderComponent,
