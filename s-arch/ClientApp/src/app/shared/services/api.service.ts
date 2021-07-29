@@ -1,32 +1,26 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+import { Injectable } from '@angular/core';
+import { gql } from 'apollo-angular';
+import { apolloServer } from 'src/app/graphql.module';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService implements OnInit {
-  books: any;
-  loading: any;
+export class ApiService {
 
-  constructor(private apollo: Apollo) {
+  constructor() {
   }
 
-  ngOnInit() {
-    this.apollo.query<any>({
+  public getAllMembers() {
+    return apolloServer().query({
       query: gql`
-          {
-            members {
-              name
-            }
-          }
-        `
-    })
-      .subscribe(
-        ({ data, loading }) => {
-          this.books = data && data.books;
-          this.loading = loading;
-          console.log(this.books);
+      query getAllMembers {
+        members {
+          id
+          name
+          role
+          image
         }
-      );
+      }`
+    });
   }
 }
