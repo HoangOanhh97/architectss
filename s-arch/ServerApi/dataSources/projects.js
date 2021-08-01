@@ -1,629 +1,629 @@
 exports.ProjectTypes = [{
-        typeId: 2,
-        typeName: "Recently Completed",
-        mainBg: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg"
-    },
-    {
-        typeId: 3,
-        typeName: "Architecture",
-        mainBg: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg"
-    },
-    {
-        typeId: 4,
-        typeName: "Interior",
-        mainBg: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/OverallView.jpg"
-    }, {
-        typeId: 5,
-        typeName: "Planning",
-        mainBg: "assets/img/projects/PlanAndLand/5-star-resort/OverallView.jpg"
-    }, {
-        typeId: 6,
-        typeName: "Landscape",
-        mainBg: "assets/img/projects/PlanAndLand/my-lai-project/OverallView.jpg"
-    }
+    typeId: 2,
+    typeName: "Recently Completed",
+    mainBg: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg"
+},
+{
+    typeId: 3,
+    typeName: "Architecture",
+    mainBg: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg"
+},
+{
+    typeId: 4,
+    typeName: "Interior",
+    mainBg: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/OverallView.jpg"
+}, {
+    typeId: 5,
+    typeName: "Planning",
+    mainBg: "assets/img/projects/PlanAndLand/5-star-resort/OverallView.jpg"
+}, {
+    typeId: 6,
+    typeName: "Landscape",
+    mainBg: "assets/img/projects/PlanAndLand/my-lai-project/OverallView.jpg"
+}
 ]
 
-exports.Ptojects = [{
-        idNumber: 1,
-        name: "Rosa Alba Resort 5*",
-        client: "Thien Quang Fashion JSC",
-        acreage: "5.6ha",
-        location: "Ward 9, Tuy Hoa City, Phu Yen Province",
-        country: "VN",
-        overallView: "assets/img/projects/PlanAndLand/5-star-resort/OverallView.jpg",
-        overallView1920: "assets/img/projects/PlanAndLand/5-star-resort/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View04.jpg"
-            },
-            {
-                id: 5,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View05.jpg"
-            },
-            {
-                id: 6,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View06.jpg"
-            },
-            {
-                id: 7,
-                url: "assets/img/projects/PlanAndLand/5-star-resort/View07.png"
-            }
-        ],
-        description1: "descResort1",
-        description2: "descResort2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "completed",
-        yearDone: "2018",
-        typeId: 5,
-        typeName: "Planning",
-        done: true
+exports.Projects = [{
+    idNumber: 1,
+    name: "Rosa Alba Resort 5*",
+    client: "Thien Quang Fashion JSC",
+    acreage: "5.6ha",
+    location: "Ward 9, Tuy Hoa City, Phu Yen Province",
+    country: "VN",
+    overallView: "assets/img/projects/PlanAndLand/5-star-resort/OverallView.jpg",
+    overallView1920: "assets/img/projects/PlanAndLand/5-star-resort/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View01.jpg"
     },
     {
-        idNumber: 2,
-        name: "My Lai Project",
-        client: null,
-        acreage: "46.7ha",
-        location: "Tinh Ke Village, Son Tinh Town, Quang Ngai City, Quang Ngai Province",
-        country: "VN",
-        overallView: "assets/img/projects/PlanAndLand/my-lai-project/OverallView.jpg",
-        overallView1920: "assets/img/projects/PlanAndLand/my-lai-project/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/PlanAndLand/my-lai-project/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/PlanAndLand/my-lai-project/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/PlanAndLand/my-lai-project/View03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/PlanAndLand/my-lai-project/View04.jpg"
-            }
-        ],
-        description1: "descMyLai1",
-        description2: "descMyLai2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "completed",
-        yearDone: "2018",
-        typeId: 6,
-        typeName: "Landscape",
-        done: false
+        id: 2,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View02.jpg"
     },
     {
-        idNumber: 7,
-        name: "CoffeeShop Project",
-        client: null,
-        acreage: "118 m2",
-        location: "That Thuyet, Ward 18, District 4, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/Plan.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/View01.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/View02.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/View03.jpg"
-            }
-        ],
-        description1: "descCoffeet1",
-        description2: "descCoffeet2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "inprogress",
-        yearDone: "",
-        typeId: 3,
-        typeName: "Interior",
-        done: false
+        id: 3,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View03.jpg"
     },
     {
-        idNumber: 8,
-        name: "HB Spa Design Project",
-        client: "HB&IE Limited Liability Company",
-        acreage: "100-300 m2",
-        location: "All of Vietnam",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/HBSpa/OverallView2.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/HBSpa/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View04.jpg"
-            }
-        ],
-        description1: "descSpa1",
-        description2: "descSpa2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "completed",
-        yearDone: "2018",
-        typeId: 4,
-        typeName: "Interior",
-        done: true
+        id: 4,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View04.jpg"
     },
     {
-        idNumber: 9,
-        name: "Office Design Project",
-        client: null,
-        acreage: "354 m2",
-        location: "That Thuyet, Ward 18, District 4, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/View03.jpg"
-            }
-        ],
-        description1: "descOffice1",
-        description2: "descOffice2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "inprogress",
-        yearDone: "",
-        typeId: 4,
-        typeName: "Interior",
-        done: false
+        id: 5,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View05.jpg"
     },
     {
-        idNumber: 12,
-        name: "2359 Media Office",
-        client: "2359 Media",
-        acreage: "600 m2",
-        location: "Cach Mang Thang 8, District 10, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview04.jpg"
-            }, {
-                id: 5,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview05.jpg"
-            }, {
-                id: 6,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview06.jpg"
-            }, {
-                id: 7,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview07.jpg"
-            }, {
-                id: 8,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview08.jpg"
-            }, {
-                id: 9,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview09.jpg"
-            }, {
-                id: 10,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview10.jpg"
-            }, {
-                id: 11,
-                url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview11.jpg"
-            }
-        ],
-        description1: "2359Media1",
-        description2: null,
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "completed",
-        yearDone: "2019",
-        typeId: 3,
-        typeName: "Interior",
-        done: true
+        id: 6,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View06.jpg"
     },
     {
-        idNumber: 13,
-        name: "An Coffee",
-        client: "Mrs.Trang",
-        acreage: "300 m2",
-        location: "Thuan An, Binh Duong",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View04.jpg"
-            }
-        ],
-        description1: "AnCoffee1",
-        description2: "AnCoffee2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "inprogress",
-        yearDone: "",
-        typeId: 3,
-        typeName: "Architecture",
-        done: false
-    },
-    {
-        idNumber: 14,
-        name: "Kim Thap Residential Area",
-        client: "Thanh Thanh Cong Group",
-        acreage: "10.411 m2 ",
-        location: "Southeast of Tan Kien Commune, Binh Chanh District, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Architecture/KimThap/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Architecture/KimThap/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Architecture/KimThap/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Architecture/KimThap/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Architecture/KimThap/View03.jpg"
-            }
-        ],
-        description1: "KT1",
-        description2: "KT2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "designing",
-        yearDone: "",
-        typeId: 3,
-        typeName: "Architecture",
-        done: false
-    }, {
-        idNumber: 15,
-        name: "Nien Hosue",
-        client: "Mrs.Nien",
-        acreage: "80 m2",
-        location: "Ward Tan Binh, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse//View04.jpg"
-            },
-            {
-                id: 5,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View05.jpg"
-            },
-            {
-                id: 6,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View06.jpg"
-            },
-            {
-                id: 7,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View07.jpg"
-            },
-            {
-                id: 8,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View08.jpg"
-            },
-            {
-                id: 9,
-                url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View09.jpg"
-            }
-        ],
-        description1: "descNienHouse1",
-        description2: "descNienHouse2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "design",
-        yearDone: "",
-        typeId: 3,
-        typeName: "Architecture",
-        done: false
-    }, {
-        idNumber: 16,
-        name: "Ha Do Office",
-        client: "Mrs.Ngoc",
-        acreage: "140 m2",
-        location: "Ward 2, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Architecture/HaDoProject/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Architecture/HaDoProject/OverallView1920.jpg",
-        listView: [{
-            id: 1,
-            url: "assets/img/projects/ArchAndFurn/Architecture/HaDoProject/View01.jpg"
-        }],
-        description1: "descHDOffice1",
-        description2: "descHDOffice2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "design",
-        yearDone: "",
-        typeId: 3,
-        typeName: "Architecture",
-        done: false
-    }, {
-        idNumber: 17,
-        name: "CMT8 Restaurant",
-        client: "Mr.Vu",
-        acreage: "150 m2",
-        location: "Ward 10, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/View03.jpg"
-            }
-        ],
-        description1: "descCMT8Rest1",
-        description2: "descCMT8Rest2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "completed",
-        yearDone: "2020",
-        typeId: 4,
-        typeName: "Interior",
-        done: true
-    }, {
-        idNumber: 18,
-        name: "Huynh Tan Phat Office",
-        client: "Huynh Tan Phat Scholarship Fund",
-        acreage: "280 m2",
-        location: "Ward 3, Ho Chi Minh City",
-        country: "VN",
-        overallView: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/OverallView.jpg",
-        overallView1920: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/OverallView1920.jpg",
-        listView: [{
-                id: 1,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View01.jpg"
-            },
-            {
-                id: 2,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View02.jpg"
-            },
-            {
-                id: 3,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View03.jpg"
-            },
-            {
-                id: 4,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice//View04.jpg"
-            },
-            {
-                id: 5,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View05.jpg"
-            },
-            {
-                id: 6,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View06.jpg"
-            },
-            {
-                id: 7,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View07.jpg"
-            },
-            {
-                id: 8,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View08.jpg"
-            },
-            {
-                id: 9,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View09.jpg"
-            },
-            {
-                id: 10,
-                url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View10.jpg"
-            }
-        ],
-        description1: "descHTPOffice1",
-        description2: "descHTPOffice2",
-        participants: [{
-                id: 1,
-                name: "Truong Dai Thanh"
-            }, {
-                id: 2,
-                name: "Nguyen Ngoc Thanh"
-            },
-            {
-                id: 4,
-                name: "Nguyen Thanh Binh"
-            },
-            {
-                id: 6,
-                name: "Nguyen Van Dat"
-            }
-        ],
-        status: "design",
-        yearDone: "",
-        typeId: 4,
-        typeName: "Interior",
-        done: false
+        id: 7,
+        url: "assets/img/projects/PlanAndLand/5-star-resort/View07.png"
     }
+    ],
+    description1: "descResort1",
+    description2: "descResort2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "completed",
+    yearDone: "2018",
+    typeId: 5,
+    typeName: "Planning",
+    done: true
+},
+{
+    idNumber: 2,
+    name: "My Lai Project",
+    client: null,
+    acreage: "46.7ha",
+    location: "Tinh Ke Village, Son Tinh Town, Quang Ngai City, Quang Ngai Province",
+    country: "VN",
+    overallView: "assets/img/projects/PlanAndLand/my-lai-project/OverallView.jpg",
+    overallView1920: "assets/img/projects/PlanAndLand/my-lai-project/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/PlanAndLand/my-lai-project/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/PlanAndLand/my-lai-project/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/PlanAndLand/my-lai-project/View03.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/PlanAndLand/my-lai-project/View04.jpg"
+    }
+    ],
+    description1: "descMyLai1",
+    description2: "descMyLai2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "completed",
+    yearDone: "2018",
+    typeId: 6,
+    typeName: "Landscape",
+    done: false
+},
+{
+    idNumber: 7,
+    name: "CoffeeShop Project",
+    client: null,
+    acreage: "118 m2",
+    location: "That Thuyet, Ward 18, District 4, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/Plan.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/View01.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/View02.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/ArchAndFurn/Interior/CoffeeShop/View03.jpg"
+    }
+    ],
+    description1: "descCoffeet1",
+    description2: "descCoffeet2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "inprogress",
+    yearDone: "",
+    typeId: 3,
+    typeName: "Interior",
+    done: false
+},
+{
+    idNumber: 8,
+    name: "HB Spa Design Project",
+    client: "HB&IE Limited Liability Company",
+    acreage: "100-300 m2",
+    location: "All of Vietnam",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/HBSpa/OverallView2.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/HBSpa/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View03.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/ArchAndFurn/Interior/HBSpa/View04.jpg"
+    }
+    ],
+    description1: "descSpa1",
+    description2: "descSpa2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "completed",
+    yearDone: "2018",
+    typeId: 4,
+    typeName: "Interior",
+    done: true
+},
+{
+    idNumber: 9,
+    name: "Office Design Project",
+    client: null,
+    acreage: "354 m2",
+    location: "That Thuyet, Ward 18, District 4, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/OfficeDesign/View03.jpg"
+    }
+    ],
+    description1: "descOffice1",
+    description2: "descOffice2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "inprogress",
+    yearDone: "",
+    typeId: 4,
+    typeName: "Interior",
+    done: false
+},
+{
+    idNumber: 12,
+    name: "2359 Media Office",
+    client: "2359 Media",
+    acreage: "600 m2",
+    location: "Cach Mang Thang 8, District 10, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/OverallView.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview03.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview04.jpg"
+    }, {
+        id: 5,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview05.jpg"
+    }, {
+        id: 6,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview06.jpg"
+    }, {
+        id: 7,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview07.jpg"
+    }, {
+        id: 8,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview08.jpg"
+    }, {
+        id: 9,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview09.jpg"
+    }, {
+        id: 10,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview10.jpg"
+    }, {
+        id: 11,
+        url: "assets/img/projects/ArchAndFurn/Interior/2359MediaOffice/MOview11.jpg"
+    }
+    ],
+    description1: "2359Media1",
+    description2: null,
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "completed",
+    yearDone: "2019",
+    typeId: 3,
+    typeName: "Interior",
+    done: true
+},
+{
+    idNumber: 13,
+    name: "An Coffee",
+    client: "Mrs.Trang",
+    acreage: "300 m2",
+    location: "Thuan An, Binh Duong",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/OverallView.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View03.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/ArchAndFurn/Interior/AnCoffee/View04.jpg"
+    }
+    ],
+    description1: "AnCoffee1",
+    description2: "AnCoffee2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "inprogress",
+    yearDone: "",
+    typeId: 3,
+    typeName: "Architecture",
+    done: false
+},
+{
+    idNumber: 14,
+    name: "Kim Thap Residential Area",
+    client: "Thanh Thanh Cong Group",
+    acreage: "10.411 m2 ",
+    location: "Southeast of Tan Kien Commune, Binh Chanh District, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Architecture/KimThap/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Architecture/KimThap/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Architecture/KimThap/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Architecture/KimThap/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Architecture/KimThap/View03.jpg"
+    }
+    ],
+    description1: "KT1",
+    description2: "KT2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "designing",
+    yearDone: "",
+    typeId: 3,
+    typeName: "Architecture",
+    done: false
+}, {
+    idNumber: 15,
+    name: "Nien Hosue",
+    client: "Mrs.Nien",
+    acreage: "80 m2",
+    location: "Ward Tan Binh, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View03.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse//View04.jpg"
+    },
+    {
+        id: 5,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View05.jpg"
+    },
+    {
+        id: 6,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View06.jpg"
+    },
+    {
+        id: 7,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View07.jpg"
+    },
+    {
+        id: 8,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View08.jpg"
+    },
+    {
+        id: 9,
+        url: "assets/img/projects/ArchAndFurn/Architecture/NienHouse/View09.jpg"
+    }
+    ],
+    description1: "descNienHouse1",
+    description2: "descNienHouse2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "design",
+    yearDone: "",
+    typeId: 3,
+    typeName: "Architecture",
+    done: false
+}, {
+    idNumber: 16,
+    name: "Ha Do Office",
+    client: "Mrs.Ngoc",
+    acreage: "140 m2",
+    location: "Ward 2, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Architecture/HaDoProject/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Architecture/HaDoProject/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Architecture/HaDoProject/View01.jpg"
+    }],
+    description1: "descHDOffice1",
+    description2: "descHDOffice2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "design",
+    yearDone: "",
+    typeId: 3,
+    typeName: "Architecture",
+    done: false
+}, {
+    idNumber: 17,
+    name: "CMT8 Restaurant",
+    client: "Mr.Vu",
+    acreage: "150 m2",
+    location: "Ward 10, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/CMT8Rest/View03.jpg"
+    }
+    ],
+    description1: "descCMT8Rest1",
+    description2: "descCMT8Rest2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "completed",
+    yearDone: "2020",
+    typeId: 4,
+    typeName: "Interior",
+    done: true
+}, {
+    idNumber: 18,
+    name: "Huynh Tan Phat Office",
+    client: "Huynh Tan Phat Scholarship Fund",
+    acreage: "280 m2",
+    location: "Ward 3, Ho Chi Minh City",
+    country: "VN",
+    overallView: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/OverallView.jpg",
+    overallView1920: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/OverallView1920.jpg",
+    listView: [{
+        id: 1,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View01.jpg"
+    },
+    {
+        id: 2,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View02.jpg"
+    },
+    {
+        id: 3,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View03.jpg"
+    },
+    {
+        id: 4,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice//View04.jpg"
+    },
+    {
+        id: 5,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View05.jpg"
+    },
+    {
+        id: 6,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View06.jpg"
+    },
+    {
+        id: 7,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View07.jpg"
+    },
+    {
+        id: 8,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View08.jpg"
+    },
+    {
+        id: 9,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View09.jpg"
+    },
+    {
+        id: 10,
+        url: "assets/img/projects/ArchAndFurn/Interior/HTPOffice/View10.jpg"
+    }
+    ],
+    description1: "descHTPOffice1",
+    description2: "descHTPOffice2",
+    participants: [{
+        id: 1,
+        name: "Truong Dai Thanh"
+    }, {
+        id: 2,
+        name: "Nguyen Ngoc Thanh"
+    },
+    {
+        id: 4,
+        name: "Nguyen Thanh Binh"
+    },
+    {
+        id: 6,
+        name: "Nguyen Van Dat"
+    }
+    ],
+    status: "design",
+    yearDone: "",
+    typeId: 4,
+    typeName: "Interior",
+    done: false
+}
 ]

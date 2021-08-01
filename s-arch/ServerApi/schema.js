@@ -56,8 +56,8 @@ exports.typeDefs = gql`
         getAwards: [Award]
         getMembers: [Member]
         getNews: [News]
-        projectTypes: [ProjectType]
-        projects: [Project]
+        getProjectTypes: [ProjectType]
+        getProjects: [Project]
     }
     input MemberInput {
         name: String!
@@ -74,8 +74,8 @@ exports.resolvers = {
         getMembers: () => Members,
         getAwards: () => Awards,
         getNews: () => News,
-        projectTypes: () => ProjectTypes,
-        projects: () => Projects
+        getProjectTypes: () => ProjectTypes,
+        getProjects: () => Projects
     },
     Mutation: {
         createMember: (input) => Member,

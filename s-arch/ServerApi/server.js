@@ -3,6 +3,16 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schema');
 
+const { MongoClient } = require('mongodb');
+// Connect to MongoDB
+const url = 'mongosh "mongodb+srv://anniecluster.csjoy.mongodb.net/sarch" --username local'
+const client = new MongoClient(url);
+client.connect(err => {
+  const collection = client.db("sarch").collection("members");
+  // perform actions on the collection object
+  // client.close();
+});
+
 async function startApolloServer() {
   try {
     const server = new ApolloServer({ typeDefs, resolvers });
@@ -24,4 +34,4 @@ async function startApolloServer() {
   }
 }
 
-startApolloServer()
+startApolloServer();
