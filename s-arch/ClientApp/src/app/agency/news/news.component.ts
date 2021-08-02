@@ -13,14 +13,10 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class NewsComponent implements OnInit {
   tabSelected = 1;
   news: any = [];
-  categories : any= [];
+  categories: any = [];
   articles: any = [];
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {
-    // this.http.get("assets/data/news.json").subscribe(r => {
-    //   this.news = r.json();
-    //   console.log(this.news);
-    // })
   }
 
   ngOnInit() {
@@ -29,6 +25,12 @@ export class NewsComponent implements OnInit {
     this.apiService.getNews().then(res => {
       this.categories = res.data.getNews;
       console.log(this.categories);
+    }).catch((reason) => {
+      console.log('err: ', reason);
+      this.http.get("assets/data/news.json").subscribe(r => {
+        this.news = r;
+        console.log(this.news);
+      })
     })
   }
 

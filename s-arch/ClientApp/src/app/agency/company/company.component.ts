@@ -12,15 +12,17 @@ export class CompanyComponent implements OnInit {
   members: any;
 
   constructor(private http: HttpClient, private apiService: ApiService) {
-    // http.get('assets/data/members.json').subscribe(r => {
-    //   this.members = r;
-    //   console.log(this.members);
-    // })
   }
 
   ngOnInit() {
     this.apiService.getMembers().then(res => {
       this.members = res.data.getMembers;
+    }).catch((reason) => {
+      console.log('err: ', reason);
+      this.http.get('assets/data/members.json').subscribe(r => {
+        this.members = r;
+        console.log(this.members);
+      })
     })
   }
 

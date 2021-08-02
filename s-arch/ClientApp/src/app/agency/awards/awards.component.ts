@@ -14,15 +14,17 @@ export class AwardsComponent implements OnInit {
   awardDetail: any;
 
   constructor(private http: HttpClient, private dialog: MatDialog, private apiService: ApiService) {
-    // http.get('assets/data/awards.json').subscribe(r => {
-    //   this.awards = r;
-    //   console.log(this.awards);
-    // })
   }
 
   ngOnInit() {
     this.apiService.getAwards().then(res => {
       this.awards = res.data.getAwards || [];
+    }).catch((reason) => {
+      console.log('err: ', reason);
+      this.http.get('assets/data/awards.json').subscribe(r => {
+        this.awards = r;
+        console.log(this.awards);
+      })
     })
   }
 
