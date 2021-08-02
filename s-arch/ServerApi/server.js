@@ -4,20 +4,28 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schema');
 
 const { MongoClient } = require('mongodb');
-// Connect to MongoDB
-const url = 'mongosh "mongodb+srv://anniecluster.csjoy.mongodb.net/sarch" --username local'
-const client = new MongoClient(url);
-client.connect(err => {
-  const collection = client.db("sarch").collection("members");
-  // perform actions on the collection object
-  // client.close();
-});
+async function connectDb() {
+  const url = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@anniecluster.csjoy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+  const client = new MongoClient(url);
+  try {
+    await client.connect();
+    const database = client.db('sarch');
+    const members = await database.collection('members');
+  } catch (error) {
+
+  } finally {
+    await client.close();
+  }
+}
+connectDb().catch(console.error);
 
 async function startApolloServer() {
   try {
     const server = new ApolloServer({ typeDefs, resolvers });
     await server.start();
     const app = express();
+
+    // app.use('/members', )
 
     // Mount Apollo middleware here.
     server.applyMiddleware({
@@ -33,5 +41,4 @@ async function startApolloServer() {
     console.log(error)
   }
 }
-
 startApolloServer();

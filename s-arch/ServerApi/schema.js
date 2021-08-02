@@ -4,6 +4,36 @@ const { Awards } = require('./dataSources/awards');
 const { News } = require('./dataSources/news');
 const { ProjectTypes, Projects } = require('./dataSources/projects');
 
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
+// const { ObjectId, String, Number } = Schema;
+// const run = async () => {
+//     const connectOpts = {
+//         // user: `${process.env.MONGO_USER}`,
+//         // pass: `${process.env.MONGO_PASS}`,
+//         retryWrites: true,
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     };
+//     await mongoose.connect("mongodb+srv://anniecluster.csjoy.mongodb.net/myFirstDatabase", connectOpts);
+// }
+// run().catch(console.error);
+
+// const Award = new Schema({
+//     _id: ObjectId,
+//     name: String,
+//     content1: String,
+//     content2: String,
+//     content3: String,
+//     imageUrl: String
+// });
+// const MemberModel = mongoose.model('Member', new Schema({
+//     _id: Number,
+//     name: String,
+//     role: String,
+//     image: String,
+// }));
+
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
     type Award {
