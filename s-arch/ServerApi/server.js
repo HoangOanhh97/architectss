@@ -4,13 +4,14 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schema');
 const mongoose = require('mongoose');
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@anniecluster.csjoy.mongodb.net/sarch?retryWrites=true`, { useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected successfully');
-  })
-  .catch(() => {
-    console.error('Error while connecting to MongoDB');
-  })
+mongoose.connect(
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@anniecluster.csjoy.mongodb.net/sarch?retryWrites=true`,
+  { useUnifiedTopology: true }
+).then(() => {
+  console.log('MongoDB connected successfully!');
+}).catch((reason) => {
+  console.error('Error while connecting to MongoDB: ', reason);
+})
 
 async function startApolloServer() {
   try {
@@ -18,7 +19,6 @@ async function startApolloServer() {
     await server.start();
     const app = express();
 
-    // Mount Apollo middleware here.
     server.applyMiddleware({
       app,
       path: '/api',
