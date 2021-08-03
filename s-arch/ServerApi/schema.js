@@ -1,42 +1,13 @@
 const { gql } = require('apollo-server-express');
-const { Members } = require('./dataSources/members');
-const { Awards } = require('./dataSources/awards');
-const { News } = require('./dataSources/news');
-const { ProjectTypes, Projects } = require('./dataSources/projects');
-
-// const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
-// const { ObjectId, String, Number } = Schema;
-// const run = async () => {
-//     const connectOpts = {
-//         // user: `${process.env.MONGO_USER}`,
-//         // pass: `${process.env.MONGO_PASS}`,
-//         retryWrites: true,
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     };
-//     await mongoose.connect("mongodb+srv://anniecluster.csjoy.mongodb.net/myFirstDatabase", connectOpts);
-// }
-// run().catch(console.error);
-
-// const Award = new Schema({
-//     _id: ObjectId,
-//     name: String,
-//     content1: String,
-//     content2: String,
-//     content3: String,
-//     imageUrl: String
-// });
-// const MemberModel = mongoose.model('Member', new Schema({
-//     _id: Number,
-//     name: String,
-//     role: String,
-//     image: String,
-// }));
+const { Members } = require('./model/member');
+const { Awards } = require('./model/award');
+const { News } = require('./model/news');
+const { P_Types, P_Images, P_Members, Projects } = require('./model/project');
 
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
     type Award {
+        _id: Int
         name: String
         content1: String
         content2: String
@@ -44,17 +15,19 @@ exports.typeDefs = gql`
         imageUrl: String
     }
     type Member {
-        id: Int!
+        _id: Int
         name: String
         role: String
         image: String
     }
     type News {
+        _id: String
         title: String
         image: String
         descriptionHTML: String
     }
     type Project {
+        _id: Int
         idNumber: Int
         name: String
         client: String
@@ -63,35 +36,42 @@ exports.typeDefs = gql`
         country: String
         overallView: String
         overallView1920: String
-        listView: [ItemView]
+        listView: [Project_Image]
         description1: String
         description2: String
-        participants: [Member]
+        participants: [Project_Member]
         status: String
         yearDone: String
         typeId: Int
         typeName: String
         done: Boolean
     }
-    type ProjectType {
+    type Project_Type {
+        _id: Int
         typeId: Int
         typeName: String
         mainBg: String
     }
-    type ItemView {
-        id: Int
+    type Project_Image {
+        projectId: Int
         url: String
+    }
+    type Project_Member {
+        projectId: Int
+        memberId: Int
     }
     type Query {
         getAwards: [Award]
         getMembers: [Member]
         getNews: [News]
-        getProjectTypes: [ProjectType]
+        getProjectTypes: [Project_Type]
         getProjects: [Project]
     }
+
     input MemberInput {
         name: String!
         role: String
+        image: String
     }
     type Mutation {
         createMember(input: MemberInput!): Member
@@ -101,13 +81,22 @@ exports.typeDefs = gql`
 // Provide resolver functions for your schema fields
 exports.resolvers = {
     Query: {
-        getMembers: () => Members,
-        getAwards: () => Awards,
-        getNews: () => News,
-        getProjectTypes: () => ProjectTypes,
-        getProjects: () => Projects
+        getMembers: () => Members.find(),
+        getAwards: () => Awards.find(),
+        getNews: () => News.find(),
+        getProjectTypes: () => P_Types.find(),
+        getProjects: () => Projects.find()
     },
     Mutation: {
-        createMember: (input) => Member,
+        createMember(input) {
+            const newMember = new Member(input);
+            return newMember.save()
+                .then(result => {
+                    return { ...result._id }
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+        },
     }
 };
