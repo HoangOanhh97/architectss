@@ -20,7 +20,7 @@ export class ApiService {
       query: gql`
       query getMembers {
         getMembers {
-          id
+          _id
           name
           role
           image
@@ -34,6 +34,7 @@ export class ApiService {
       query: gql`
       query getAwards {
         getAwards {
+          _id
           name
           content1
           content2
@@ -49,6 +50,7 @@ export class ApiService {
       query: gql`
       query getNews {
         getNews {
+          _id
           title
           image
           descriptionHTML
