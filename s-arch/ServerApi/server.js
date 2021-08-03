@@ -25,8 +25,6 @@ async function startApolloServer() {
     await server.start();
     const app = express();
 
-    // app.use('/members', )
-
     // Mount Apollo middleware here.
     server.applyMiddleware({
       app,
