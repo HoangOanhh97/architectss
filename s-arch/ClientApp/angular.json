@@ -39,14 +39,16 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               {
-                "input": "src/styles.css",
+                "input": "src/styles.scss",
                 "inject": true
               }
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/pace.min.js"
             ],
             "allowedCommonJsDependencies": [
               "lodash",
@@ -82,11 +84,7 @@
             },
             "development": {
               "buildOptimizer": true,
-              "optimization": {
-                "scripts": true,
-                "styles": true,
-                "fonts": false
-              },
+              "optimization": true,
               "aot": true,
               "vendorChunk": true,
               "extractLicenses": false,
@@ -126,7 +124,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
