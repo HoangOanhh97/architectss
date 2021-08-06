@@ -15,6 +15,7 @@ mongoose.connect(
 
 async function startApolloServer() {
   try {
+    process.env.tz = "UTC";
     const server = new ApolloServer({ typeDefs, resolvers });
     await server.start();
     const app = express();

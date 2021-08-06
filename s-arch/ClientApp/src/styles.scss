@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "./assets/font/UTM-Avo-font/style.css";
+@import "./assets/sass/app.scss";
+@import "./assets/css/main.css";
+
 a {
   color: #000 !important;
   cursor: pointer;
@@ -12,15 +17,3 @@ ol,
 ul {
   padding: 0px !important;
 }
-
-.swiper-button-next:after,
-.swiper-container-rtl .swiper-button-prev:after,
-.swiper-button-prev:after,
-.swiper-container-rtl .swiper-button-next:after {
-  opacity: 0 !important;
-}
-
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import "./assets/font/UTM-Avo-font/style.css";
-@import "./assets/sass/app.scss";
-@import "./assets/css/main.css";

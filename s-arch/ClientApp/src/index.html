@@ -23,9 +23,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
     integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -51,7 +48,6 @@
 
     function hasScrolled() {
       var st = $(this).scrollTop();
-      // console.log("st: " + st);
 
       // Make sure they scroll more than delta
       if (Math.abs(lastScrollTop - st) <= delta)
@@ -76,8 +72,10 @@
 
       lastScrollTop = st;
     }
-
   </script>
+
+  <script src="assets/js/pace.min.js"></script>
+  <script src="assets/js/swiper.min.js"></script>
 </body>
 
 </html>
