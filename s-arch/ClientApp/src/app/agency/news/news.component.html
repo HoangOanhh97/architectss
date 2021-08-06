@@ -13,7 +13,7 @@
             <ul class="fp-st-list">
               <li class="fp-st-list-item" *ngFor="let c of categories">
                 <a class="fp-st-link" (click)="getArticlesByCategoryName(c.title)"
-                  [ngClass]="{'active': c.title == 'News' }" data-toggle="tab" role="tab" href="#tabDetails"
+                  [ngClass]="{'active': c.title == 'News' }" data-toggle="tab" role="tab" 
                   id="{{c.title}}">{{c.title | translate}}</a>
               </li>
               <!-- <li class="fp-st-list-item">

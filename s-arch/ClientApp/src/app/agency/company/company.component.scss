@@ -1,14 +1,6 @@
 @media screen and (min-width: 992px) {
-  .col-md-4 {
-    padding-left: 100px !important;
-  }
-
-  .col-md-8 {
-    padding-left: 100px !important;
-  }
-
-  .col-md-6 {
-    padding-left: 100px !important;
+  .col-md-4, .col-md-6, .col-md-8 {
+    padding-inline: 50px !important;
   }
 
   .fp-tp-intro-content {
@@ -29,16 +21,8 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
-  .col-md-4 {
-    padding-left: 50px !important;
-  }
-
-  .col-md-8 {
-    padding-left: 50px !important;
-  }
-
-  .col-md-6 {
-    padding-left: 50px !important;
+  .col-md-4, .col-md-6, .col-md-8 {
+    padding-inline: 30px !important;
   }
 
   .fp-tp-intro-content {
@@ -112,7 +96,7 @@
 
 #people {
   h2 {
-    font-weight: 600
+    font-weight: 600;
   }
 
   li.member {
@@ -149,4 +133,8 @@
     width: 100%;
     text-align: center !important;
   }
+}
+
+.members h2 {
+  filter: drop-shadow(4px -1px 1px grey) !important;
 }

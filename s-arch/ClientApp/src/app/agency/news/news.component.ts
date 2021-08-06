@@ -13,8 +13,11 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class NewsComponent implements OnInit {
   tabSelected = 1;
   news: any = [];
-  categories: any = [];
-  articles: any = [];
+  categories: any = [
+    { title: 'News' },
+    { title: 'Event' }
+  ];
+  articles: any = {};
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {
   }
@@ -23,8 +26,9 @@ export class NewsComponent implements OnInit {
     // this.getArticles();
     // this.getCategories();
     this.apiService.getNews().then(res => {
-      this.categories = res.data.getNews;
-      console.log(this.categories);
+      this.articles['News'] = res.data.getNews;
+      this.news = this.articles['News'];
+      console.log(this.articles);
     }).catch((reason) => {
       console.log('err: ', reason);
       this.http.get("assets/data/news.json").subscribe(r => {
@@ -68,6 +72,8 @@ export class NewsComponent implements OnInit {
     this.categories.forEach(c => {
       if (c.title != title) {
         $("#" + c.title).removeClass("active");
+      } else {
+        $("#" + c.title).addClass("active");
       }
     });
 
