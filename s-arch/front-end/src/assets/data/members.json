@@ -1,0 +1,36 @@
+[{
+    "memberId": 1,
+    "name": "Truong Dai Thanh",
+    "position": "Chairman of the Board",
+    "imageUrl": "assets/img/SA_Portrait/TDT_Portrait.png"
+  },
+  {
+    "memberId": 2,
+    "name": "Nguyen Ngoc Thanh",
+    "position": "Member of Shareholders",
+    "imageUrl": "assets/img/SA_Portrait/NNT_Portrait.png"
+  }, {
+    "memberId": 3,
+    "name": "Ly Thien Ngan",
+    "position": "Vice General Director",
+    "imageUrl": "assets/img/SA_Portrait/LTN_Portrait.png"
+  },
+  {
+    "memberId": 4,
+    "name": "Nguyen Thanh Binh",
+    "position": "Chairman of Shareholders",
+    "imageUrl": "assets/img/SA_Portrait/NTB_Portrait.png"
+  },
+  {
+    "memberId": 5,
+    "name": "Dang Viet Dung",
+    "position": "Vice Chairman of Shareholders",
+    "imageUrl": "assets/img/SA_Portrait/DVD_Portrait.png"
+  },
+  {
+    "memberId": 6,
+    "name": "Nguyen Van Dat",
+    "position": "Technical Director",
+    "imageUrl": "assets/img/SA_Portrait/NVD_Portrait.png"
+  }
+]
