@@ -51,6 +51,7 @@ export class ApiService {
       query getNews {
         getNews {
           _id
+          category
           title
           image
           descriptionHTML

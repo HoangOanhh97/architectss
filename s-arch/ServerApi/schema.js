@@ -22,6 +22,7 @@ exports.typeDefs = gql`
     }
     type News {
         _id: String
+        category: String
         title: String
         image: String
         descriptionHTML: String
