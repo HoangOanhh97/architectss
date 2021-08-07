@@ -23,12 +23,13 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getArticles();
-    // this.getCategories();
+    this.getArticles();
+  }
+
+  getArticles() {
     this.apiService.getNews().then(res => {
-      this.articles['News'] = res.data.getNews;
-      this.news = this.articles['News'];
-      console.log(this.articles);
+      this.articles = _.groupBy(res.data.getNews, 'category');
+      this.getArticlesByCategoryName("News");
     }).catch((reason) => {
       console.log('err: ', reason);
       this.http.get("assets/data/news.json").subscribe(r => {
@@ -37,26 +38,6 @@ export class NewsComponent implements OnInit {
       })
     })
   }
-
-  // getArticles() {
-  //   this.newsService.getArticles().subscribe(r => {
-  //     r.forEach(e => {
-  //       // if (e.description != "" || e.description != null) {
-  //         this.articles.push(e);
-  //       // }
-  //     });
-  //     this.articles = _.groupBy(this.articles, 'category.title');
-  //     this.getArticlesByCategoryName("News");
-  //   });
-  // }
-
-  // getCategories() {
-  //   this.newsService.getCategories().subscribe(r => {
-  //     console.log(r);
-  //     this.categories = _.sortBy(r, 'title');
-
-  //   })
-  // }
 
   getArticlesByCategoryName(title) {
     this.news = null;
