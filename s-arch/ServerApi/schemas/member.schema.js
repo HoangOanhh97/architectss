@@ -3,7 +3,7 @@ const { Members } = require('../model/member');
 exports.MemberResolvers = {
     Query: {
         getMembers: () => Members.find(),
-        getMemberById: (memberId) => Members.findById({_id: parseInt(memberId, 10)})
+        getMemberById: (id) => Members.findById(id)
     },
     Mutation: {
         createMember(input) {
