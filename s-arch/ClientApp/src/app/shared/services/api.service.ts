@@ -60,7 +60,7 @@ export class ApiService {
     });
   }
 
-  public getProjectTypes(): any {
+  public getProjectTypes() {
     return apolloServer().query({
       query: gql`
       query getProjectTypes {
@@ -75,18 +75,23 @@ export class ApiService {
     })
   }
 
-  public getProjects(): any {
+  public getProjects(filter?) {
     return apolloServer().query({
       query: gql`
-      query getProjects {
-        getProjects {
+      query getProjects($filter: String) {
+        getProjects(filter: $filter) {
           idNumber
           name
           overallView
           overallView1920
+          typeId
+          typeName
+          status
+          done
         }
       }
-      `
+      `,
+      variables: { "filter": JSON.stringify(filter) }
     })
   }
 }

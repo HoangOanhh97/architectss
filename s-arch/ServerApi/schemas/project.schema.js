@@ -5,7 +5,6 @@ exports.ProjectsResolvers = {
         getProjectTypes: () => P_Types.find(),
         getProjects: (_, args) => {
             const filter = JSON.parse(args.filter);
-            console.log(filter)
             if (filter.typeId) {
                 return Projects.find({typeId: filter.typeId})
             }
