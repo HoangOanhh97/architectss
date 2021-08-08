@@ -8,7 +8,7 @@ import { NewsDetailDialogComponent } from './agency/news/news-detail-dialog/news
 import { NewsComponent } from './agency/news/news.component';
 import { ProjectComponent } from './agency/projects/project/project.component';
 import { ProjectsComponent } from './agency/projects/projects.component';
-import { TypesOfProjectComponent } from './agency/projects/types-of-project/types-of-project.component';
+import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-type.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -21,7 +21,7 @@ const routes: Routes = [
         { path: 'award', component: AwardsComponent, data: { title: 'award' } },
 
         { path: 'projects', component: ProjectsComponent, data: { title: 'projects' } },
-        { path: 'projects/types', component: TypesOfProjectComponent, data: { title: 'projects' } },
+        { path: 'projects/types', component: ProjectsTypeComponent, data: { title: 'projects' } },
         { path: 'projects/:id', component: ProjectComponent, data: { title: 'projectDetail' } },
 
         { path: 'news', component: NewsComponent, data: { title: 'news' } },

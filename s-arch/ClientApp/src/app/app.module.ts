@@ -31,7 +31,7 @@ import { NewsDetailDialogComponent } from './agency/news/news-detail-dialog/news
 import { NewsComponent } from './agency/news/news.component';
 import { ProjectComponent } from './agency/projects/project/project.component';
 import { ProjectsComponent } from './agency/projects/projects.component';
-import { TypesOfProjectComponent } from './agency/projects/types-of-project/types-of-project.component';
+import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-type.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LogoSvgComponent } from './shared/components/header/logo-svg/logo-svg.component';
 
@@ -53,7 +53,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NewsDetailDialogComponent,
     ContactComponent,
     ProjectComponent,
-    TypesOfProjectComponent,
+    ProjectsTypeComponent,
     ProjectsComponent,
     DetailProjectComponent,
     GalleryComponent

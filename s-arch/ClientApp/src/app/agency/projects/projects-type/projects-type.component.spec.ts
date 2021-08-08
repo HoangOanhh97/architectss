@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { TypesOfProjectComponent } from './types-of-project.component';
+import { ProjectsTypeComponent } from './projects-type.component';
 
-describe('TypesOfProjectComponent', () => {
-  let component: TypesOfProjectComponent;
-  let fixture: ComponentFixture<TypesOfProjectComponent>;
+describe('ProjectsTypeComponent', () => {
+  let component: ProjectsTypeComponent;
+  let fixture: ComponentFixture<ProjectsTypeComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TypesOfProjectComponent ]
+      declarations: [ ProjectsTypeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypesOfProjectComponent);
+    fixture = TestBed.createComponent(ProjectsTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

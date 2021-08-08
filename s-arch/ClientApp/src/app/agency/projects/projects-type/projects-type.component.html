@@ -20,19 +20,16 @@
 
         <div *ngIf="showDropdown == true" class="fp-filter-drawer" data-source="type">
           <ul class="fp-filter-options-list">
-            <li class="fp-filter-set " (click)="getProjectsByType('All')">
+            <li class="fp-filter-set">
               <ul>
-                <li>
-                  <div class="fp-filter-option " id="All">
-                    <a class="fp-filter-link">
+                <li class="fp-filter-option " id="All">
+                    <a class="fp-filter-link" (click)="getProjectsByType('All')">
                       {{'All project types' | translate}}
                     </a>
-                  </div>
-
                 </li>
-                <li class="fp-filter-option " *ngFor="let t of types">
-                  <a class="fp-filter-link " *ngIf="t.typeId == '00002'" (click)="getProjectsByType(t.typeName)">
-                    {{t.typeName | translate}}
+                <li class="fp-filter-option">
+                  <a class="fp-filter-link " (click)="getProjectsByType('Recently Completed')">
+                    {{'Recently Completed' | translate}}
                   </a>
                 </li>
               </ul>
@@ -40,7 +37,7 @@
             <li class="fp-filter-set">
               <ul>
                 <li class="fp-filter-option " *ngFor="let t of types">
-                  <a class="fp-filter-link " *ngIf="t.typeId == '00003' || t.typeId == '00004'"
+                  <a class="fp-filter-link " *ngIf="[3,4].includes(t.typeId)"
                     (click)="getProjectsByType(t.typeName)">
                     {{t.typeName | translate}}
                   </a>
@@ -50,7 +47,7 @@
             <li class="fp-filter-set">
               <ul>
                 <li class="fp-filter-option " *ngFor="let t of types">
-                  <a class="fp-filter-link " *ngIf="t.typeId == '00005' || t.typeId == '00006'"
+                  <a class="fp-filter-link " *ngIf="[5,6].includes(t.typeId)"
                     (click)="getProjectsByType(t.typeName)">
                     {{t.typeName | translate}}
                   </a>
