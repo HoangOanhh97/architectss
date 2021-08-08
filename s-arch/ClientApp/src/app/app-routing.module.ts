@@ -21,7 +21,7 @@ const routes: Routes = [
         { path: 'award', component: AwardsComponent, data: { title: 'award' } },
 
         { path: 'projects', component: ProjectsComponent, data: { title: 'projects' } },
-        { path: 'projects/type', component: TypesOfProjectComponent, data: { title: 'projects' } },
+        { path: 'projects/types', component: TypesOfProjectComponent, data: { title: 'projects' } },
         { path: 'projects/:id', component: ProjectComponent, data: { title: 'projectDetail' } },
 
         { path: 'news', component: NewsComponent, data: { title: 'news' } },

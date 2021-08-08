@@ -28,7 +28,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjectsByType(type) {
-    this.router.navigate(["/projects/type"], { queryParams: { projecttype: type } })
+    this.router.navigate(["/projects/types"], { queryParams: { name: type } })
   }
 
 }
