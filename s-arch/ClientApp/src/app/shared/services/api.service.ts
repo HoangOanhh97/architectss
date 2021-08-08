@@ -18,59 +18,62 @@ export class ApiService {
   public getMembers() {
     return apolloServer().query({
       query: gql`
-      query getMembers {
-        getMembers {
-          _id
-          name
-          role
-          image
+        query getMembers {
+          getMembers {
+            _id
+            name
+            role
+            image
+          }
         }
-      }`
+      `
     });
   }
 
   public getAwards() {
     return apolloServer().query({
       query: gql`
-      query getAwards {
-        getAwards {
-          _id
-          name
-          content1
-          content2
-          content3
-          imageUrl
+        query getAwards {
+          getAwards {
+            _id
+            name
+            content1
+            content2
+            content3
+            imageUrl
+          }
         }
-      }`
+      `
     });
   }
 
   public getNews() {
     return apolloServer().query({
       query: gql`
-      query getNews {
-        getNews {
-          _id
-          category
-          title
-          image
-          descriptionHTML
+        query getNews {
+          getNews {
+            _id
+            category
+            title
+            image
+            descriptionHTML
+          }
         }
-      }`
+      `
     });
   }
 
   public getProjectTypes() {
     return apolloServer().query({
       query: gql`
-      query getProjectTypes {
-        getProjectTypes {
-          _id
-          typeId
-          typeName
-          mainBg
+        query getProjectTypes {
+          getProjectTypes {
+            _id
+            typeId
+            typeName
+            mainBg
+          }
         }
-      }
       `
     })
   }
@@ -78,20 +81,56 @@ export class ApiService {
   public getProjects(filter?) {
     return apolloServer().query({
       query: gql`
-      query getProjects($filter: String) {
-        getProjects(filter: $filter) {
-          idNumber
-          name
-          overallView
-          overallView1920
-          typeId
-          typeName
-          status
-          done
+        query getProjects($filter: String) {
+          getProjects(filter: $filter) {
+            idNumber
+            name
+            overallView
+            overallView1920
+            typeId
+            typeName
+            status
+            done
+          }
         }
-      }
       `,
       variables: { "filter": JSON.stringify(filter) }
+    })
+  }
+
+  public getProjectById(idNumber) {
+    return apolloServer().query({
+      query: gql`
+        query Query($idNumber: Int!) {
+          getProjectById(idNumber: $idNumber) {
+            _id
+            idNumber
+            name
+            client
+            acreage
+            location
+            country
+            overallView
+            overallView1920
+            listView {
+              projectId
+              url
+            }
+            description1
+            description2
+            participants {
+              projectId
+              memberId
+            }
+            status
+            yearDone
+            typeId
+            typeName
+            done
+          }
+        }
+      `,
+      variables: { idNumber }
     })
   }
 }

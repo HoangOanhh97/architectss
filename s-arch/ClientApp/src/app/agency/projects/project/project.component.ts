@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as $ from 'jquery';
 import { MatDialog } from '@angular/material/dialog';
 import { GalleryComponent } from '../gallery/gallery.component';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 declare var Swiper: any;
 
@@ -13,7 +14,7 @@ declare var Swiper: any;
   styleUrls: ['./project.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, AfterViewInit {
   projectId: number;
   projectDetail: any;
   selectedView = {};
@@ -21,24 +22,26 @@ export class ProjectComponent implements OnInit {
   swiper: any;
   anotherProjects: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private elementRef: ElementRef, private dialog: MatDialog) {
-    this.projectId = parseInt(this.route.snapshot.paramMap["id"]);
-    // console.log(this.projectId);
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, 
+    private elementRef: ElementRef, private dialog: MatDialog,
+    private apiService: ApiService) {
+    this.projectId = parseInt(this.route.snapshot.params["id"], 10);
+    this.apiService.getProjectById(this.projectId).then(res => {
+      this.projectDetail = res.data.getProjectById;
+      this.getProjectDetail(this.projectId);
+    })
   }
 
   ngOnInit() {
-    this.getProjectDetail(this.projectId);
   }
 
   ngAfterViewInit(): void {
-
     setTimeout(() => {
-      this.swiper = new Swiper(this.elementRef.nativeElement.querySelector('.swiper__project'), {
+      const swiper = new Swiper(this.elementRef.nativeElement.querySelector('.swiper__project'), {
         //Here you can provide Swiper config
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        loopFillGroupWithBlank: true,
+        slidesPerView: 1,
         spaceBetween: 30,
+        loopFillGroupWithBlank: true,
         loop: true,
         autoplay: {
           delay: 5000,
@@ -46,41 +49,37 @@ export class ProjectComponent implements OnInit {
           disableOnInteraction: false,
         },
         speed: 1500,
-      });
-    }, 500)
-
-    setTimeout(() => {
-      this.swiper = new Swiper(this.elementRef.nativeElement.querySelector('.swiper-responsive__project'), {
-        //Here you can provide Swiper config
-        spaceBetween: 50,
-        loop: true,
-        speed: 1500,
-        autoplay: {
-          delay: 5000,
-          // waitForTransition: true,
-          // disableOnInteraction: false,
-        },
+        breakpoints: {
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 40
+          }
+        }
       });
     }, 500)
   }
 
   getProjectDetail(id: number) {
     this.http.get('assets/data/projects.json').subscribe(r => {
-      var data = r as any[];
-      // console.log(data);
-      this.projectDetail = data.filter(x => x.idNumber == id)[0];
-      this.selectedView = this.projectDetail.listView[0];
+      const data = r as any[];
+      const item = data.filter(x => x.idNumber == id)[0];
+      this.selectedView = item.listView[0] || {};
+      this.projectDetail.participants = item.participants || [];
       this.anotherProjects = data.filter(x => (x.typeName == this.projectDetail.typeName) && x.idNumber != id);
+      console.log(this.projectDetail);
       console.log(this.anotherProjects);
     })
   }
 
-  removeActiveClass(id) {
+  removeActiveClass(id: String) {
+    this.minitabSelected = id.includes('team') ? 1 : 2;
     $(id).removeClass("active");
   }
 
   seeMoreProjects(type) {
-    this.router.navigate(["/projects/type"], { queryParams: { projecttype: type } });
+    this.router.navigate(["/projects/types"], { queryParams: { name: type } });
   }
 
   goProject(id) {

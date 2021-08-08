@@ -54,9 +54,9 @@ a.active {
   padding: 0 35px;
 }
 
-.swiper__project {
-  display: none;
-}
+// .swiper__project {
+//   display: none;
+// }
 
 @media screen and (min-width: 1024px) {
   .img__proj {
@@ -76,8 +76,8 @@ a.active {
     display: none;
   }
 
-  .swiper__project {
-    display: block;
-  }
+  // .swiper__project {
+  //   display: block;
+  // }
 
 }

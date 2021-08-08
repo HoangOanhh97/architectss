@@ -54,18 +54,20 @@
 
         <!-- TABS -->
         <section class="component fp-project-tabs ">
-
           <div class="component fp-section-tab" style="opacity: 1;">
             <div class="fp-st-wrap">
               <ul class="fp-st-list">
                 <li class="fp-st-list-item">
-                  <a class="fp-st-link active" (click)="minitabSelected = 1; removeActiveClass('#team-tab-button')"
-                    data-toggle="tab" role="tab" href="#faf-tab"
-                    id="faf-tab-button">{{'Facts And Figures' | translate}}</a>
+                  <a class="fp-st-link" [ngClass]="minitabSelected == 1 ? 'active' : 'inactive'" (click)="removeActiveClass('#team-tab-button')"
+                    data-toggle="tab" role="tab" id="faf-tab-button">
+                    {{'Facts And Figures' | translate}}
+                  </a>
                 </li>
                 <li class="fp-st-list-item">
-                  <a class="fp-st-link inactive" (click)="minitabSelected = 2; removeActiveClass('#faf-tab-button')"
-                    data-toggle="tab" role="tab" href="#team-tab" id="team-tab-button">Team</a>
+                  <a class="fp-st-link" [ngClass]="minitabSelected == 2 ? 'active' : 'inactive'" (click)="removeActiveClass('#faf-tab-button')"
+                    data-toggle="tab" role="tab" id="team-tab-button">
+                    Team
+                  </a>
                 </li>
               </ul>
               <div class="fp-st-indicator">
@@ -78,7 +80,7 @@
           <div class="fp-section-slide component">
             <div class="fp-section-loader"></div>
             <div class="fp-section-slide-wrap">
-              <div class="tab-pane fade show active" id="faf-tab">
+              <div class="tab-pane fade show" id="faf-tab">
                 <div *ngIf="minitabSelected == 1">
                   <div class="fadeIn first">
                     <div class="fp-section-slide-item" style="float: unset;" data-tab="factsfigures">
@@ -110,7 +112,7 @@
                 </div>
               </div>
 
-              <div class="tab-pane fade " id="team-tab">
+              <div class="tab-pane fade show" id="team-tab">
                 <div *ngIf="minitabSelected == 2">
                   <div class="fadeIn first">
                     <div class="fp-section-slide-item" style="float: unset;" data-tab="team">
@@ -148,8 +150,8 @@
               </div>
             </div>
           </div>
-          
-          <div class="swiper-container swiper-responsive__project">
+
+          <!-- <div class="swiper-container swiper-responsive__project">
             <div class="swiper-wrapper">
               <div class="swiper-slide proj__dt swiper-item" *ngFor="let pt of anotherProjects">
                 <div class="swiper-content">
@@ -172,7 +174,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </section>
 
       </section>
