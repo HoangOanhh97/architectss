@@ -4,6 +4,8 @@ import * as _ from 'lodash';
 import * as $ from 'jquery';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { zip } from 'rxjs';
 
 @Component({
   selector: 'app-types-of-project',
@@ -21,7 +23,8 @@ export class TypesOfProjectComponent implements OnInit {
   filterProjects: any = [];
   currentTab = "All";
 
-  constructor(private router: Router, cf: NgbDropdownConfig, private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private router: Router, cf: NgbDropdownConfig, private http: HttpClient, private route: ActivatedRoute,
+    private apiService: ApiService) {
     cf.placement = 'bottom-left';
 
     this.http.get('assets/data/projects.json').subscribe(r => {
@@ -32,8 +35,6 @@ export class TypesOfProjectComponent implements OnInit {
     this.http.get('assets/data/TypesOfProject.json').subscribe(r => {
       this.types = _.sortBy(r, 'typeId');
     })
-
-
   }
 
   ngOnInit() {

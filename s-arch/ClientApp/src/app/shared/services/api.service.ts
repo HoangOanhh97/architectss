@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { gql } from 'apollo-angular';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { apolloServer } from 'src/app/graphql.module';
 
 @Injectable({
@@ -58,5 +58,35 @@ export class ApiService {
         }
       }`
     });
+  }
+
+  public getProjectTypes(): any {
+    return apolloServer().query({
+      query: gql`
+      query getProjectTypes {
+        getProjectTypes {
+          _id
+          typeId
+          typeName
+          mainBg
+        }
+      }
+      `
+    })
+  }
+
+  public getProjects(): any {
+    return apolloServer().query({
+      query: gql`
+      query getProjects {
+        getProjects {
+          idNumber
+          name
+          overallView
+          overallView1920
+        }
+      }
+      `
+    })
   }
 }

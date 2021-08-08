@@ -19,16 +19,12 @@ export class ProjectsComponent implements OnInit {
   constructor(private router: Router, cf: NgbDropdownConfig, private http: HttpClient,
     private apiService: ApiService) {
     cf.placement = 'bottom-left';
-
-    this.http.get('assets/data/projects.json').subscribe(r => {
-      this.projects = _.sortBy(r, 'name');
-    });
-    this.http.get('assets/data/TypesOfProject.json').subscribe(r => {
-      this.types = _.sortBy(r, 'typeId');
-    })
   }
 
   ngOnInit() {
+    this.apiService.getProjectTypes().then(res => {
+      this.types = _.orderBy(res.data.getProjectTypes, 'typeId', 'asc');
+    });
   }
 
   getProjectsByType(type) {
