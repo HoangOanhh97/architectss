@@ -11,7 +11,6 @@ const p_typeSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-p_typeSchema.set('autoIndex', true)
 
 const p_imagesSchema = new Schema(
     {
@@ -21,7 +20,6 @@ const p_imagesSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-p_imagesSchema.set('autoIndex', true)
 
 const p_membersSchema = new Schema(
     {
@@ -31,7 +29,6 @@ const p_membersSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-p_membersSchema.set('autoIndex', true)
 
 const ProjectSchema = new Schema(
     {
@@ -62,7 +59,21 @@ const ProjectSchema = new Schema(
     }
 )
 
-exports.P_Types = mongoose.model('ProjectTypes', p_typeSchema);
-exports.P_Images = mongoose.model('ProjectImages', p_imagesSchema);
-exports.P_Members = mongoose.model('ProjectMembers', p_membersSchema);
-exports.Projects = mongoose.model('Projects', ProjectSchema);
+const P_Types = mongoose.model('Project_Types', p_typeSchema);
+const P_Images = mongoose.model('Project_Images', p_imagesSchema);
+const P_Members = mongoose.model('Project_Members', p_membersSchema);
+const Projects = mongoose.model('Projects', ProjectSchema);
+
+const ProjectById = (idNumber) => Projects.findOne({idNumber}).populate('listView');
+
+const ImagesByProjectId = (projectId) => P_Images.find({projectId});
+
+const ProjectMembers = (projectId) => P_Members.find({projectId});
+
+module.exports = {
+    P_Types,
+    Projects,
+    ProjectById,
+    ImagesByProjectId,
+    ProjectMembers
+}

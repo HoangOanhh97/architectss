@@ -47,7 +47,7 @@ exports.typeDefs = gql`
         typeName: String
         done: Boolean
     }
-    type Project_Type {
+    type ProjectType {
         _id: Int
         typeId: Int
         typeName: String
@@ -64,11 +64,13 @@ exports.typeDefs = gql`
     type Query {
         getAwards: [Award]
         getMembers: [Member]
-        getMemberById: Member
+        getMemberById(id: Int): Member
         getNews: [News]
-        getProjectTypes: [Project_Type]
+        getProjectTypes: [ProjectType]
         getProjects: [Project]
-        getProjectById: Project
+        getProjectById(idNumber: Int!): Project
+        getImagesByProjectId(projectId: Int!): [Project_Image]
+        getProjectMembers(projectId: Int!): [Project_Member]
     }
     input MemberInput {
         name: String!

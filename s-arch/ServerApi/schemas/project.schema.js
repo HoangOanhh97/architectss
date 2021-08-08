@@ -1,10 +1,12 @@
-const { P_Types, P_Images, P_Members, Projects } = require('../model/project')
+const { P_Types, Projects, ProjectById, ImagesByProjectId, ProjectMembers } = require('../model/project')
 
 exports.ProjectsResolvers = {
     Query: {
         getProjectTypes: () => P_Types.find(),
         getProjects: () => Projects.find(),
-        getProjectById: (projectId) => Projects.findById({idNumber: parseInt(projectId, 10)})
+        getProjectById: (_, {idNumber}) => ProjectById(idNumber),
+        getImagesByProjectId: (_, {projectId}) => ImagesByProjectId(projectId),
+        getProjectMembers: (_, {projectId}) => ProjectMembers(projectId),
     },
     Mutation: {
         createProject(input) {
