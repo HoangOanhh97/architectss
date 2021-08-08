@@ -3,7 +3,14 @@ const { P_Types, Projects, ProjectById, ImagesByProjectId, ProjectMembers } = re
 exports.ProjectsResolvers = {
     Query: {
         getProjectTypes: () => P_Types.find(),
-        getProjects: () => Projects.find(),
+        getProjects: (_, args) => {
+            const filter = JSON.parse(args.filter);
+            console.log(filter)
+            if (filter.typeId) {
+                return Projects.find({typeId: filter.typeId})
+            }
+            return Projects.find()
+        },
         getProjectById: (_, {idNumber}) => ProjectById(idNumber),
         getImagesByProjectId: (_, {projectId}) => ImagesByProjectId(projectId),
         getProjectMembers: (_, {projectId}) => ProjectMembers(projectId),

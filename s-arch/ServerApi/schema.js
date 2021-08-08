@@ -67,7 +67,7 @@ exports.typeDefs = gql`
         getMemberById(id: Int): Member
         getNews: [News]
         getProjectTypes: [ProjectType]
-        getProjects: [Project]
+        getProjects(filter: String): [Project]
         getProjectById(idNumber: Int!): Project
         getImagesByProjectId(projectId: Int!): [Project_Image]
         getProjectMembers(projectId: Int!): [Project_Member]
