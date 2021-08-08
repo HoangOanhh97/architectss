@@ -1,8 +1,8 @@
 const { gql } = require('apollo-server-express');
-const { Members } = require('./model/member');
-const { Awards } = require('./model/award');
-const { News } = require('./model/news');
-const { P_Types, P_Images, P_Members, Projects } = require('./model/project');
+const { AwardsResolvers } = require('./schemas/award.schema');
+const { NewsResolvers } = require('./schemas/news.schema');
+const { MemberResolvers } = require('./schemas/member.schema');
+const { ProjectsResolvers } = require('./schemas/project.schema');
 
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
@@ -64,40 +64,42 @@ exports.typeDefs = gql`
     type Query {
         getAwards: [Award]
         getMembers: [Member]
+        getMemberById: Member
         getNews: [News]
         getProjectTypes: [Project_Type]
         getProjects: [Project]
+        getProjectById: Project
     }
-
     input MemberInput {
         name: String!
         role: String
         image: String
     }
+    input ProjectInput {
+        name: String!
+        client: String!
+        overallView: String
+        description1: String
+        description2: String
+        typeId: Int
+        done: Boolean
+    }
     type Mutation {
         createMember(input: MemberInput!): Member
+        createProject(input: ProjectInput!): Project
     }
 `;
 
 // Provide resolver functions for your schema fields
 exports.resolvers = {
     Query: {
-        getMembers: () => Members.find(),
-        getAwards: () => Awards.find(),
-        getNews: () => News.find(),
-        getProjectTypes: () => P_Types.find(),
-        getProjects: () => Projects.find()
+        ...AwardsResolvers.Query,
+        ...NewsResolvers.Query,
+        ...MemberResolvers.Query,
+        ...ProjectsResolvers.Query,
     },
     Mutation: {
-        createMember(input) {
-            const newMember = new Member(input);
-            return newMember.save()
-                .then(result => {
-                    return { ...result._id }
-                })
-                .catch(err => {
-                    console.error(err)
-                })
-        },
+        ...MemberResolvers.Mutation,
+        ...ProjectsResolvers.Mutation,
     }
 };
