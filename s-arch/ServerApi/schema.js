@@ -89,6 +89,7 @@ exports.typeDefs = gql`
     type Mutation {
         createMember(input: MemberInput!): Member
         createProject(input: ProjectInput!): Project
+        updateAward(awardId: Int!, data: String): Award
     }
 `;
 
@@ -101,6 +102,7 @@ exports.resolvers = {
         ...ProjectsResolvers.Query,
     },
     Mutation: {
+        ...AwardsResolvers.Mutation,
         ...MemberResolvers.Mutation,
         ...ProjectsResolvers.Mutation,
     }
