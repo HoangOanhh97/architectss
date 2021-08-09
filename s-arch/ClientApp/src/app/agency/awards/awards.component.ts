@@ -28,8 +28,8 @@ export class AwardsComponent implements OnInit {
     })
   }
 
-  openDetailAward(name) {
-    this.awardDetail = this.awards.filter(x => x.name == name);
+  openDetailAward(award) {
+    this.awardDetail = award;
     let dialogRef = this.dialog.open(AwardDetailComponent, {
       panelClass: 'col-md-6',
       data: {

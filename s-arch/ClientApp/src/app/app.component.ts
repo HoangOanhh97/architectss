@@ -12,9 +12,9 @@ export class AppComponent {
 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('vi');
-    translate.use('en');
+    translate.use('vi');
     if (!localStorage.getItem('currentLang')) {
-      localStorage.setItem('currentLang', 'en');
+      localStorage.setItem('currentLang', 'vi');
     }
 
   }
