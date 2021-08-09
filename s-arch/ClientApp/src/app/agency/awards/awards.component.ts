@@ -30,7 +30,7 @@ export class AwardsComponent implements OnInit {
 
   openDetailAward(award) {
     this.awardDetail = award;
-    let dialogRef = this.dialog.open(AwardDetailComponent, {
+    this.dialog.open(AwardDetailComponent, {
       panelClass: 'col-md-6',
       data: {
         detail: this.awardDetail,

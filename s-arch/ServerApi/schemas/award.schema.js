@@ -5,9 +5,10 @@ exports.AwardsResolvers = {
         getAwards: () => Awards.find(),
     },
     Mutation: {
-        async updateAward(awardId, data) {
+        async updateAward(_, { awardId, data }) {
             const filter = { "_id": awardId };
-            let award = await Awards.findOneAndUpdate(filter, { content1: data }, { new: true });
+            const update = { content1: data };
+            let award = await Awards.findOneAndUpdate(filter, update, { new: true });
             return { ...award.name };
         }
     }

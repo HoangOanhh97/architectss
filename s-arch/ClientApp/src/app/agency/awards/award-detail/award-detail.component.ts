@@ -11,15 +11,15 @@ export class AwardDetailComponent implements OnInit {
   isShow = false;
 
   constructor(private dialogRef: MatDialogRef<AwardDetailComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
-  private elementRef: ElementRef) { 
-    this.awardDetail = data.detail[0];
+    private elementRef: ElementRef) {
+    this.awardDetail = data.detail;
     console.log(this.awardDetail);
 
     this.isShow = this.awardDetail.content3 != "" ? true : false;
   }
 
   ngOnInit() {
-    
+
   }
 
   closeDialod() {
