@@ -1,3 +1,5 @@
+import { query } from '@angular/animations';
+import { variable } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { gql } from 'apollo-angular';
 import { Observable, throwError } from 'rxjs';
@@ -101,7 +103,7 @@ export class ApiService {
   public getProjectById(idNumber) {
     return apolloServer().query({
       query: gql`
-        query Query($idNumber: Int!) {
+        query getProjectById($idNumber: Int!) {
           getProjectById(idNumber: $idNumber) {
             _id
             idNumber
@@ -131,6 +133,34 @@ export class ApiService {
         }
       `,
       variables: { idNumber }
+    })
+  }
+
+  public getProjectImages(projectId) {
+    return apolloServer().query({
+      query: gql`
+        query getProjectImagesById($projectId: Int!) {
+          getProjectImagesById(projectId: $projectId) {
+            projectId
+            url
+          }
+        }
+      `,
+      variables: { projectId }
+    })
+  }
+
+  public getProjectMember(projectId) {
+    return apolloServer().query({
+      query: gql`
+        query getProjectMembersById($projectId: Int!) {
+          getProjectMembersById(projectId: $projectId) {
+            projectId
+            url
+          }
+        }
+      `,
+      variables: { projectId }
     })
   }
 }
