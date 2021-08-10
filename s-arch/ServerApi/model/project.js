@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const { ObjectId, String, Number, Array } = Schema.Types;
+const _ = require('lodash');
+const Members = require('./member');
 
 const p_typeSchema = new Schema(
     {
@@ -26,6 +28,7 @@ const p_membersSchema = new Schema(
         _id: { type: ObjectId, required: true },
         projectId: { type: Number, required: true },
         memberId: { type: Number, required: true },
+        memberName: { type: String },
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
@@ -91,7 +94,13 @@ exports.getProjectImagesById = async (projectId) => {
 }
 
 exports.getProjectMembersById = async (projectId) => {
-    const result = await P_Members.find({ projectId });
+    let result = await P_Members.find({ projectId });
+    const memberIds = _.map(result, i => i.memberId);
+    const members = await Members.getProfileByIds(memberIds);
+    _.each(result, ele => {
+        const exist = _.find(members, { "_id": ele.memberId }) || {};
+        ele.memberName = exist.name;
+    });
     return result;
 }
 

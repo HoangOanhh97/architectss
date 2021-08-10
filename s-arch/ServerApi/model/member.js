@@ -24,6 +24,11 @@ exports.getProfileById = async (id) => {
     return result;
 }
 
+exports.getProfileByIds = async (ids) => {
+    const result = Members.find({ _id: { $in: ids } }, 'name');
+    return result;
+}
+
 exports.createMember = async (data) => {
     const reault = await Members.create(data);
     return result;

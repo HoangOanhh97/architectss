@@ -60,6 +60,7 @@ exports.typeDefs = gql`
     type Project_Member {
         projectId: Int
         memberId: Int
+        memberName: String
     }
     type Query {
         getAwards: [Award]
