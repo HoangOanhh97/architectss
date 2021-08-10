@@ -6,7 +6,11 @@ const mongoose = require('mongoose');
 
 mongoose.connect(
   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@anniecluster.csjoy.mongodb.net/sarch?retryWrites=true`,
-  { useUnifiedTopology: true }
+  {
+    autoIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true
+  }
 ).then(() => {
   console.log('MongoDB connected successfully!');
 }).catch((reason) => {

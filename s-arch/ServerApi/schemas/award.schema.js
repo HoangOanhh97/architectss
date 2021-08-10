@@ -5,6 +5,6 @@ exports.AwardsResolvers = {
         getAwards: () => Awards.getAwards(),
     },
     Mutation: {
-        updateAward: (_, { awardId, data }) => Awards.updateAwardById(awardId, data)
+        updateAward: (_, args) => Awards.updateAwardById(args)
     }
 }

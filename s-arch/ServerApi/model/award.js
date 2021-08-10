@@ -26,10 +26,11 @@ exports.createAward = async (data) => {
     return result;
 }
 
-exports.updateAwardById = async (id, data) => {
-    const result = await Awards.findByIdAndUpdate({ id }, data, {
+exports.updateAwardById = async (args) => {
+    const filter = { _id: args.awardId }
+    const update = { "content3": args.data };
+    const result = await Awards.findOneAndUpdate(filter, update, {
         returnOriginal: false
     });
-    console.log(result);
     return result;
 }
