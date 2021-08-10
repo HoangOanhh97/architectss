@@ -9,13 +9,6 @@ exports.ProjectsResolvers = {
         getProjectMembers: (_, { projectId }) => Project.getProjectMembersById(projectId),
     },
     Mutation: {
-        // async createProject(input) {
-        //     await Projects.create(input).then(result => {
-        //         return { ...result._id };
-        //     }).catch(err => {
-        //         console.error(err);
-        //         return false;
-        //     })
-        // },
+        createProject: (_, { input }) => Project.createProject(input)
     }
 };

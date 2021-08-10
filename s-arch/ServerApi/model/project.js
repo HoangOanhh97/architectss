@@ -98,3 +98,8 @@ exports.getProjectMembersById = async (projectId) => {
     const result = await P_Members.find({ projectId });
     return result;
 }
+
+exports.createProject = async (data) => {
+    const result = await P_Members.create(data);
+    return result;
+}
