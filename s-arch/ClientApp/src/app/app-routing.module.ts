@@ -14,13 +14,10 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-    path: '', component: AppComponent, children:
+    path: 'agency', component: AppComponent, children:
       [
-        { path: '', redirectTo: 'login', pathMatch: 'full'},
-        //Login
-        { path: 'login', component: LoginComponent},
         //Pages
-        { path: 'home', component: DashboardComponent, data: { title: 'homepage' } },
+        { path: '', component: DashboardComponent, data: { title: 'homepage' } },
         { path: 'company', component: CompanyComponent, data: { title: 'company' } },
         { path: 'award', component: AwardsComponent, data: { title: 'award' } },
 
@@ -29,12 +26,13 @@ const routes: Routes = [
         { path: 'projects/:id', component: ProjectComponent, data: { title: 'projectDetail' } },
 
         { path: 'news', component: NewsComponent, data: { title: 'news' } },
-        { path: 'news/:id', component: NewsDetailDialogComponent, data: {title: 'news'}},
+        { path: 'news/:id', component: NewsDetailDialogComponent, data: { title: 'news' } },
         { path: 'contact', component: ContactComponent, data: { title: 'contact' } },
 
       ]
   },
-  
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

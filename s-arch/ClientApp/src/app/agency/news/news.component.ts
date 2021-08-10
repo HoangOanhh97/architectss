@@ -66,6 +66,6 @@ export class NewsComponent implements OnInit {
   }
 
   openNewsDetail(n) {
-    this.router.navigateByUrl('/news/' + n.id);
+    // this.router.navigateByUrl('/agency/news/' + n.id);
   }
 }

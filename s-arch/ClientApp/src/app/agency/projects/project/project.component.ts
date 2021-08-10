@@ -93,12 +93,12 @@ export class ProjectComponent implements OnInit, AfterViewInit {
   }
 
   seeMoreProjects(type) {
-    this.router.navigate(["/projects/types"], { queryParams: { name: type } });
+    this.router.navigate(["agency/projects/types"], { queryParams: { name: type } });
   }
 
   goProject(id) {
     if (this.projectDetail.idNumber != id) {
-      this.router.navigateByUrl("/projects/" + id).then(() => {
+      this.router.navigateByUrl("agency/projects/" + id).then(() => {
         setTimeout(() => {
           location.reload();
         }, 20);
