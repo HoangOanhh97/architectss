@@ -11,6 +11,7 @@ const p_typeSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
+p_typeSchema.set('autoIndex', true);
 
 const p_imagesSchema = new Schema(
     {
@@ -20,6 +21,7 @@ const p_imagesSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
+p_imagesSchema.set('autoIndex', true);
 
 const p_membersSchema = new Schema(
     {
@@ -29,8 +31,9 @@ const p_membersSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
+p_membersSchema.set('autoIndex', true);
 
-const ProjectSchema = new Schema(
+const projectSchema = new Schema(
     {
         _id: { type: Number, required: true },
         idNumber: { type: Number, required: true },
@@ -58,11 +61,12 @@ const ProjectSchema = new Schema(
         done: { type: Boolean, default: false }
     }
 )
+projectSchema.set('autoIndex', true);
 
 const P_Types = mongoose.model('Project_Types', p_typeSchema);
 const P_Images = mongoose.model('Project_Images', p_imagesSchema);
 const P_Members = mongoose.model('Project_Members', p_membersSchema);
-const Projects = mongoose.model('Projects', ProjectSchema);
+const Projects = mongoose.model('Projects', projectSchema);
 
 exports.getProjectTypes = async () => {
     await P_Types.find((err, res) => {

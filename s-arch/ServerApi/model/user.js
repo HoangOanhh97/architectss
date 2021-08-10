@@ -19,4 +19,4 @@ const UserSchema = new Schema(
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
 UserSchema.set('autoIndex', true);
-exports.Users = mongoose.model('Users', MemberSchema);
+const Users = mongoose.model('Users', MemberSchema);

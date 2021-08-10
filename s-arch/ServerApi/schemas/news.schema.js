@@ -1,8 +1,8 @@
-const { News } = require('../model/news');
+const News = require('../model/news');
 
 exports.NewsResolvers = {
     Query: {
-        getNews: () => News.find(),
+        getNews: () => News.getNews(),
     },
     Mutation: {
 
