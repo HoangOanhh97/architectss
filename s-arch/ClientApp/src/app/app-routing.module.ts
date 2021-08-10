@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { AwardsComponent } from './agency/awards/awards.component';
 import { CompanyComponent } from './agency/company/company.component';
 import { ContactComponent } from './agency/contact/contact.component';
@@ -10,13 +10,17 @@ import { ProjectComponent } from './agency/projects/project/project.component';
 import { ProjectsComponent } from './agency/projects/projects.component';
 import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-type.component';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '', component: AppComponent, children:
       [
+        { path: '', redirectTo: 'login', pathMatch: 'full'},
+        //Login
+        { path: 'login', component: LoginComponent},
         //Pages
-        { path: '', component: DashboardComponent, data: { title: 'homepage' } },
+        { path: 'home', component: DashboardComponent, data: { title: 'homepage' } },
         { path: 'company', component: CompanyComponent, data: { title: 'company' } },
         { path: 'award', component: AwardsComponent, data: { title: 'award' } },
 
@@ -29,7 +33,8 @@ const routes: Routes = [
         { path: 'contact', component: ContactComponent, data: { title: 'contact' } },
 
       ]
-  }
+  },
+  
 ];
 
 @NgModule({
