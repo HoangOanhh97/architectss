@@ -13,7 +13,6 @@ const awardSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-awardSchema.set('autoIndex', true);
 const Awards = mongoose.model('Awards', awardSchema);
 
 exports.getAwards = async () => {

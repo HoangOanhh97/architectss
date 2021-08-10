@@ -12,7 +12,6 @@ const memberSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-memberSchema.set('autoIndex', true);
 const Members = mongoose.model('Members', memberSchema);
 
 exports.getMembers = async () => {

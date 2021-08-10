@@ -12,7 +12,6 @@ const newsSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-newsSchema.set('autoIndex', true);
 const News = mongoose.model('News', newsSchema);
 
 exports.getNews = async () => {

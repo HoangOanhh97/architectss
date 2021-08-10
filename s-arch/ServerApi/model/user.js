@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const { String, Number, Date } = Schema.Types;
 
-const UserSchema = new Schema(
+const userSchema = new Schema(
     {
         _id: { type: Number, required: true },
         name: { type: String, required: true, trim: true },
@@ -18,5 +18,4 @@ const UserSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
-UserSchema.set('autoIndex', true);
-const Users = mongoose.model('Users', MemberSchema);
+const Users = mongoose.model('Users', userSchema);
