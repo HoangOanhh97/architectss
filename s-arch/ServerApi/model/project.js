@@ -69,30 +69,19 @@ const P_Members = mongoose.model('Project_Members', p_membersSchema);
 const Projects = mongoose.model('Projects', projectSchema);
 
 exports.getProjectTypes = async () => {
-    await P_Types.find((err, res) => {
-        if (err) {
-            return err.message;
-        }
-        return res;
-    })
+    const result = await P_Types.find();
+    return result;
 };
 
 exports.getProjects = async (args) => {
     const { typeId } = JSON.parse(args.filter);
+    let result;
     if (typeId) {
-        return Projects.find({ typeId }, (err, res) => {
-            if (err) {
-                return err.message
-            }
-            return res;
-        });
+        result = await Projects.find({ typeId });
+    } else {
+        result = await Projects.find();
     }
-    await Projects.find((err, res) => {
-        if (err) {
-            return err.message
-        }
-        return res;
-    });
+    return result;
 }
 
 exports.getProjectById = async (idNumber) => {
@@ -101,19 +90,11 @@ exports.getProjectById = async (idNumber) => {
 }
 
 exports.getProjectImagesById = async (projectId) => {
-    await P_Images.find({ projectId }, (err, res) => {
-        if (err) {
-            return err.message
-        }
-        return res;
-    });
+    const result = await P_Images.find({ projectId });
+    return result;
 }
 
 exports.getProjectMembersById = async (projectId) => {
-    await P_Members.find({ projectId }, (err, res) => {
-        if (err) {
-            return err.message
-        }
-        return res;
-    });
+    const result = await P_Members.find({ projectId });
+    return result;
 }

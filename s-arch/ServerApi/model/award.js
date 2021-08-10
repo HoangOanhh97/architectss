@@ -17,20 +17,13 @@ awardSchema.set('autoIndex', true);
 const Awards = mongoose.model('Awards', awardSchema);
 
 exports.getAwards = async () => {
-    await Awards.find((err, res) => {
-        if (err) {
-            return [...err];
-        }
-        return res;
-    })
+    const result = await Awards.find();
+    return result;
 }
 
 exports.createAward = async (data) => {
-    await Awards.create(data).then(result => {
-        return { ...result._id };
-    }).catch(err => {
-        return err;
-    })
+    const result = await Awards.create(data);
+    return result;
 }
 
 exports.updateAwardById = async (id, data) => {
