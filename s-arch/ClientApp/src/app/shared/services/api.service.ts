@@ -150,13 +150,14 @@ export class ApiService {
     })
   }
 
-  public getProjectMember(projectId) {
+  public getProjectMembers(projectId) {
     return apolloServer().query({
       query: gql`
         query getProjectMembersById($projectId: Int!) {
           getProjectMembersById(projectId: $projectId) {
             projectId
-            url
+            memberId
+            memberName
           }
         }
       `,

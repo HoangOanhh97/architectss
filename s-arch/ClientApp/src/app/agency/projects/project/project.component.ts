@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GalleryComponent } from '../gallery/gallery.component';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { zip } from 'rxjs';
 
 declare var Swiper: any;
 
@@ -21,15 +22,26 @@ export class ProjectComponent implements OnInit, AfterViewInit {
   minitabSelected = 1;
   swiper: any;
   anotherProjects: any;
+  participants: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, 
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router,
     private elementRef: ElementRef, private dialog: MatDialog,
     private apiService: ApiService) {
     this.projectId = parseInt(this.route.snapshot.params["id"], 10);
-    this.apiService.getProjectById(this.projectId).then(res => {
-      this.projectDetail = res.data.getProjectById;
+
+    zip(
+      this.apiService.getProjectById(this.projectId),
+      this.apiService.getProjectMembers(this.projectId),
+      this.apiService.getProjectImages(this.projectId)
+    ).subscribe(res => {
+      this.participants = res[1].data.getProjectMembersById;
+      this.projectDetail = res[0].data.getProjectById || [];
+      this.projectDetail.participants = this.participants;
+      this.projectDetail.listView = res[2].data.getProjectImagesById || [];
+      this.selectedView = this.projectDetail.listView[0] || {};
       this.getProjectDetail(this.projectId);
-    })
+      console.log(res[2].data.getProjectImagesById)
+    });
   }
 
   ngOnInit() {
@@ -64,9 +76,11 @@ export class ProjectComponent implements OnInit, AfterViewInit {
   getProjectDetail(id: number) {
     this.http.get('assets/data/projects.json').subscribe(r => {
       const data = r as any[];
-      const item = data.filter(x => x.idNumber == id)[0];
-      this.selectedView = item.listView[0] || {};
-      this.projectDetail.participants = item.participants || [];
+      if (this.projectDetail.listView) {
+        const item = data.filter(x => x.idNumber == id)[0];
+        this.projectDetail.listView = item.listView || [];
+        this.selectedView = item.listView[0] || {};
+      }
       this.anotherProjects = data.filter(x => (x.typeName == this.projectDetail.typeName) && x.idNumber != id);
       console.log(this.projectDetail);
       console.log(this.anotherProjects);
