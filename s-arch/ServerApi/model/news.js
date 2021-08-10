@@ -7,8 +7,8 @@ const NewsSchema = new Schema(
         _id: { type: ObjectId, required: true },
         category: { type: String, require: true },
         title: { type: String, required: true },
-        descriptionHTML: String,
-        image: String,
+        descriptionHTML: { type: String },
+        image: { type: String },
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )

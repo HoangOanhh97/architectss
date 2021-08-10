@@ -5,9 +5,9 @@ const { ObjectId, String, Number, Array } = Schema.Types;
 const p_typeSchema = new Schema(
     {
         _id: { type: Number, required: true },
-        typeId: { type: Number },
-        typeName: { type: String },
-        mainBg: { type: String },
+        typeId: { type: Number, required: true },
+        typeName: { type: String, required: true },
+        mainBg: { type: String, required: true },
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
@@ -64,16 +64,52 @@ const P_Images = mongoose.model('Project_Images', p_imagesSchema);
 const P_Members = mongoose.model('Project_Members', p_membersSchema);
 const Projects = mongoose.model('Projects', ProjectSchema);
 
-const ProjectById = (idNumber) => Projects.findOne({idNumber}).populate('listView');
+exports.getProjectTypes = async () => {
+    await P_Types.find((err, res) => {
+        if (err) {
+            return err.message;
+        }
+        return res;
+    })
+};
 
-const ImagesByProjectId = (projectId) => P_Images.find({projectId});
+exports.getProjects = async (args) => {
+    const { typeId } = JSON.parse(args.filter);
+    if (typeId) {
+        return Projects.find({ typeId }, (err, res) => {
+            if (err) {
+                return err.message
+            }
+            return res;
+        });
+    }
+    await Projects.find((err, res) => {
+        if (err) {
+            return err.message
+        }
+        return res;
+    });
+}
 
-const ProjectMembers = (projectId) => P_Members.find({projectId});
+exports.getProjectById = async (idNumber) => {
+    const result = await Projects.findOne({ idNumber });
+    return result;
+}
 
-module.exports = {
-    P_Types,
-    Projects,
-    ProjectById,
-    ImagesByProjectId,
-    ProjectMembers
+exports.getProjectImagesById = async (projectId) => {
+    await P_Images.find({ projectId }, (err, res) => {
+        if (err) {
+            return err.message
+        }
+        return res;
+    });
+}
+
+exports.getProjectMembersById = async (projectId) => {
+    await P_Members.find({ projectId }, (err, res) => {
+        if (err) {
+            return err.message
+        }
+        return res;
+    });
 }

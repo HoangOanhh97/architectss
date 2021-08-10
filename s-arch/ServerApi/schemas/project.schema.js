@@ -1,18 +1,12 @@
-const { P_Types, Projects, ProjectById, ImagesByProjectId, ProjectMembers } = require('../model/project')
+const projectsModel = require('../model/project')
 
 exports.ProjectsResolvers = {
     Query: {
-        getProjectTypes: () => P_Types.find(),
-        getProjects: (_, args) => {
-            const filter = JSON.parse(args.filter);
-            if (filter.typeId) {
-                return Projects.find({ typeId: filter.typeId })
-            }
-            return Projects.find()
-        },
-        getProjectById: (_, { idNumber }) => ProjectById(idNumber),
-        getImagesByProjectId: (_, { projectId }) => ImagesByProjectId(projectId),
-        getProjectMembers: (_, { projectId }) => ProjectMembers(projectId),
+        getProjectTypes: () => projectsModel.getProjectTypes(),
+        getProjects: (_, args) => projectsModel.getProjects(args),
+        getProjectById: (_, { idNumber }) => projectsModel.getProjectById(idNumber),
+        getImagesByProjectId: (_, { projectId }) => projectsModel.getProjectImagesById(projectId),
+        getProjectMembers: (_, { projectId }) => projectsModel.getProjectMembersById(projectId),
     },
     Mutation: {
         async createProject(input) {

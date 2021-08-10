@@ -7,8 +7,8 @@ const MemberSchema = new Schema(
         _id: { type: Number, required: true },
         id: { type: Number, required: true },
         name: { type: String, required: true },
-        role: String,
-        image: String,
+        role: { type: String },
+        image: { type: String },
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
