@@ -5,10 +5,13 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoSvgComponent } from './components/header/logo-svg/logo-svg.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,
@@ -32,6 +38,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,

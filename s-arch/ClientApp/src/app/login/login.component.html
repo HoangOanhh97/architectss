@@ -2,14 +2,17 @@
   <div class="box">
     <div class="login-box">
       <h2>Login</h2>
-      <form>
+      <form [formGroup]="loginForm">
         <div class="user-box">
-          <input type="text" name="username" required [(ngModel)]="user.username">
-          <label>Username</label>
+          <input type="text" name="username" required formControlName="email">
+          <label>Email Address</label>
         </div>
         <div class="user-box">
-          <input type="password" name="password" required [(ngModel)]="user.password">
+          <input [type]="hide ? 'password' : 'text'" name="password" required formControlName="password">
           <label>Password</label>
+          <button class="action_pwd" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </div>
 
         <div class="fp-action-fields">
