@@ -1,6 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Apollo
 import { GraphQLModule } from './graphql.module';
 
@@ -14,14 +14,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { registerLocaleData } from '@angular/common';
 import localeVI from '@angular/common/locales/vi';
-import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { AwardDetailComponent } from './agency/awards/award-detail/award-detail.component';
 import { GalleryComponent } from './agency/projects/gallery/gallery.component';
 import { DetailProjectComponent } from './shared/dialog/detail-project/detail-project.component';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { DashboardComponent } from './agency/dashboard/dashboard.component';
@@ -35,6 +31,7 @@ import { ProjectsComponent } from './agency/projects/projects.component';
 import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-type.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LogoSvgComponent } from './shared/components/header/logo-svg/logo-svg.component';
+import { SharedModule } from './shared/shared.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -67,6 +64,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -74,12 +72,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         deps: [HttpClient]
       }
     }),
-    MatMenuModule,
-    MatButtonModule,
-    MatDialogModule,
-    NgbModule,
-    NgbPaginationModule,
-    NgbAlertModule,
+    SharedModule
   ],
   providers: [
     SharedService,
