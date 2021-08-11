@@ -12,7 +12,6 @@ export class LogoSvgComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, ) {
     this.route.data.subscribe(r => {
-      console.log(r.title);
       this.navActive = r.title;
     })
 

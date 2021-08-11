@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute,
     private translate: TranslateService, cf: NgbDropdownConfig) {
     this.route.data.subscribe(r => {
-      console.log(r.title);
       this.navActive = r.title;
       this.setImgLogo(this.navActive);
     })
