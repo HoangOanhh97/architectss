@@ -1,5 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 // Apollo
 import { GraphQLModule } from './graphql.module';
 
@@ -34,7 +35,6 @@ import { ProjectsComponent } from './agency/projects/projects.component';
 import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-type.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LogoSvgComponent } from './shared/components/header/logo-svg/logo-svg.component';
-import { LoginComponent } from './login/login.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -57,8 +57,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ProjectsTypeComponent,
     ProjectsComponent,
     DetailProjectComponent,
-    GalleryComponent,
-    LoginComponent
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +66,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

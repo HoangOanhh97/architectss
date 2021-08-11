@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { AwardsComponent } from './agency/awards/awards.component';
 import { CompanyComponent } from './agency/company/company.component';
 import { ContactComponent } from './agency/contact/contact.component';
@@ -10,7 +10,6 @@ import { ProjectComponent } from './agency/projects/project/project.component';
 import { ProjectsComponent } from './agency/projects/projects.component';
 import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-type.component';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -31,7 +30,7 @@ const routes: Routes = [
 
       ]
   },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
