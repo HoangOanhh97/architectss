@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 export interface IUser {
   email: String,
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public hide = true;
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: new FormControl(this.user.email, [Validators.required, Validators.email]),
       password: new FormControl(this.user.password, Validators.required)
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
 
     this.loginForm.valueChanges.subscribe(response => {
       Object.keys(response).forEach(key => {
-        this.getErrorMessage(key)
+        this.getErrorMessage(key);
       })
     })
   }
@@ -36,8 +37,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.user)
-    // this.router.navigate(['agency']);
+    this.user.email = this.loginForm.controls['email'].value;
+    this.user.password = this.loginForm.controls['password'].value;
+    this.authService.login(this.user).then(res => {
+      if (res.errors) {
+        alert(res.errors[0].message)
+      }
+      if (res.data) {
+        console.log(res.data.login);
+        this.router.navigate(['agency']);
+      }
+    }).catch(error => {
+      alert(error)
+    })
   }
 
   getErrorMessage(name) {
@@ -45,7 +57,7 @@ export class LoginComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.loginForm.controls[name].hasError('email') ? 'Not a valid email' : '';
+    return this.loginForm.controls[name].hasError('email') ? 'Not a valid email' : null;
   }
 
 }
