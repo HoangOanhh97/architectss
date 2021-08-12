@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server-express');
+const { UserResolvers } = require('./schemas/user.schema');
 const { AwardsResolvers } = require('./schemas/award.schema');
 const { NewsResolvers } = require('./schemas/news.schema');
 const { MemberResolvers } = require('./schemas/member.schema');
@@ -62,7 +63,22 @@ exports.typeDefs = gql`
         memberId: Int
         memberName: String
     }
+    type User {
+        _id: Int!
+        name: String
+        email: String!
+        role: String
+        createdDate: String
+    }
+    type AuthPayload {
+        message: Boolean
+        token: String!
+        user: User!
+    }
     type Query {
+        me: User
+        getUsers: [User!]
+        getUserById(id: Int!): User
         getAwards: [Award]
         getMembers: [Member]
         getMemberById(id: Int): Member
@@ -87,7 +103,19 @@ exports.typeDefs = gql`
         typeId: Int
         done: Boolean
     }
+    input NewUserInput {
+        name: String!
+        email: String! 
+        password: String!
+        role: String!
+    }
+    input UserInput {
+        email: String!
+        password: String!
+    }
     type Mutation {
+        registerUser(input: NewUserInput!): AuthPayload!
+        login(input: UserInput!): AuthPayload!
         createMember(input: MemberInput!): Member
         createProject(input: ProjectInput!): Project
         updateAward(awardId: Int!, data: String): Award
@@ -97,12 +125,14 @@ exports.typeDefs = gql`
 // Provide resolver functions for your schema fields
 exports.resolvers = {
     Query: {
+        ...UserResolvers.Query,
         ...AwardsResolvers.Query,
         ...NewsResolvers.Query,
         ...MemberResolvers.Query,
         ...ProjectsResolvers.Query,
     },
     Mutation: {
+        ...UserResolvers.Mutation,
         ...AwardsResolvers.Mutation,
         ...MemberResolvers.Mutation,
         ...ProjectsResolvers.Mutation,
