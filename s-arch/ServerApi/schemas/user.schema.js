@@ -7,7 +7,8 @@ exports.UserResolvers = {
         getUserById: (_, { id }) => User.getUserById(id),
     },
     Mutation: {
-        registerUser: (_, args) => User.createUser(args),
-        login: (_, args) => User.login(args)
+        registerUser: (_, { input }) => User.createUser(input),
+        login: (_, { input }) => User.login(input),
+        assignUserRole: (_, { input }) => User.assignUserRole(input)
     }
 }

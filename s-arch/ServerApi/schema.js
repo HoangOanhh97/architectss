@@ -64,16 +64,25 @@ exports.typeDefs = gql`
         memberName: String
     }
     type User {
-        _id: Int!
+        _id: String!
         name: String
         email: String!
         role: String
-        createdDate: String
+    }
+    type UserRole {
+        _id: String
+        role: String
+        user: String
     }
     type AuthPayload {
-        message: Boolean
+        success: Boolean
+        message: String
         token: String!
-        user: User!
+        user: User
+    }
+    type Message {
+        success: Boolean
+        message: String
     }
     type Query {
         me: User
@@ -113,9 +122,14 @@ exports.typeDefs = gql`
         email: String!
         password: String!
     }
+    input UserRoleInput {
+        userId: String
+        role: String
+    }
     type Mutation {
         registerUser(input: NewUserInput!): AuthPayload!
         login(input: UserInput!): AuthPayload!
+        assignUserRole(input: UserRoleInput!): Message!
         createMember(input: MemberInput!): Member
         createProject(input: ProjectInput!): Project
         updateAward(awardId: Int!, data: String): Award
