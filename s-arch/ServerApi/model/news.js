@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { ObjectId, String } = Schema.Types;
+const { String } = Schema.Types;
 
 const newsSchema = new Schema(
     {
-        _id: { type: ObjectId, required: true },
         category: { type: String, require: true },
         title: { type: String, required: true },
         descriptionHTML: { type: String },

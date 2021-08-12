@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { ObjectId, String, Number, Array } = Schema.Types;
+const { String, Number, Array } = Schema.Types;
 const _ = require('lodash');
 const Members = require('./member');
 
 const project_types = new Schema(
     {
-        _id: { type: Number, required: true },
         typeId: { type: Number, required: true },
         typeName: { type: String, required: true },
         mainBg: { type: String, required: true },
@@ -16,7 +15,6 @@ const project_types = new Schema(
 
 const project_images = new Schema(
     {
-        _id: { type: ObjectId, required: true },
         projectId: { type: Number, required: true },
         url: { type: String, required: true },
     },
@@ -25,7 +23,6 @@ const project_images = new Schema(
 
 const project_members = new Schema(
     {
-        _id: { type: ObjectId, required: true },
         projectId: { type: Number, required: true },
         memberId: { type: Number, required: true },
         memberName: { type: String },
@@ -35,7 +32,6 @@ const project_members = new Schema(
 
 const projectSchema = new Schema(
     {
-        _id: { type: Number, required: true },
         idNumber: { type: Number, required: true },
         name: { type: String },
         client: { type: String },
@@ -59,7 +55,8 @@ const projectSchema = new Schema(
         typeId: { type: Number, required: true },
         typeName: { type: String },
         done: { type: Boolean, default: false }
-    }
+    },
+    { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
 
 const P_Types = mongoose.model('Project_Types', project_types);

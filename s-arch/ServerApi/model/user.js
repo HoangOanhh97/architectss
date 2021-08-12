@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { ObjectId, String, Number } = Schema.Types;
+const { ObjectId, String } = Schema.Types;
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const moment = require('moment');
 
 const users = new Schema(
     {
-        _id: { type: ObjectId, required: true },
         name: { type: String, required: true, trim: true },
         email: {
             type: String,
@@ -18,7 +16,6 @@ const users = new Schema(
             required: true
         },
         password: { type: String, require: true, trim: true },
-        createdDate: { type: String, default: moment().toISOString() },
         role: {
             type: ObjectId,
             ref: 'user_role'
@@ -29,7 +26,6 @@ const users = new Schema(
 
 const roles = new Schema(
     {
-        _id: { type: ObjectId, require: true },
         role: {
             type: String,
             trim: true,
@@ -43,13 +39,14 @@ const roles = new Schema(
 
 const user_role = new Schema(
     {
-        _id: { type: ObjectId, require: true },
         role: {
             type: ObjectId,
+            require: true,
             ref: 'roles'
         },
         user: {
             type: ObjectId,
+            require: true,
             unique: true,
             ref: 'users'
         }
@@ -86,18 +83,20 @@ exports.getUserById = async (id) => {
     }
 }
 
-exports.createUser = async ({ name, email, roleId, password }) => {
+exports.createUser = async (data) => {
     try {
+        console.log("data: ", data);
+        const { name, email, role, password } = data;
         const hashedPassword = await bcrypt.hashSync(password, 10);
-        const data = {
+        const newUser = {
             name,
             email,
             password: hashedPassword
         }
-        const user = await this.Users.create(data);
+        const user = await this.Users.create(newUser);
         console.log(user);
         const userRole = await User_Role.create({
-            role: roleId,
+            role,
             user: user["_id"]
         })
 

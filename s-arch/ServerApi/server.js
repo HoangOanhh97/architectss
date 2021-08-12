@@ -42,7 +42,7 @@ async function startApolloServer() {
         // Try to retrieve a user with the token
         const user = getUser(token);
         if (!user) {
-          console.log('You must be logged in!');
+          // console.log('You must be logged in!');
         };
         // return { user };
       }

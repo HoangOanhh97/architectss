@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { String, Number } = Schema.Types;
+const { String } = Schema.Types;
 
 const awardSchema = new Schema(
     {
-        _id: { type: Number, required: true },
         name: { type: String, required: true },
         content1: { type: String },
         content2: { type: String },
