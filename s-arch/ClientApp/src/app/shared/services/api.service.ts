@@ -1,8 +1,6 @@
-import { query } from '@angular/animations';
-import { variable } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { gql } from 'apollo-angular';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { apolloServer } from 'src/app/graphql.module';
 
 @Injectable({
