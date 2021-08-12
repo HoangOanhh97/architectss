@@ -4,7 +4,7 @@ const { ObjectId, String, Number, Array } = Schema.Types;
 const _ = require('lodash');
 const Members = require('./member');
 
-const p_typeSchema = new Schema(
+const project_types = new Schema(
     {
         _id: { type: Number, required: true },
         typeId: { type: Number, required: true },
@@ -14,7 +14,7 @@ const p_typeSchema = new Schema(
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
 
-const p_imagesSchema = new Schema(
+const project_images = new Schema(
     {
         _id: { type: ObjectId, required: true },
         projectId: { type: Number, required: true },
@@ -23,7 +23,7 @@ const p_imagesSchema = new Schema(
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
 
-const p_membersSchema = new Schema(
+const project_members = new Schema(
     {
         _id: { type: ObjectId, required: true },
         projectId: { type: Number, required: true },
@@ -46,11 +46,11 @@ const projectSchema = new Schema(
         overallView1920: { type: String },
         listView: {
             type: Array,
-            ref: 'p_imagesSchema'
+            ref: 'project_images'
         },
         participants: {
             type: Array,
-            ref: 'p_membersSchema'
+            ref: 'project_members'
         },
         description1: { type: String },
         description2: { type: String },
@@ -62,9 +62,9 @@ const projectSchema = new Schema(
     }
 )
 
-const P_Types = mongoose.model('Project_Types', p_typeSchema);
-const P_Images = mongoose.model('Project_Images', p_imagesSchema);
-const P_Members = mongoose.model('Project_Members', p_membersSchema);
+const P_Types = mongoose.model('Project_Types', project_types);
+const P_Images = mongoose.model('Project_Images', project_images);
+const P_Members = mongoose.model('Project_Members', project_members);
 const Projects = mongoose.model('Projects', projectSchema);
 
 exports.getProjectTypes = async () => {
