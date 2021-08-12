@@ -4,7 +4,7 @@ const { String, Number } = Schema.Types;
 
 const memberSchema = new Schema(
     {
-        id: { type: Number, required: true },
+        _id: { type: Number, required: true },
         name: { type: String, required: true },
         role: { type: String },
         image: { type: String },
