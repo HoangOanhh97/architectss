@@ -11,7 +11,6 @@ import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng
 import { HeaderComponent } from './components/header/header.component';
 import { LogoSvgComponent } from './components/header/logo-svg/logo-svg.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
