@@ -57,9 +57,18 @@ exports.Users = mongoose.model('users', users);
 const Roles = mongoose.model('roles', roles);
 const User_Role = mongoose.model('user_role', user_role);
 
+const getStatus = (status, mess) => {
+    return {
+        success: status,
+        message: mess
+    }
+}
+
 exports.me = async (currentUser) => {
     console.log('currentUser: ', currentUser)
-    if (!currentUser) throw new Error('You are not authenticated');
+    if (!currentUser) {
+        return { status: getStatus(false, 'You are not authenticated') };
+    };
     const result = await this.Users.findOne({ "email": currentUser.email });
     return result;
 }
@@ -69,7 +78,7 @@ exports.getUsers = async () => {
         const result = await this.Users.find();
         return result;
     } catch (error) {
-        throw new Error(error.message);
+        return { status: getStatus(false, error) };;
     }
 }
 
@@ -79,7 +88,7 @@ exports.getUserById = async (id) => {
         const result = await this.Users.findById(id);
         return result;
     } catch (error) {
-        throw new Error(error.message);
+        return { status: getStatus(false, error) };;
     }
 }
 
@@ -95,11 +104,7 @@ exports.assignUserRole = async (data) => {
 
         return { success: true, message: "Assigned succesfully!" };
     } catch (error) {
-        console.log(error)
-        return {
-            success: false,
-            message: error
-        }
+        return { status: getStatus(false, error) };
     }
 }
 
@@ -112,45 +117,33 @@ exports.createUser = async (data) => {
         email,
         password: hashedPassword
     }
+
     let user;
+    this.Users.create(newUser).then(async (response) => {
+        user = response;
 
-    try {
-        this.Users.create(newUser).then(async (response) => {
-            user = response;
+        await User_Role.create({ role: roleItem._id, user: response._id });
 
-            await User_Role.create({ role: roleItem._id, user: response._id });
-
-            const payload = { id: user._id, email: user.email };
-            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1y' });
-
-            return {
-                success: true,
-                message: "Authentication succesfully!",
-                token,
-                user: {
-                    _id: user._id,
-                    name: user.name,
-                    email: user.email,
-                    role: roleItem.role
-                }
-            }
-        });
-    } catch (error) {
-        console.log("Error registration: ", error);
-        await this.Users.deleteOne({ email })
+        const payload = { id: user._id, email: user.email };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1y' });
 
         return {
-            success: false,
-            message: error,
-            token: "",
+            success: true,
+            message: "Authentication succesfully!",
+            token,
             user: {
-                _id: user._id || "",
-                name: user.name || name,
-                email: user.email || email,
-                role: roleItem.role || role
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: roleItem.role
             }
         }
-    }
+    }).catch(error => {
+        console.log("Error registration: ", error);
+        this.Users.deleteOne({ email })
+
+        return { status: getStatus(false, error) };
+    });
 }
 
 exports.login = async (data) => {
@@ -158,11 +151,25 @@ exports.login = async (data) => {
     try {
         const user = await this.Users.findOne({ email });
         if (!user) {
-            throw new Error('No user with that email')
+            return {
+                success: false,
+                message: 'No user with that email',
+                user: {
+                    _id: "",
+                    email: email
+                }
+            }
         }
-        const isValid = await bcrypt.compare(password, user.password)
+        const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) {
-            throw new Error('Incorrect password')
+            return {
+                success: false,
+                message: 'Incorrect password',
+                user: {
+                    _id: "",
+                    email: email
+                }
+            }
         }
 
         const userRole = await User_Role.findOne({ user: user._id }).populate("role");

@@ -64,10 +64,11 @@ exports.typeDefs = gql`
         memberName: String
     }
     type User {
-        _id: String!
+        _id: String
         name: String
-        email: String!
+        email: String
         role: String
+        status: Message
     }
     type UserRole {
         _id: String
@@ -77,7 +78,7 @@ exports.typeDefs = gql`
     type AuthPayload {
         success: Boolean
         message: String
-        token: String!
+        token: String
         user: User
     }
     type Message {
