@@ -14,7 +14,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { registerLocaleData } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import localeVI from '@angular/common/locales/vi';
 
 import { DashboardComponent } from './agency/dashboard/dashboard.component';
@@ -29,6 +29,8 @@ import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-
 import { ProjectComponent } from './agency/projects/project/project.component';
 import { GalleryComponent } from './agency/projects/gallery/gallery.component';
 import { DetailProjectComponent } from './shared/dialog/detail-project/detail-project.component';
+import { AuthGuard } from './shared/auth/auth-guard.service';
+import { AuthService } from './shared/auth/auth.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -69,6 +71,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SharedModule
   ],
   providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    AuthService,
+    AuthGuard,
     SharedService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
