@@ -11,17 +11,23 @@ import { ProjectsTypeComponent } from "./projects/projects-type/projects-type.co
 import { ProjectsComponent } from "./projects/projects.component";
 
 const routes: Routes = [
-    { path: '', component: DashboardComponent, data: { title: 'homepage' } },
-    { path: 'company', component: CompanyComponent, data: { title: 'company' } },
-    { path: 'award', component: AwardsComponent, data: { title: 'award' } },
+    {
+        path: '', component: DashboardComponent, data: { title: 'homepage' },
+        children: [
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: 'dashboard', component: DashboardComponent, data: { title: 'homepage' } },
+            { path: 'company', component: CompanyComponent, data: { title: 'company' } },
+            { path: 'award', component: AwardsComponent, data: { title: 'award' } },
 
-    { path: 'projects', component: ProjectsComponent, data: { title: 'projects' } },
-    { path: 'projects/types', component: ProjectsTypeComponent, data: { title: 'projects' } },
-    { path: 'projects/:id', component: ProjectComponent, data: { title: 'projectDetail' } },
+            { path: 'projects', component: ProjectsComponent, data: { title: 'projects' } },
+            { path: 'projects/types', component: ProjectsTypeComponent, data: { title: 'projects' } },
+            { path: 'projects/:id', component: ProjectComponent, data: { title: 'projectDetail' } },
 
-    { path: 'news', component: NewsComponent, data: { title: 'news' } },
-    { path: 'news/:id', component: NewsDetailDialogComponent, data: { title: 'news' } },
-    { path: 'contact', component: ContactComponent, data: { title: 'contact' } },
+            { path: 'news', component: NewsComponent, data: { title: 'news' } },
+            { path: 'news/:id', component: NewsDetailDialogComponent, data: { title: 'news' } },
+            { path: 'contact', component: ContactComponent, data: { title: 'contact' } },
+        ]
+    }
 ]
 
 @NgModule({

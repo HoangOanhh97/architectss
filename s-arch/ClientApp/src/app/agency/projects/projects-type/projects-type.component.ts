@@ -47,7 +47,7 @@ export class ProjectsTypeComponent implements OnInit {
   }
 
   getProjectsByType(type) {
-    this.router.navigate(["agency/projects/types"], { queryParams: { name: type } });
+    this.router.navigate(["projects/types"], { queryParams: { name: type } });
     this.showDropdown = false;
   }
 
@@ -73,7 +73,7 @@ export class ProjectsTypeComponent implements OnInit {
   }
 
   getProjectDetail(id) {
-    this.router.navigate(["agency/projects/" + id]);
+    this.router.navigate(["projects/" + id]);
   }
 
 }

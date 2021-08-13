@@ -41,6 +41,6 @@ export class DetailProjectComponent implements OnInit {
 
   seeMoreProjects() {
     this.dialogRef.close();
-    this.router.navigateByUrl('/projects');
+    this.router.navigate(['/projects']);
   }
 }
