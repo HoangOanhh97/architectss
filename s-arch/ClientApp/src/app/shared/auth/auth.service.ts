@@ -98,16 +98,27 @@ export class AuthService {
       return apolloServer().query({
         query: gql`
           query me {
-            _id
-            name
-            email
-            role
+            me {
+              _id
+              name
+              email
+              role
+              status {
+                success
+                message
+              }
+            }
           }
         `,
         variables: {}
       }).then(response => {
-        this._user = response.data.me;
         console.log(response.data.me);
+        if (response.data.me.status.success) {
+          this._user = response.data.me;
+        } else {
+          alert(response.data.me.status.message)
+          this.router.navigate(['login']);
+        }
       }).catch(err => {
         this.router.navigate(['login']);
       })
