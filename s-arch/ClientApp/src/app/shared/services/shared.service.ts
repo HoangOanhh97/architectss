@@ -6,17 +6,17 @@ import { Subject } from 'rxjs/internal/Subject';
 export class SharedService {
     // Theming
     maTheme: string
-    maThemeSubject: Subject<string> = new Subject<string>()
+    maThemeSubject: Subject<string> = new Subject<string>();
 
     setTheme(color) {
         this.maTheme = color
         this.maThemeSubject.next(this.maTheme)
     }
 
-    constructor()  {
+    constructor() {
         // Set default theme as sa-black
         this.maTheme = 'sa-black';
     }
 
-    
+
 }

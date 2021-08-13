@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../shared/auth/auth.service';
 
 export interface IUser {
   email: String,
@@ -40,15 +40,15 @@ export class LoginComponent implements OnInit {
     this.user.email = this.loginForm.controls['email'].value;
     this.user.password = this.loginForm.controls['password'].value;
     this.authService.login(this.user).then(res => {
-      if (res.errors) {
-        alert(res.errors[0].message)
-      }
       if (res.data) {
-        console.log(res.data.login);
-        this.router.navigate(['agency']);
+        const result = res.data.login;
+        this.authService.setToken(result.token);
+        this.router.navigate(['/']);
+      } else {
+        console.log(res.errors);
       }
     }).catch(error => {
-      alert(error)
+      console.log(error);
     })
   }
 
