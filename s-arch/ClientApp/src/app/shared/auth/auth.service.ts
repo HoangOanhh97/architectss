@@ -88,42 +88,37 @@ export class AuthService {
     // here you can check if user is authenticated or not through his token
     console.log(this.token);
     if (this.token && !this._user) {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'x-access-token': this.token
-        })
-      };
-
-      return apolloServer().query({
-        query: gql`
-          query me {
-            me {
-              _id
-              name
-              email
-              role
-              status {
-                success
-                message
-              }
-            }
-          }
-        `,
-        variables: {}
-      }).then(response => {
-        console.log(response.data.me);
-        if (response.data.me.status.success) {
-          this._user = response.data.me;
-        } else {
-          alert(response.data.me.status.message)
-          this.router.navigate(['login']);
-        }
-      }).catch(err => {
-        this.router.navigate(['login']);
-      })
+      this.router.navigate(['/']);
     }
+    // if (this.token && !this._user) {
+    //   return apolloServer().query({
+    //     query: gql`
+    //       query me {
+    //         me {
+    //           _id
+    //           name
+    //           email
+    //           role
+    //           status {
+    //             success
+    //             message
+    //           }
+    //         }
+    //       }
+    //     `
+    //   }).then(response => {
+    //     console.log(response.data.me);
+    //     if (response.data.me.status.success) {
+    //       this._user = response.data.me;
+    //     } else {
+    //       alert(response.data.me.status.message)
+    //       this.router.navigate(['login']);
+    //     }
+    //   }).catch(err => {
+    //     this.router.navigate(['login']);
+    //   })
+    // }
 
-    return this.token !== '';
+    return this.token && this.token !== '';
   }
 }
