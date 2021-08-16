@@ -87,29 +87,33 @@ export class AuthService {
   public isAuthenticated() {
     // here you can check if user is authenticated or not through his token
     console.log(this.token);
+    this._user = JSON.parse(localStorage.getItem('currentUser')) || null;
     if (this.token && !this._user) {
       return apolloServer().query({
         query: gql`
-          query me {
-            me {
-              _id
-              name
-              email
-              role
-              status {
+          query me($email: String!) {
+            me(email: $email) {
+              ... on User {
+                _id
+                name
+                email
+                role
+              }
+              ... on Message {
                 success
                 message
               }
             }
           }
-        `
+        `,
+        variables: { "email": this._user.email }
       }).then(response => {
         console.log(response.data.me);
-        if (response.data.me.status.success) {
+        if (response.data.me._id) {
           this._user = response.data.me;
           this.router.navigate(['/']);
         } else {
-          alert(response.data.me.status.message)
+          alert(response.data.me.message)
           this.router.navigate(['login']);
         }
       }).catch(err => {

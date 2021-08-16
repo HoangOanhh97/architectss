@@ -40,12 +40,14 @@ export class LoginComponent implements OnInit {
     this.user.email = this.loginForm.controls['email'].value;
     this.user.password = this.loginForm.controls['password'].value;
     this.authService.login(this.user).then(res => {
-      if (res.data) {
-        const result = res.data.login;
+      const result = res.data?.login || {};
+      if (result.success) {
+        localStorage.setItem('currentUser', JSON.stringify(result.user))
         this.authService.setToken(result.token);
         this.router.navigate(['/']);
       } else {
         console.log(res.errors);
+        alert(result.message)
       }
     }).catch(error => {
       console.log(error);
