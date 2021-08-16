@@ -4,9 +4,12 @@ const { AwardsResolvers } = require('./schemas/award.schema');
 const { NewsResolvers } = require('./schemas/news.schema');
 const { MemberResolvers } = require('./schemas/member.schema');
 const { ProjectsResolvers } = require('./schemas/project.schema');
+const { GraphQLScalarType } = require('graphql');
 
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
+    scalar Date
+
     type Award {
         _id: Int
         name: String
@@ -68,7 +71,6 @@ exports.typeDefs = gql`
         name: String
         email: String
         role: String
-        status: Message
     }
     type UserRole {
         _id: String
@@ -85,10 +87,11 @@ exports.typeDefs = gql`
         success: Boolean
         message: String
     }
+    union UserResponse = User | Message
     type Query {
-        me: User
-        getUsers: [User!]
-        getUserById(id: Int!): User
+        me: UserResponse
+        getUsers: [UserResponse]
+        getUserById(id: Int!): UserResponse
         getAwards: [Award]
         getMembers: [Member]
         getMemberById(id: Int): Member
@@ -137,8 +140,37 @@ exports.typeDefs = gql`
     }
 `;
 
+const dateScalar = new GraphQLScalarType({
+    name: 'Date',
+    description: 'Date custom scalar type',
+    serialize(value) {
+        return value.getTime(); // Convert outgoing Date to integer for JSON
+    },
+    parseValue(value) {
+        return new Date(value); // Convert incoming integer to Date
+    },
+    parseLiteral(ast) {
+        if (ast.kind === Kind.INT) {
+            return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
+        }
+        return null; // Invalid hard-coded value (not an integer)
+    },
+});
+
 // Provide resolver functions for your schema fields
 exports.resolvers = {
+    Date: dateScalar,
+    UserResponse: {
+        __resolveType(obj) {
+            if (obj.user) {
+                return 'User';
+            }
+            if (obj.message) {
+                return 'Message';
+            }
+            return null;
+        }
+    },
     Query: {
         ...UserResolvers.Query,
         ...AwardsResolvers.Query,

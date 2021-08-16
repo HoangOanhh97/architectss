@@ -5,13 +5,16 @@ const cors = require("cors");
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schema');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
 mongoose.connect(
   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@anniecluster.csjoy.mongodb.net/sarch?retryWrites=true`,
   {
     autoIndex: true,
     useUnifiedTopology: true,
-    useFindAndModify: true
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useCreateIndex: true,
   }
 ).then(() => {
   console.log('MongoDB connected successfully!');
@@ -19,32 +22,15 @@ mongoose.connect(
   console.error('Error while connecting to MongoDB: ', reason);
 })
 
-const getUser = (token) => {
-  try {
-    if (token) {
-      return jwt.verify(token, process.env.JWT_SECRET)
-    }
-    return null
-  } catch (error) {
-    return null
-  }
-}
-
 async function startApolloServer() {
   try {
     process.env.tz = "UTC";
     const server = new ApolloServer({
       typeDefs,
       resolvers,
-      context: ({ req }) => {
-        // Get the user token from the headers.
-        const token = req.headers.authorization || '';
-        // Try to retrieve a user with the token
-        const user = getUser(token);
-        if (!user) {
-          // console.log('You must be logged in!');
-        };
-        // return { user };
+      context: async ({ req }) => {
+        const token = req.headers['authorization'] || req.headers['x-access-token'] || null;
+        return { token }
       }
     });
     await server.start();
