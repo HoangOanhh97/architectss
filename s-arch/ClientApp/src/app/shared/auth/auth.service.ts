@@ -28,20 +28,20 @@ export class AuthService {
   public login(user) {
     return apolloServer().mutate({
       mutation: gql`
-        mutation login($loginInput: UserInput!) {
-          login(input: $loginInput) {
-            message
-            token
-            user {
-              _id
-              email
-              name
-              role
+          mutation login($loginInput: UserInput!) {
+            login(input: $loginInput) {
+              message
+              token
+              user {
+                _id
+                email
+                name
+                role
+              }
+              success
             }
-            success
           }
-        }
-      `,
+        `,
       variables: { loginInput: user }
     })
   }
@@ -88,36 +88,34 @@ export class AuthService {
     // here you can check if user is authenticated or not through his token
     console.log(this.token);
     if (this.token && !this._user) {
-      this.router.navigate(['/']);
+      return apolloServer().query({
+        query: gql`
+          query me {
+            me {
+              _id
+              name
+              email
+              role
+              status {
+                success
+                message
+              }
+            }
+          }
+        `
+      }).then(response => {
+        console.log(response.data.me);
+        if (response.data.me.status.success) {
+          this._user = response.data.me;
+          this.router.navigate(['/']);
+        } else {
+          alert(response.data.me.status.message)
+          this.router.navigate(['login']);
+        }
+      }).catch(err => {
+        this.router.navigate(['login']);
+      })
     }
-    // if (this.token && !this._user) {
-    //   return apolloServer().query({
-    //     query: gql`
-    //       query me {
-    //         me {
-    //           _id
-    //           name
-    //           email
-    //           role
-    //           status {
-    //             success
-    //             message
-    //           }
-    //         }
-    //       }
-    //     `
-    //   }).then(response => {
-    //     console.log(response.data.me);
-    //     if (response.data.me.status.success) {
-    //       this._user = response.data.me;
-    //     } else {
-    //       alert(response.data.me.status.message)
-    //       this.router.navigate(['login']);
-    //     }
-    //   }).catch(err => {
-    //     this.router.navigate(['login']);
-    //   })
-    // }
 
     return this.token && this.token !== '';
   }
