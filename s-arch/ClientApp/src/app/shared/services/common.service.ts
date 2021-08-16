@@ -23,12 +23,10 @@ export class CommonService {
         return this._currentUser;
     }
 
-    public getAuthHeader(includeJsonContentType?: boolean,): any {
-        if (!this.accessToken) {
-            this.accessToken = localStorage.getItem('h2-token');
-        }
+    public static getAuthHeader(includeJsonContentType?: boolean): any {
+        const accessToken = localStorage.getItem('sarch-token');
         let headers = new HttpHeaders({
-            'Authorization': this.accessToken,
+            'Authorization': `Bearer ${accessToken}`,
             'userId': CommonService._currentUser?._id || {}
         });
         if (includeJsonContentType) {
