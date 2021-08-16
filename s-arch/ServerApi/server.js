@@ -28,9 +28,9 @@ async function startApolloServer() {
     const server = new ApolloServer({
       typeDefs,
       resolvers,
-      context: async ({ req }) => {
-        const token = req.headers['authorization'] || req.headers['x-access-token'] || null;
-        return { token }
+      context: ({ req }) => {
+        // const token = req.headers['authorization'] || req.headers['x-access-token'] || null;
+        // return { token }
       }
     });
     await server.start();

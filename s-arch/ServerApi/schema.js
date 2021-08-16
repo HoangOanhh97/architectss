@@ -89,7 +89,7 @@ exports.typeDefs = gql`
     }
     union UserResponse = User | Message
     type Query {
-        me: UserResponse
+        me(email: String!): UserResponse
         getUsers: [UserResponse]
         getUserById(id: Int!): UserResponse
         getAwards: [Award]

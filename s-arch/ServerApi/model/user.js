@@ -36,7 +36,8 @@ const users = new Schema(
         role: {
             type: ObjectId,
             ref: 'user_role'
-        }
+        },
+        decoded: { type: String, require: true }
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
@@ -64,13 +65,18 @@ const getStatus = (status, mess) => {
     }
 }
 
-exports.me = async (currentUser) => {
-    console.log('currentUser: ', currentUser)
-    if (!currentUser) {
-        return { status: getStatus(false, 'You are not authenticated') };
+exports.me = async (email) => {
+    if (!email) {
+        return getStatus(false, 'You are not authenticated.');
     };
-    const result = await this.Users.findOne({ "email": currentUser.email });
-    return result;
+    try {
+        const result = await this.Users.findOne({ email });
+        console.log(result)
+        return result;
+    } catch (error) {
+        console.log('error: ', error)
+        return getStatus(false, 'Login failed.');
+    }
 }
 
 exports.getUsers = async () => {
@@ -146,7 +152,7 @@ exports.createUser = async (data) => {
     });
 }
 
-exports.login = async (data) => {
+exports.login = async (data, context) => {
     const { email, password } = data;
     try {
         const user = await this.Users.findOne({ email });
@@ -175,9 +181,17 @@ exports.login = async (data) => {
         const userRole = await User_Role.findOne({ user: user._id }).populate("role");
         // return jwt
         const payload = { id: user["_id"], email: user["email"] };
-        const token = jwt.sign(payload, process.env.JWT_SECRET, {
-            expiresIn: "600d" // expires in 7 days 
+        const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+            algorithm: "HS256", expiresIn: "1d"
         });
+        await this.Users.findOneAndUpdate({ email }, { "decoded": token }, { returnOriginal: false });
+        context.user = {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            decoded: user.decoded,
+            role: userRole.role.role,
+        }
 
         return {
             success: true,
