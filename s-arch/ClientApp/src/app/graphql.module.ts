@@ -12,8 +12,8 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   uri: uri,
   headers: {
     'Content-Type': 'application/json',
-    'x-access-token': localStorage.getItem('sarch-token') || null,
     'authorization': localStorage.getItem('sarch-token') || null,
+    'x-access-token': localStorage.getItem('sarch-token') || null,
   }
 });
 
