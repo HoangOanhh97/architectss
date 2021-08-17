@@ -33,10 +33,6 @@ const users = new Schema(
             required: true
         },
         password: { type: String, require: true, trim: true },
-        role: {
-            type: ObjectId,
-            ref: 'user_role'
-        },
         decoded: { type: String, require: true }
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
@@ -70,11 +66,17 @@ exports.me = async (email) => {
         return getStatus(false, 'You are not authenticated.');
     };
     try {
-        const result = await this.Users.findOne({ email });
-        console.log(result)
+        const user = await this.Users.findOne({ email }, 'name email created_at');
+        const userRole = await User_Role.findOne({ user: user._id }).populate("role");
+
+        const result = {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            role: userRole.role.role
+        };
         return result;
     } catch (error) {
-        console.log('error: ', error)
         return getStatus(false, 'Login failed.');
     }
 }

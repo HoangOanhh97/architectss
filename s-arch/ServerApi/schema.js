@@ -66,11 +66,16 @@ exports.typeDefs = gql`
         memberId: Int
         memberName: String
     }
+    union UserResponse = User | Message
     type User {
         _id: String
         name: String
         email: String
         role: String
+    }
+    type Message {
+        success: Boolean
+        message: String
     }
     type UserRole {
         _id: String
@@ -83,11 +88,6 @@ exports.typeDefs = gql`
         token: String
         user: User
     }
-    type Message {
-        success: Boolean
-        message: String
-    }
-    union UserResponse = User | Message
     type Query {
         me(email: String!): UserResponse
         getUsers: [UserResponse]
@@ -161,8 +161,8 @@ const dateScalar = new GraphQLScalarType({
 exports.resolvers = {
     Date: dateScalar,
     UserResponse: {
-        __resolveType(obj) {
-            if (obj.user) {
+        __resolveType: (obj) => {
+            if (obj.name) {
                 return 'User';
             }
             if (obj.message) {

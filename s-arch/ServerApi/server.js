@@ -60,7 +60,7 @@ async function startApolloServer() {
     }
     // parse requests of content-type - application/json
     app.use(bodyParser.json({ verify: rawBodySaver }));
-    // parse requests of content-type - application/x-www-form-urlencoded
+    // parse requests of content-type - application/x-www-form-urlencoded 
     app.use(bodyParser.urlencoded({ verify: rawBodySaver, extended: true }));
     // parse requests of content-type - */*
     app.use(bodyParser.raw({ verify: rawBodySaver, type: '*/*' }));

@@ -2,7 +2,7 @@ const User = require('../model/user');
 
 exports.UserResolvers = {
     Query: {
-        me: (_, { email }, context, info) => User.me(email),
+        me: (_, { email }) => User.me(email),
         getUsers: () => User.getUsers(),
         getUserById: (_, { id }) => User.getUserById(id),
     },
