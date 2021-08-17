@@ -22,8 +22,8 @@
           <div class="fp-hs-search-content" style="width: 576px;">
             <form action="/search" class="fp-hs-form">
               <label for="fp-search-term" class="fp-hs-label">{{'Search' | translate }} S Architects</label>
-              <input type="search" id="fp-search-term" class="fp-hs-term" placeholder="{{'Search' | translate }} S Architects"
-                data-original-value="" tabindex="-1" />
+              <input type="search" id="fp-search-term" class="fp-hs-term"
+                placeholder="{{'Search' | translate }} S Architects" data-original-value="" tabindex="-1" />
               <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
               <input type="reset" value="Clear" class="fp-hs-search-clear" (click)="clear()" />
             </form>
@@ -42,13 +42,13 @@
                 <span target="_blank" class="fp-is-link" tabindex="-1">{{'Privacy Notice' | translate }}</span>
               </li>
               <li class="fp-is-list-item">
-                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Salary and Human Resource' | translate }}</span>
+                <span target="_blank" class="fp-is-link"
+                  tabindex="-1">{{'Salary and Human Resource' | translate }}</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="component fp-navigation closed"
@@ -158,7 +158,43 @@
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/contact']" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
-              class="no-auto-detection fp-nav-link  ">{{'Contact' | translate }}</a>
+              class="no-auto-detection fp-nav-link">{{'Contact' | translate }}</a>
+          </li>
+
+          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a title="currentUser" [matMenuTriggerFor]="menu"
+              class="user_name no-auto-detection fp-nav-link">{{ currentUser.name }}
+              <mat-icon aria-hidden="false" aria-label="Current user" class="button_arrow_down">arrow_drop_down
+              </mat-icon>
+            </a>
+            <mat-menu #menu="matMenu">
+              <p class="border-bottom pi-10px">Logged in as 
+                <span class="f-600">{{ currentUser.name }}</span> 
+              </p>
+
+              <a mat-menu-item (click)="$event.stopPropagation(); showLangChange = !showLangChange">
+                <mat-icon class="language-icon" color="purple">language</mat-icon>
+                <span>{{showLangChange ? 'Select language' : language}}</span>
+              </a>
+
+              <div class="fp-ls-overlay fadeIn" *ngIf="showLangChange">
+                <div class="fl-ls-overlay-content fadeIn" style="padding-left: 35px;">
+                  <ul class="fp-ls-list" style="list-style: none;">
+                    <li style="font-size: 12px;">
+                      <span class="fp-ls-link f-600" (click)="useLanguage(language)">{{language}}</span>
+                    </li>
+                    <li (click)="useLanguage(anotherLang)" style="font-size: 12px;">
+                      <a style="opacity: .7; text-decoration: none !important; font-weight: 400;" class="fp-ls-link">{{anotherLang}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <a mat-menu-item [routerLink]="[ '/login' ]">
+                <mat-icon class="close-icon" color="danger">logout</mat-icon>
+                Log Out
+              </a>
+            </mat-menu>
           </li>
 
           <li class="fp-nav-list-item fp-nav-list-language-selector"

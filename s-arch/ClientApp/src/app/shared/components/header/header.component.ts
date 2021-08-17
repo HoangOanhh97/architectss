@@ -165,6 +165,7 @@ export class HeaderComponent implements OnInit {
       this.translate.use('en');
       localStorage.setItem('currentLang', 'en');
     }
+    this.showLangChange = !this.showLangChange;
   }
 
   changeLang() {
