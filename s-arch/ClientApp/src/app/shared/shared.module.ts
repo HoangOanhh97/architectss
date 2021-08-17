@@ -11,6 +11,7 @@ import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng
 import { HeaderComponent } from './components/header/header.component';
 import { LogoSvgComponent } from './components/header/logo-svg/logo-svg.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbPaginationModule,
     NgbAlertModule,
     RouterModule,
+    TranslateModule
   ],
   exports: [
     MatMenuModule,
@@ -44,6 +46,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbPaginationModule,
     NgbAlertModule,
     RouterModule,
+    TranslateModule,
 
     HeaderComponent,
     FooterComponent,

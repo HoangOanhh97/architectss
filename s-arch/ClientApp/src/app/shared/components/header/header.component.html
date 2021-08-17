@@ -21,8 +21,8 @@
         <div class="fp-hs-search-wrapper" id="hs-search">
           <div class="fp-hs-search-content" style="width: 576px;">
             <form action="/search" class="fp-hs-form">
-              <label for="fp-search-term" class="fp-hs-label">{{'Search' }} S Architects</label>
-              <input type="search" id="fp-search-term" class="fp-hs-term" placeholder="{{'Search' }} S Architects"
+              <label for="fp-search-term" class="fp-hs-label">{{'Search' | translate }} S Architects</label>
+              <input type="search" id="fp-search-term" class="fp-hs-term" placeholder="{{'Search' | translate }} S Architects"
                 data-original-value="" tabindex="-1" />
               <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
               <input type="reset" value="Clear" class="fp-hs-search-clear" (click)="clear()" />
@@ -32,17 +32,17 @@
 
         <div class="fp-instant-search">
           <div class="fp-is-container">
-            <p class="fp-is-title">{{'Recommended searches' }}</p>
+            <p class="fp-is-title">{{'Recommended searches' | translate }}</p>
 
             <ul class="fp-is-list">
               <li class="fp-is-list-item">
-                <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' }}</span>
+                <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' | translate }}</span>
               </li>
               <li class="fp-is-list-item">
-                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Privacy Notice' }}</span>
+                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Privacy Notice' | translate }}</span>
               </li>
               <li class="fp-is-list-item">
-                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Salary and Human Resource' }}</span>
+                <span target="_blank" class="fp-is-link" tabindex="-1">{{'Salary and Human Resource' | translate }}</span>
               </li>
             </ul>
           </div>
@@ -93,10 +93,10 @@
                   <div class="fp-hs-search-content">
                     <form action="/search" class="fp-hs-form">
 
-                      <label for="fp-search-term-navigation" class="fp-hs-label">{{'Search' }} S
+                      <label for="fp-search-term-navigation" class="fp-hs-label">{{'Search' | translate }} S
                         Architects</label>
                       <input type="search" id="fp-search-term-navigation" class="fp-hs-term"
-                        placeholder="{{'Search' }} S Architects" data-original-value="" tabindex="-1" />
+                        placeholder="{{'Search' | translate }} S Architects" data-original-value="" tabindex="-1" />
 
                       <input type="submit" value="Search" class="fp-hs-submit" tabindex="-1" />
                       <input type="reset" value="Clear" class="fp-hs-search-clear" />
@@ -106,19 +106,19 @@
                 </div>
                 <div class="fp-instant-search " style="top: 60px;">
                   <div class="fp-is-container">
-                    <p class="fp-is-title">{{'Recommended searches' }}</p>
+                    <p class="fp-is-title">{{'Recommended searches' | translate }}</p>
 
                     <ul class="fp-is-list" style="display: inline-grid; float: left;">
                       <li class="fp-is-list-item">
-                        <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' }}</span>
+                        <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' | translate }}</span>
                       </li>
                       <li class="fp-is-list-item">
                         <span target="_blank" class="fp-is-link no-auto-detection"
-                          tabindex="-1">{{'Privacy Notice' }}</span>
+                          tabindex="-1">{{'Privacy Notice' | translate }}</span>
                       </li>
                       <li class="fp-is-list-item">
                         <span target="_blank" class="fp-is-link no-auto-detection"
-                          tabindex="-1">{{'Salary and Human Resource' }}</span>
+                          tabindex="-1">{{'Salary and Human Resource' | translate }}</span>
                       </li>
                     </ul>
 
@@ -133,32 +133,32 @@
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/company']" [ngClass]="{'selected': navActive === 'company'}" title="Company"
-              class="no-auto-detection fp-nav-link ">{{'Company' }}</a>
+              class="no-auto-detection fp-nav-link ">{{'Company' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/award']" [ngClass]="{'selected': navActive === 'award'}" title="Awards"
-              class="no-auto-detection fp-nav-link  ">{{'Awards' }}</a>
+              class="no-auto-detection fp-nav-link  ">{{'Awards' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/projects']"
               [ngClass]="{'selected': navActive == 'projects' || navActive === 'projectDetail'}" title="Projects"
-              class="no-auto-detection fp-nav-link  ">{{'Projects' }}</a>
+              class="no-auto-detection fp-nav-link  ">{{'Projects' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/news']" [ngClass]="{'selected': navActive === 'news'}" title="News"
-              class="no-auto-detection fp-nav-link  ">{{'News' }}</a>
+              class="no-auto-detection fp-nav-link  ">{{'News' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/contact']" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
-              class="no-auto-detection fp-nav-link  ">{{'Contact' }}</a>
+              class="no-auto-detection fp-nav-link  ">{{'Contact' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item fp-nav-list-language-selector"
