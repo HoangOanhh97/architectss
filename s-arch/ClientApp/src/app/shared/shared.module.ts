@@ -8,10 +8,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoSvgComponent } from './components/header/logo-svg/logo-svg.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [

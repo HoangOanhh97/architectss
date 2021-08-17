@@ -64,6 +64,10 @@ export class AuthService {
     })
   }
 
+  public logout() {
+    this.token = null;
+  }
+
   public getToken(): string {
     return this.token;
   }
