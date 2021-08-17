@@ -5073,8 +5073,23 @@ html .theme-white .fp-header.header-top-gradient-is-open::after,
   width: 24px
 }
 
-.fp-navigation .fp-icon-slide::after {
+.theme-black .fp-navigation .fp-icon-slide::after {
   background: url(../img/ico/chervon-right.png) center center no-repeat transparent;
+  background-size: 100%;
+  content: '';
+  display: block;
+  height: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 8px
+}
+
+.theme-white .fp-navigation .fp-icon-slide::after {
+  background: url(../img/ico/chervon-right-black.png) center center no-repeat transparent;
   background-size: 100%;
   content: '';
   display: block;
@@ -5282,7 +5297,7 @@ html .theme-white .fp-navigation #pulse,
   }
 }
 
-@media screen and (min-width: 1125px) {
+@media screen and (min-width: 1024px) {
   .fp-navigation {
     position: absolute;
     z-index: 1
@@ -5353,7 +5368,8 @@ html .theme-white .fp-navigation #pulse,
   }
 
   .fp-navigation .fp-nav-list-search,
-  .fp-navigation .fp-nav-list-language-selector {
+  .fp-navigation .fp-nav-list-language-selector,
+  .fp-navigation .fp-nav-list-logout {
     display: none !important
   }
 
@@ -5367,7 +5383,14 @@ html .theme-white .fp-navigation #pulse,
   html .search .fp-navigation .fp-nav-link {
     color: #fff
   }
+  
+  .fp-instant-search {
+    top: 82px;
+    width: 30%
+  }
 }
+
+
 
 @-webkit-keyframes pulse-inner {
   30% {
@@ -5509,10 +5532,10 @@ html .theme-white .fp-navigation #pulse,
 
 .fp-ls-standalone .fp-ls-overlay {
   bottom: 42px !important;
-    display: none;
-    position: absolute;
-    right: 0 !important;
-    width: 100%;
+  display: none;
+  position: absolute;
+  right: 0 !important;
+  width: 100%;
 }
 
 .fp-ls-standalone .fl-ls-overlay-content {
@@ -5623,7 +5646,7 @@ html .theme-white .fp-navigation #pulse,
 
 @media screen and (max-width: 1023px) {
   .fp-ls-footer {
-    display: none
+    display: none;
   }
 }
 
@@ -5966,12 +5989,9 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
     overflow-y: auto;
     top: 155px
   }
-}
 
-@media screen and (min-width: 1024px) {
-  .fp-instant-search {
-    top: 82px;
-    width: 30%
+  .fp-navigation .fp-nav-list-user {
+    display: none !important;
   }
 }
 
@@ -6033,7 +6053,6 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
 }
 
 @media screen and (min-width: 1024px) {
-
   html .theme-white .fp-instant-search .fp-is-title,
   html .theme-white .fp-instant-search .fp-is-link,
   .seniorpartners .fp-instant-search .fp-is-title,
@@ -6159,7 +6178,6 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
 }
 
 @media screen and (min-width: 1024px) and (min-width: 1024px) {
-
   html .theme-white .fp-header-search .fp-hs-toggle,
   .seniorpartner .fp-header-search .fp-hs-toggle,
   .partner .fp-header-search .fp-hs-toggle,
@@ -6170,7 +6188,6 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
 }
 
 @media screen and (min-width: 1024px) {
-
   html .theme-white .fp-header-search .fp-hs-term,
   .seniorpartner .fp-header-search .fp-hs-term,
   .partner .fp-header-search .fp-hs-term,
@@ -6307,7 +6324,6 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
 }
 
 @media screen and (min-width: 1024px) {
-
   .seniorpartners .autocomplete-suggestions .autocomplete-suggestion,
   .partners .autocomplete-suggestions .autocomplete-suggestion,
   .associatepartners .autocomplete-suggestions .autocomplete-suggestion,
@@ -6329,7 +6345,6 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
 }
 
 @media screen and (min-width: 1024px) {
-
   .seniorpartners .autocomplete-suggestions strong,
   .partners .autocomplete-suggestions strong,
   .associatepartners .autocomplete-suggestions strong,
@@ -6354,7 +6369,6 @@ html .theme-black .fp-header-search .fp-hs-term::selection {
 }
 
 @media screen and (min-width: 1024px) {
-
   html.theme-white .autocomplete-suggestions .autocomplete-suggestion,
   html.theme-white .autocomplete-suggestions strong {
     color: #000
@@ -11737,6 +11751,7 @@ html:not(.browser-safari) .fp-dc-list .fp-dc-content:hover .fp-dc-background-col
 }
 
 @media screen and (min-width: 645px) {
+
   .fp-tile-page .fp-tp-hero-img>.fp-content>.fp-content__img,
   .fp-tile-page .fp-tp-hero-img>.fp-content>picture>.fp-content__img {
     width: 100%;
@@ -13087,6 +13102,7 @@ screen and (max-width: 1025px) {
     margin-right: 0 15%
   } */
 }
+
 @media screen and (max-width: 411px) {
   .fp-news-grid .fp-ng-title {
     margin-bottom: 5px;
@@ -13095,7 +13111,7 @@ screen and (max-width: 1025px) {
 }
 
 @media screen and (max-width: 767px) {
-  
+
 
   .fp-news-grid-row.fp-universal-grid .fp-grid__item,
   .fp-contact-grid.fp-universal-grid .fp-grid__item {
@@ -16609,8 +16625,8 @@ screen and (max-width: 1025px) {
   position: absolute;
   width: auto;
   height: 85%;
-  margin: auto;  
-  left:-125px;
+  margin: auto;
+  left: -125px;
   right: 0;
   top: 0;
   bottom: 0;
@@ -20685,7 +20701,7 @@ a.pswp__share--download:hover {
 }
 
 .team-title {
-  padding: 10px 80px; 
-  width: 100%; 
+  padding: 10px 80px;
+  width: 100%;
   text-align: center;
 }

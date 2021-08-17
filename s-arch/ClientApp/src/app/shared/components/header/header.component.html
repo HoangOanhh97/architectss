@@ -155,26 +155,27 @@
               class="no-auto-detection fp-nav-link  ">{{'News' | translate }}</a>
           </li>
 
-          <li class="fp-nav-list-item"
-            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
+          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
             <a [routerLink]="[ '/contact']" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
               class="no-auto-detection fp-nav-link">{{'Contact' | translate }}</a>
           </li>
 
-          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+          <li class="fp-nav-list-item fp-nav-list-user"
+            [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
             <a title="currentUser" [matMenuTriggerFor]="menu"
               class="user_name no-auto-detection fp-nav-link">{{ currentUser.name }}
               <mat-icon aria-hidden="false" aria-label="Current user" class="button_arrow_down">arrow_drop_down
               </mat-icon>
             </a>
             <mat-menu #menu="matMenu">
-              <p class="border-bottom pi-10px">Logged in as 
-                <span class="f-600">{{ currentUser.name }}</span> 
+              <p class="border-bottom pi-10px">Logged in as
+                <span class="f-600">{{ currentUser.name }}</span>
               </p>
 
               <a mat-menu-item (click)="$event.stopPropagation(); showLangChange = !showLangChange">
                 <mat-icon class="language-icon" color="purple">language</mat-icon>
-                <span>{{showLangChange ? 'Select language' : language}}</span>
+                <span *ngIf="showLangChange">{{ 'Select language' | translate}}</span>
+                <span *ngIf="!showLangChange">{{ language | translate}}</span>
               </a>
 
               <div class="fp-ls-overlay fadeIn" *ngIf="showLangChange">
@@ -184,7 +185,8 @@
                       <span class="fp-ls-link f-600" (click)="useLanguage(language)">{{language}}</span>
                     </li>
                     <li (click)="useLanguage(anotherLang)" style="font-size: 12px;">
-                      <a style="opacity: .7; text-decoration: none !important; font-weight: 400;" class="fp-ls-link">{{anotherLang}}</a>
+                      <a style="opacity: .7; text-decoration: none !important; font-weight: 400;"
+                        class="fp-ls-link">{{anotherLang}}</a>
                     </li>
                   </ul>
                 </div>
@@ -192,21 +194,24 @@
 
               <a mat-menu-item [routerLink]="[ '/login' ]">
                 <mat-icon class="close-icon" color="danger">logout</mat-icon>
-                Log Out
+                {{'Log Out' | translate}}
               </a>
             </mat-menu>
           </li>
 
+          <li class="fp-nav-list-item fp-nav-list-logout"
+            [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a [routerLink]="[ '/login']" class="no-auto-detection fp-nav-link">{{ currentUser.name }} -
+              {{'Log Out' | translate }}</a>
+          </li>
+
           <li class="fp-nav-list-item fp-nav-list-language-selector"
-            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}"
-            (click)="changeLang()">
+            [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}" (click)="changeLang()">
             <div class="component fp-language-selector fp-ls-navigation fp-ls-navigation"
               data-component-name="language-selector" data-component-type="navigation" style="position: relative;">
-              <div class="fp-ls-overlay" *ngIf="showLangChange == true">
-
+              <div class="fp-ls-overlay" *ngIf="showLangChange">
                 <div class="fp-ls-indicator fadeIn"></div>
                 <div class="fl-ls-overlay-content fadeIn">
-
                   <ul class="fp-ls-list">
                     <li class="fp-ls-item">
                       <span class="fp-ls-link" (click)="useLanguage(language)">{{language}}</span>
@@ -217,7 +222,6 @@
                     </li>
                   </ul>
                 </div>
-
               </div>
 
               <button type="button" name="button" class="fp-button-primary fp-ls-btn">
