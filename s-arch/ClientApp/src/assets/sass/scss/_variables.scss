@@ -1,0 +1,137 @@
+$primary: #490158;
+$secondary: #0cd1e8;
+$tertiary: #7044ff;
+$success: #4abea7;
+$warning: #ffce00;
+$danger: #ef4435;
+$dark: #222428;
+$medium: #828282;
+$light: #f4f5f8;
+$white: #FFF;
+$pink: #ff6384;
+$blue: #36a2eb;
+$darkblue: #2d2db1;
+$green: #10dc60;
+$grey: #b6bdc8;
+$cyan: #46bfbd;
+$orange: #ff8009;
+$red: #ff3333;
+
+:root {
+  --bs-primary: #490158;
+  --bs-info: #0d6efd;
+  --bs-secondary: #0cd1e8;
+  --bs-indigo: #7044ff;
+  --bs-success: #4abea7;
+  --bs-warning: #ffce00;
+  --bs-danger: #ef4435;
+  --bs-dark: #222428;
+  --bs-medium: #828282;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-light: #f4f5f8;
+  --bs-white: #FFF;
+
+  --bs-pink: #ff6384;
+  --bs-blue: #36a2eb;
+  --bs-dark-blue: #2d2db1;
+  --bs-purple: #6f42c1;
+  --bs-green: #10dc60;
+  --bs-teal: #20c997;
+  --bs-cyan: #46bfbd;
+  --bs-red: #ff3333;
+  --bs-orange: #ff8009;
+  --bs-yellow: #ffc107;
+
+  .mat-primary {
+    color: var(--bs-primary, $primary) !important;
+  }
+
+  .mat-info {
+    color: var(--bs-info, #0d6efd) !important;
+  }
+
+  .mat-secondary {
+    color: var(--bs-secondary, $secondary) !important;
+  }
+
+  .mat-indigo {
+    color: var(--bs-indigo, #7044ff) !important;
+  }
+
+  .mat-success {
+    color: var(--bs-success, $success) !important;
+  }
+
+  .mat-warning {
+    color: var(--bs-warning, $warning) !important;
+  }
+
+  .mat-danger {
+    color: var(--bs-danger, $danger) !important;
+  }
+
+  .mat-dark {
+    color: var(--bs-dark, $dark) !important;
+  }
+
+  .mat-medium {
+    color: var(--bs-medium, $medium) !important;
+  }
+
+  .mat-gray {
+    color: var(--bs-gray, #6c757d) !important;
+  }
+
+  .mat-gray-dark {
+    color: var(--bs-gray-dark, #343a40) !important;
+  }
+
+  .mat-light {
+    color: var(--bs-light, $light) !important;
+  }
+
+  .mat-white {
+    color: var(--bs-white, $white) !important;
+  }
+
+  .mat-pink {
+    color: var(--bs-pink, $pink) !important;
+  }
+
+  .mat-blue {
+    color: var(--bs-blue, $blue) !important;
+  }
+
+  .mat-dark-blue {
+    color: var(--bs-dark-blue, #2d2db1) !important;
+  }
+
+  .mat-purple {
+    color: var(--bs-purple, #6f42c1) !important;
+  }
+
+  .mat-green {
+    color: var(--bs-green, $green) !important;
+  }
+
+  .mat-teal {
+    color: var(--bs-teal, #20c997) !important;
+  }
+
+  .mat-cyan {
+    color: var(--bs-cyan, $cyan) !important;
+  }
+
+  .mat-red {
+    color: var(--bs-red, $red) !important;
+  }
+
+  .mat-orange {
+    color: var(--bs-orange, $orange) !important;
+  }
+
+  .mat-yellow {
+    color: var(--bs-yellow, #ffc107) !important;
+  }
+}
