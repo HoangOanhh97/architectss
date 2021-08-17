@@ -3,15 +3,20 @@
 @import "../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 a {
-    color: #000;
+  color: #000;
 }
 
-a:hover, a:focus {
-    color:black;
+a:hover,
+a:focus {
+  color: black;
 }
 
 .set-row-width {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
 
+.border-bottom {
+  border-bottom: 1px solid #ccc !important;
+  width: 100%;
+}
