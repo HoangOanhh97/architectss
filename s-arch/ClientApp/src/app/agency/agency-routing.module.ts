@@ -13,7 +13,7 @@ import { ProjectsComponent } from "./projects/projects.component";
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, data: { title: 'homepage' } },
     { path: 'company', component: CompanyComponent, data: { title: 'company' } },
-    { path: 'award', component: AwardsComponent, data: { title: 'award' } },
+    { path: 'awards', component: AwardsComponent, data: { title: 'awards' } },
 
     { path: 'projects', component: ProjectsComponent, data: { title: 'projects' } },
     { path: 'projects/types', component: ProjectsTypeComponent, data: { title: 'projects' } },

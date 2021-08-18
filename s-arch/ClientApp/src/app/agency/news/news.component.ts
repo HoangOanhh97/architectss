@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
   news: any = [];
   categories: any = [
     { title: 'News' },
-    { title: 'Event' }
+    { title: 'Events' }
   ];
   articles: any = {};
 

@@ -138,15 +138,15 @@
 
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-            <a [routerLink]="[ '/award']" [ngClass]="{'selected': navActive === 'award'}" title="Awards"
-              class="no-auto-detection fp-nav-link  ">{{'Awards' | translate }}</a>
+            <a [routerLink]="[ '/awards']" [ngClass]="{'selected': navActive === 'awards'}" title="Awards"
+              class="no-auto-detection fp-nav-link ">{{'Awards' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item"
             [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
             <a [routerLink]="[ '/projects']"
               [ngClass]="{'selected': navActive == 'projects' || navActive === 'projectDetail'}" title="Projects"
-              class="no-auto-detection fp-nav-link  ">{{'Projects' | translate }}</a>
+              class="no-auto-detection fp-nav-link ">{{'Projects' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item"

@@ -389,3 +389,12 @@
     display: none !important;
   }
 }
+
+.fp-instant-search {
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 3rem !important;
+  width: calc(100% - 60px);
+  z-index: 999;
+}
