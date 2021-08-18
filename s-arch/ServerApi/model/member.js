@@ -4,7 +4,6 @@ const { String, Number } = Schema.Types;
 
 const memberSchema = new Schema(
     {
-        _id: { type: Number, required: true },
         name: { type: String, required: true },
         role: { type: String },
         image: { type: String },
@@ -34,10 +33,9 @@ exports.createMember = async (data) => {
 }
 
 exports.updateMemberProfile = async (id, data) => {
-    const result = await Members.findOneAndUpdate({ id }, data, {
+    const result = await Members.findByIdAndUpdate(id, data, {
         returnOriginal: false
     });
-    console.log(result);
     return result;
 }
 

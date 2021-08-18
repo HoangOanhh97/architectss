@@ -11,7 +11,7 @@ exports.typeDefs = gql`
     scalar Date
 
     type Award {
-        _id: Int
+        _id: ID
         name: String
         content1: String
         content2: String
@@ -19,13 +19,13 @@ exports.typeDefs = gql`
         imageUrl: String
     }
     type Member {
-        _id: Int
+        _id: ID
         name: String
         role: String
         image: String
     }
     type News {
-        _id: String
+        _id: ID
         category: String
         title: String
         image: String
@@ -52,7 +52,7 @@ exports.typeDefs = gql`
         done: Boolean
     }
     type ProjectType {
-        _id: Int
+        _id: ID
         typeId: Int
         typeName: String
         mainBg: String
@@ -63,24 +63,24 @@ exports.typeDefs = gql`
     }
     type Project_Member {
         projectId: Int
-        memberId: Int
+        memberId: ID
         memberName: String
     }
     union UserResponse = User | Message
+    type Message {
+        success: Boolean
+        message: String
+    }
     type User {
         _id: String
         name: String
         email: String
         role: String
     }
-    type Message {
-        success: Boolean
-        message: String
-    }
     type UserRole {
-        _id: String
-        role: String
-        user: String
+        _id: ID
+        role: ID
+        user: ID
     }
     type AuthPayload {
         success: Boolean

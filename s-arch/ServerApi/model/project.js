@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 const { String, Number, Array } = Schema.Types;
 const _ = require('lodash');
 const Members = require('./member');
+const { ObjectId } = require('mongodb');
 
 const project_types = new Schema(
     {
@@ -24,7 +25,7 @@ const project_images = new Schema(
 const project_members = new Schema(
     {
         projectId: { type: Number, required: true },
-        memberId: { type: Number, required: true },
+        memberId: { type: ObjectId, ref: 'members', required: true },
         memberName: { type: String },
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
@@ -40,14 +41,8 @@ const projectSchema = new Schema(
         country: { type: String },
         overallView: { type: String },
         overallView1920: { type: String },
-        listView: {
-            type: Array,
-            ref: 'project_images'
-        },
-        participants: {
-            type: Array,
-            ref: 'project_members'
-        },
+        listView: { type: Array, ref: 'project_images' },
+        participants: { type: Array, ref: 'project_members' },
         description1: { type: String },
         description2: { type: String },
         status: { type: String },
