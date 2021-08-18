@@ -4,6 +4,8 @@ import * as _ from "lodash";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 @Component({
   selector: 'app-news',
@@ -19,7 +21,8 @@ export class NewsComponent implements OnInit {
   ];
   articles: any = {};
 
-  constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {
+  constructor(private http: HttpClient, private router: Router, private apiService: ApiService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -57,15 +60,20 @@ export class NewsComponent implements OnInit {
         $("#" + c.title).addClass("active");
       }
     });
-
-    // if (id === '#news-tab-button') {
-    //   $(id).addClass("underlineHover");
-    // } else {
-    //   $("#news-tab-button").removeClass("underlineHover");
-    // }
   }
 
   openNewsDetail(n) {
     // this.router.navigateByUrl('/news/' + n.id);
+  }
+
+  public addArticle() {
+    let dialogRef = this.dialog.open(CreateArticleComponent, {
+      panelClass: 'col-md-6',
+      disableClose: true,
+    })
+
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res)
+    })
   }
 }

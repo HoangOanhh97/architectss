@@ -9,6 +9,12 @@
         <!-- CategoryName -->
         <div class="component fp-section-tab" data-component-name="section-tab" data-content-reference="news"
           data-is-search-bar="false" data-is-sticky="true" style="opacity: 1;">
+          <div class="w-100 text-right p-3">
+            <button mat-button color="dark" (click)="addArticle()">
+              <mat-icon color="dark">add</mat-icon>
+              New Article
+            </button>
+          </div>
           <div class="fp-st-wrap">
             <ul class="fp-st-list">
               <li class="fp-st-list-item" *ngFor="let c of categories">
@@ -16,11 +22,6 @@
                   [ngClass]="{'active': c.title == 'News' }" data-toggle="tab" role="tab" 
                   id="{{c.title}}">{{c.title | translate}}</a>
               </li>
-              <!-- <li class="fp-st-list-item">
-                <a class="fp-st-link inactive" [ngClass]="{'underlineHover': tabSelected ===1 }"
-                  (click)="tabSelected = 2; removeActiveClass('#news-tab-button')" data-toggle="tab" role="tab"
-                  href="#events-tab" id="events-tab-button">{{'Events' | translate}}</a>
-              </li> -->
             </ul>
             <div class="fp-st-indicator">
               <span class="fp-st-pointer"></span>
