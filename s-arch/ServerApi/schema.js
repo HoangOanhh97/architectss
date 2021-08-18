@@ -9,7 +9,13 @@ const { GraphQLScalarType } = require('graphql');
 // Construct a schema, using GraphQL schema language
 exports.typeDefs = gql`
     scalar Date
+    union UserResponse = User | Message
+    union NewsResponse = News | Message
 
+    type Message {
+        success: Boolean
+        message: String
+    }
     type Award {
         _id: ID
         name: String
@@ -65,11 +71,6 @@ exports.typeDefs = gql`
         projectId: Int
         memberId: ID
         memberName: String
-    }
-    union UserResponse = User | Message
-    type Message {
-        success: Boolean
-        message: String
     }
     type User {
         _id: String
@@ -130,6 +131,12 @@ exports.typeDefs = gql`
         userId: String
         role: String
     }
+    input NewsInput {
+        category: String
+        title: String
+        image: String
+        descriptionHTML: String
+    }
     type Mutation {
         registerUser(input: NewUserInput!): AuthPayload!
         login(input: UserInput!): AuthPayload!
@@ -137,6 +144,8 @@ exports.typeDefs = gql`
         createMember(input: MemberInput!): Member
         createProject(input: ProjectInput!): Project
         updateAward(awardId: Int!, data: String): Award
+
+        postNews(input: NewsInput!): NewsResponse
     }
 `;
 
@@ -171,6 +180,17 @@ exports.resolvers = {
             return null;
         }
     },
+    NewsResponse: {
+        __resolveType: (obj) => {
+            if (obj.category) {
+                return 'News';
+            }
+            if (obj.message) {
+                return 'Message';
+            }
+            return null;
+        }
+    }, 
     Query: {
         ...UserResolvers.Query,
         ...AwardsResolvers.Query,

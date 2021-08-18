@@ -23,3 +23,34 @@ exports.getNewsByCategory = async (args) => {
     const result = await Projects.find({ category });
     return result;
 }
+
+exports.postNews = async (input) => {
+    await News.create(input).then((doc) => {
+        return doc;
+    }).catch(err => {
+        return {
+            success: false,
+            message: err
+        }
+    });
+}
+
+exports.updatedNews = async (newId, input) => {
+    const result = await News.findByIdAndUpdate(newId, input, { returnOriginal: false });
+    return result;
+}
+
+exports.deletedNews = async (newId) => {
+    await News.findByIdAndDelete(newId, (err, doc) => {
+        if (err) {
+            return {
+                success: false,
+                message: err
+            }
+        }
+        return {
+            success: true,
+            message: 'Updated Successfully!'
+        }
+    })
+}

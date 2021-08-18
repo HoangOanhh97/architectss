@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { String, Number } = Schema.Types;
+const { String } = Schema.Types;
 
 const memberSchema = new Schema(
     {

@@ -5,6 +5,6 @@ exports.NewsResolvers = {
         getNews: () => News.getNews(),
     },
     Mutation: {
-
+        postNews: (_, {input}) => News.postNews(input)
     }
 }
