@@ -144,6 +144,7 @@ export class HeaderComponent implements OnInit {
     $('.fp-header-search-gradient').addClass('header-top-gradient-is-open open fadeIn second').removeClass('fadeOut');
     $('.fp-header').addClass('header-top-gradient-is-open fp-navigation-is-open');
   }
+
   clear() {
     this.openHeaderSearch = false;
     $('.fp-instant-search').removeClass('fadeIn third').addClass('closed-nav');

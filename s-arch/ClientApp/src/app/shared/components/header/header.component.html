@@ -84,7 +84,7 @@
           <li class="fp-nav-list-item fp-nav-list-search" [ngClass]="{'opened-nav': hide == false}">
             <div class="component fp-header-search fp-hs-navigation"
               [ngClass]="{'search-is-open': opensearchNav == true}" data-component-name="header-search"
-              data-is-navigation="true" [ngStyle]="{'left': (opensearchNav == true)? '30px':'unset'}">
+              data-is-navigation="true" [ngStyle]="{'left': (opensearchNav === true) ? '30px' : 'unset'}">
               <button class="fp-hs-toggle" type="button" (click)="openSearchNav()">
                 Search
               </button>
@@ -104,10 +104,9 @@
                     </form>
                   </div>
                 </div>
-                <div class="fp-instant-search " style="top: 60px;">
+                <div class="fp-instant-search" style="top: 60px !important;">
                   <div class="fp-is-container">
                     <p class="fp-is-title">{{'Recommended searches' | translate }}</p>
-
                     <ul class="fp-is-list" style="display: inline-grid; float: left;">
                       <li class="fp-is-list-item">
                         <span class="fp-is-link no-auto-detection" tabindex="-1">{{'Careers' | translate }}</span>
@@ -121,49 +120,42 @@
                           tabindex="-1">{{'Salary and Human Resource' | translate }}</span>
                       </li>
                     </ul>
-
                   </div>
                 </div>
               </div>
-
             </div>
-
           </li>
 
-          <li class="fp-nav-list-item"
-            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-            <a [routerLink]="[ '/company']" [ngClass]="{'selected': navActive === 'company'}" title="Company"
+          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a [routerLink]="[ '/company' ]" [ngClass]="{'selected': navActive === 'company'}" title="Company"
               class="no-auto-detection fp-nav-link ">{{'Company' | translate }}</a>
           </li>
 
-          <li class="fp-nav-list-item"
-            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-            <a [routerLink]="[ '/awards']" [ngClass]="{'selected': navActive === 'awards'}" title="Awards"
+          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a [routerLink]="[ '/awards' ]" [ngClass]="{'selected': navActive === 'awards'}" title="Awards"
               class="no-auto-detection fp-nav-link ">{{'Awards' | translate }}</a>
           </li>
 
-          <li class="fp-nav-list-item"
-            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-            <a [routerLink]="[ '/projects']"
-              [ngClass]="{'selected': navActive == 'projects' || navActive === 'projectDetail'}" title="Projects"
+          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a [routerLink]="[ '/projects' ]"
+              [ngClass]="{'selected': ['projects', 'projectDetail'].includes(navActive)}" title="Projects"
               class="no-auto-detection fp-nav-link ">{{'Projects' | translate }}</a>
           </li>
 
-          <li class="fp-nav-list-item"
-            [ngClass]="{'opened-nav': hide == false && opensearchNav== false, 'myOpacity': opensearchNav == true}">
-            <a [routerLink]="[ '/news']" [ngClass]="{'selected': navActive === 'news'}" title="News"
+          <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a [routerLink]="[ '/news' ]" [ngClass]="{'selected': navActive === 'news'}" title="News"
               class="no-auto-detection fp-nav-link  ">{{'News' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item" [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
-            <a [routerLink]="[ '/contact']" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
+            <a [routerLink]="[ '/contact' ]" [ngClass]="{'selected': navActive == 'contact'}" title="Contact"
               class="no-auto-detection fp-nav-link">{{'Contact' | translate }}</a>
           </li>
 
           <li class="fp-nav-list-item fp-nav-list-user"
             [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
-            <a title="currentUser" [matMenuTriggerFor]="menu"
-              class="user_name no-auto-detection fp-nav-link">{{ currentUser.name }}
+            <a title="currentUser" [matMenuTriggerFor]="menu" class="user_name no-auto-detection fp-nav-link">
+              {{ currentUser.name }}
               <mat-icon aria-hidden="false" aria-label="Current user" class="button_arrow_down">arrow_drop_down
               </mat-icon>
             </a>
