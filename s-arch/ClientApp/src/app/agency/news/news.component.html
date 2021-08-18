@@ -9,17 +9,11 @@
         <!-- CategoryName -->
         <div class="component fp-section-tab" data-component-name="section-tab" data-content-reference="news"
           data-is-search-bar="false" data-is-sticky="true" style="opacity: 1;">
-          <div class="w-100 text-right p-3">
-            <button mat-button color="dark" (click)="addArticle()">
-              <mat-icon color="dark">add</mat-icon>
-              New Article
-            </button>
-          </div>
           <div class="fp-st-wrap">
             <ul class="fp-st-list">
               <li class="fp-st-list-item" *ngFor="let c of categories">
                 <a class="fp-st-link" (click)="getArticlesByCategoryName(c.title)"
-                  [ngClass]="{'active': c.title == 'News' }" data-toggle="tab" role="tab" 
+                  [ngClass]="{'active': c.title == 'News' }" data-toggle="tab" role="tab"
                   id="{{c.title}}">{{c.title | translate}}</a>
               </li>
             </ul>
@@ -27,8 +21,12 @@
               <span class="fp-st-pointer"></span>
             </div>
           </div>
-
-
+        </div>
+        <div class="component set-row-width text-right">
+          <button mat-stroked-button color="dark" (click)="addArticle()">
+            <mat-icon color="dark">add</mat-icon>
+            New Article
+          </button>
         </div>
 
         <!-- Articles -->
@@ -81,7 +79,7 @@
                 </div>
               </div>
 
-        <!-- <div>
+              <!-- <div>
                 <div class="fadeIn first" id="events-tab">
                   <div class="fp-section-slide-item fb-events" data-tab="events">
                     <section class="component fp-events-grid" data-component-name="events-grid" data-endpoint="#"

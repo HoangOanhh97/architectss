@@ -18,7 +18,13 @@ ul {
   padding: 0px !important;
 }
 
-.w-100 {
+.set-row-width {
+  width: 90%;
+  margin: auto;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ccc !important;
   width: 100%;
 }
 
