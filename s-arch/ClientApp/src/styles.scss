@@ -3,6 +3,10 @@
 @import "./assets/sass/app.scss";
 @import "./assets/css/main.css";
 
+body {
+  font-size: 13px;
+}
+
 a {
   color: #000 !important;
   cursor: pointer;
@@ -18,8 +22,29 @@ ul {
   padding: 0px !important;
 }
 
-input, textarea {
+input,
+label,
+select,
+textarea {
   font-size: 13px !important;
+}
+
+textarea {
+  overflow: auto;
+  height: auto;
+  font: inherit;
+  color: inherit;
+}
+
+textarea::placeholder {
+  padding-left: 2px;
+}
+
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
 }
 
 .set-row-width {
