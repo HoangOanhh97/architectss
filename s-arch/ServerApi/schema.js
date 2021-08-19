@@ -36,6 +36,8 @@ exports.typeDefs = gql`
         title: String
         image: String
         descriptionHTML: String
+        link: String
+        created_at: String
     }
     type Project {
         _id: Int
