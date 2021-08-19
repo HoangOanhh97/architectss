@@ -2,6 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import _ from 'lodash';
 
+export interface IArticle {
+  title: String,
+  descriptionHTML: String,
+  image: String,
+  category: String
+}
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
@@ -30,6 +36,10 @@ export class CreateArticleComponent implements OnInit {
   public onSave() {
     this.isValid = true;
     Object.keys(this.article).forEach(k => {
+      if (['image'].includes(k)) {
+        this.article[k] = " "
+        return;
+      }
       if (this.isNullOrEmpty(this.article[k])) {
         return this.isValid = false;
       }

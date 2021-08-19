@@ -79,8 +79,17 @@ export class NewsComponent implements OnInit {
       disableClose: true,
     })
 
-    dialogRef.afterClosed().subscribe(res => {
-      console.log(res)
+    dialogRef.afterClosed().subscribe(data => {
+      if (data) {
+        this.apiService.postArticle(data).then(res => {
+          if (res.data && res.data.updateArticle) {
+            this.snotify.success('Post article successfully!')
+            this.getArticles();
+            return;
+          }
+          return this.snotify.error('Error!');
+        })
+      }
     })
   }
 
@@ -91,11 +100,11 @@ export class NewsComponent implements OnInit {
       data: {
         article: item
       }
-    }).afterClosed().subscribe(res => {
-      if (res) {
-        const { category, title, descriptionHTML, image } = res;
-        this.apiService.updateArticle(item.title, { category, title, descriptionHTML, image }).then(response => {
-          if (response.data && response.data.updateArticle) {
+    }).afterClosed().subscribe(data => {
+      if (data) {
+        const { category, title, descriptionHTML, image } = data;
+        this.apiService.updateArticle(item.title, { category, title, descriptionHTML, image }).then(res => {
+          if (res.data && res.data.updateArticle) {
             this.snotify.success('Update Successfully!')
             this.getArticles();
             return;
@@ -114,10 +123,10 @@ export class NewsComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top',
       data: 'Are you sure you want to delete this article?'
-    }).afterDismissed().subscribe(res => {
-      if (res.dismissedByAction) {
-        this.apiService.deleteArticle(item.title).then(response => {
-          console.log(response)
+    }).afterDismissed().subscribe(data => {
+      if (data.dismissedByAction) {
+        this.apiService.deleteArticle(item.title).then(res => {
+          console.log(res)
         })
       }
     })
