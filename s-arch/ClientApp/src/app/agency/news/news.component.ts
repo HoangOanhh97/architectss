@@ -50,7 +50,7 @@ export class NewsComponent implements OnInit {
     this.news = null;
     this.tabSelected = title === 'News' ? 1 : 2;
     if (this.articles[title]) {
-      this.news = this.articles[title];
+      this.news = (this.articles[title] || []);
       console.log(this.news);
     }
     this.removeActiveClass(title);

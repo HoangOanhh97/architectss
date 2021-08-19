@@ -7,7 +7,9 @@ export interface IArticle {
   descriptionHTML: String,
   image: String,
   category: String,
-  link: ''
+  link: String,
+  created_at: Date,
+  updated_at: Date
 }
 @Component({
   selector: 'app-create-article',
@@ -21,13 +23,17 @@ export class CreateArticleComponent implements OnInit {
     descriptionHTML: '',
     image: '',
     category: '',
-    link: ''
+    link: '',
+    created_at: null,
+    updated_at: null
   };
   public isValid: Boolean = null;
 
   constructor(public dialogRef: MatDialogRef<CreateArticleComponent>, @Inject(MAT_DIALOG_DATA) public data: any,) {
     this.isCreated = !!data.isCreated;
     this.article = data.article || {};
+
+    this.article[this.isCreated ? 'created_at' : 'updated_at'] = new Date();
   }
 
   ngOnInit(): void {
@@ -40,15 +46,15 @@ export class CreateArticleComponent implements OnInit {
     }
   }
 
-  public onChangeValue(value) {
-    
-  }
-
   public onSave() {
     this.isValid = true;
+    this.article.updated_at = new Date();
     console.log(this.article)
     Object.keys(this.article).forEach(k => {
-      if (['image', 'link', "created_at"].includes(k)) {
+      if (k === 'created_at' && this.isNullOrEmpty(this.article[k])) {
+        return this.article[k] = new Date();
+      }
+      if (['image', 'link', "updated_at"].includes(k)) {
         this.article[k] = " "
         return;
       }

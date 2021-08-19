@@ -24,14 +24,13 @@
         </div>
         <div class="component set-row-width text-right">
           <button mat-stroked-button color="dark" (click)="addArticle()">
-            <mat-icon color="dark">add</mat-icon>
-            New Article
+            <mat-icon color="dark">add</mat-icon> Article
           </button>
         </div>
 
         <!-- Articles -->
         <div class="fp-section-slide component" data-component-name="section-slide" data-history-managed="true"
-          data-content-reference="news" data-page-scrollable="true" data-swipe-behaviour="true">
+          data-content-reference="news" data-page-scrollable="true" data-swipe-behaviour="true" style="min-height: 600px;">
           <div class="fp-section-loader"></div>
           <div class="fp-section-slide-wrap">
             <div class="tab-pane fade show active" id="tabDetails">
@@ -48,10 +47,11 @@
                               <section>
                                 <a class="fp-events-item click-trigger">
                                   <div class="fp-events-item__content">
-                                    <span class="fp-events-item__subtitle">2019, HCMC</span>
+                                    <span class="fp-events-item__subtitle">
+                                      2019, HCMC
+                                    </span>
                                     <h3 class="fp-events-item__title">{{ item.title | translate}}</h3>
                                     <br><br>
-                                    <span class="fp-ng-content-link">{{ 'Read article' | translate}}</span>
                                   </div>
                                   <div class="fp-ng-content-copy">
                                     <button mat-icon-button color="medium" [matMenuTriggerFor]="actions">
@@ -60,10 +60,10 @@
 
                                     <mat-menu #actions="matMenu">
                                       <button mat-menu-item (click)="update(item)">
-                                        <mat-icon color="gray">drive_file_rename_outline</mat-icon> Edit
+                                        <mat-icon color="gray">drive_file_rename_outline</mat-icon> {{ 'Edit' | translate }}
                                       </button>
                                       <button mat-menu-item (click)="delete(item)">
-                                        <mat-icon color="gray">delete</mat-icon> Delete
+                                        <mat-icon color="gray">delete</mat-icon> {{ 'Delete' | translate }}
                                       </button>
                                     </mat-menu>
                                   </div>

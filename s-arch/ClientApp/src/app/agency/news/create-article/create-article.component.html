@@ -6,7 +6,7 @@
 </div>
 <div mat-dialog-content class="w-100 row">
   <mat-form-field appearance="legacy" class="col-12">
-    <mat-label>Category</mat-label>
+    <mat-label>{{ 'Category' | translate }}</mat-label>
     <mat-select required [(ngModel)]="article.category">
       <mat-option value="News">{{ 'News' | translate}}</mat-option>
       <mat-option value="Events">{{ 'Events' | translate}}</mat-option>
@@ -14,22 +14,22 @@
   </mat-form-field>
 
   <mat-form-field appearance="legacy" class="col-12">
-    <mat-label>Title</mat-label>
+    <mat-label>{{ 'Article title' | translate}}</mat-label>
     <input matInput required [(ngModel)]="article.title">
   </mat-form-field>
 
   <mat-form-field appearance="legacy" class="col-12">
-    <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="article.descriptionHTML" (change)="onChangeValue(article.descriptionHTML)" rows="5"></textarea>
+    <mat-label>{{ 'Description' | translate }}</mat-label>
+    <textarea matInput [(ngModel)]="article.descriptionHTML" rows="5"></textarea>
   </mat-form-field>
 
-  <p *ngIf="isValid === false">TTTTTTTTT</p>
+  <p *ngIf="isValid === false">{{ 'Please fill all blank fields!' | translate }}</p>
 
   <!-- <div class="col-12 mt-3">
     <input matInput class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadFiles($event)" />
   </div> -->
 </div>
 <div mat-dialog-actions style="float: right;">
-  <button *ngIf="!isCreated" mat-button color="danger" mat-dialog-close>Cancel</button>
-  <button mat-button color="success" (click)="onSave()">Save</button>
+  <button *ngIf="!isCreated" mat-button color="danger" mat-dialog-close>{{ 'Cancel' | translate }}</button>
+  <button mat-button color="success" (click)="onSave()">{{ 'Save' | translate }}</button>
 </div>
