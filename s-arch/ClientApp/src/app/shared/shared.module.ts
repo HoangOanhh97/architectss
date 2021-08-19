@@ -8,12 +8,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoSvgComponent } from './components/header/logo-svg/logo-svg.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from '../material.module';
+import { ConfirmModalComponent } from './dialog/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     LogoSvgComponent,
     FooterComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,9 @@ import { MaterialModule } from '../material.module';
 
     HeaderComponent,
     FooterComponent,
+  ], 
+  entryComponents: [
+    ConfirmModalComponent
   ]
 })
 export class SharedModule { }
