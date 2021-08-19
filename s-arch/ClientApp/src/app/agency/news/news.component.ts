@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmModalComponent } from 'src/app/shared/dialog/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-news',
@@ -22,7 +24,7 @@ export class NewsComponent implements OnInit {
   articles: any = {};
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class NewsComponent implements OnInit {
 
   getArticlesByCategoryName(title) {
     this.news = null;
+    this.tabSelected = title === 'News' ? 1 : 2;
     if (this.articles[title]) {
       this.news = this.articles[title];
       console.log(this.news);
@@ -68,7 +71,10 @@ export class NewsComponent implements OnInit {
 
   public addArticle() {
     let dialogRef = this.dialog.open(CreateArticleComponent, {
-      panelClass: 'col-md-6',
+      panelClass: 'col-md-4',
+      data: {
+        isCreated: true,
+      },
       disableClose: true,
     })
 
@@ -76,4 +82,31 @@ export class NewsComponent implements OnInit {
       console.log(res)
     })
   }
+
+  public update(item) {
+    this.dialog.open(CreateArticleComponent, {
+      panelClass: 'col-md-4',
+      disableClose: true,
+      data: {
+        article: item
+      }
+    }).afterClosed().subscribe(res => {
+      console.log(res)
+    })
+  }
+
+  public delete(item) {
+    this.snackBar._openedSnackBarRef ? this.snackBar._openedSnackBarRef.dismiss() : '';
+    this.snackBar.openFromComponent(ConfirmModalComponent, {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      data: 'Are you sure you want to delete this article?'
+    }).afterDismissed().subscribe(res => {
+      console.log(res)
+      if (res.dismissedByAction) {
+
+      }
+    })
+  }
+
 }

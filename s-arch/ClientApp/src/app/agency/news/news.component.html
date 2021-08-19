@@ -37,63 +37,35 @@
             <div class="tab-pane fade show active" id="tabDetails">
               <div>
                 <div class="fadeIn first">
-                  <div class="fp-section-slide-item" data-tab="news">
-                    <section class="component fp-news-grid">
-                      <div class="fp-ng-wrap">
-                        <div *ngIf="news" class="component fp-news-grid-row fp-universal-grid">
-                          <ul class="fp-ng-list fp-grid">
-                            <li class="fp-ng-item fp-grid__item fp-grid-item__single no-zoom" data-width="2732"
-                              data-height="1360" *ngFor="let n of news">
-                              <a class="fp-grid-item-single-wrap row" style="width: 100%" (click)="openNewsDetail(n)">
-                                <div class="col-md-6" style="z-index: 2; background-color: #FFFFFF ">
-                                  <div class="fp-ng-content">
-                                    <span class="fp-ng-date">23/11/2019</span>
-                                    <div class="fp-ng-content-wrap" style="display: grid">
-                                      <span class="fp-ng-title ">{{n.title}}</span>
-                                      <div class="fp-ng-content-copy">
-                                        <span [innerHTML]="n.description"></span>
-                                        <span class="fp-ng-content-link">{{ 'Read article' | translate}}</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-1"></div>
-                                <div class="sa_img col-md-5">
-                                  <img src="{{n.image}}" alt="view" style="width: 100% !important;">
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-
-                        <!-- News == null -->
-                        <!-- <div *ngIf="!news" class="fp-news-grid-row empty-data">
-                          <span class="fp-events-item__subtitle">2019, HCMC</span>
-                          <h3 class="fp-events-item__title">({{'updating' | translate}})</h3>
-                        </div> -->
-                      </div>
-                    </section>
-                  </div>
-
-
-                </div>
-              </div>
-
-              <!-- <div>
-                <div class="fadeIn first" id="events-tab">
                   <div class="fp-section-slide-item fb-events" data-tab="events">
                     <section class="component fp-events-grid" data-component-name="events-grid" data-endpoint="#"
                       data-results-total="4" data-page-size="5">
                       <div class="fp-ng-wrap">
                         <div class="component fp-universal-grid">
                           <ul class="fp-events-grid-width fp-grid">
-                            <li class=" fp-events-grid-item no-zoom fp-grid__item fp-grid-item__single">
+                            <li *ngFor="let item of news"
+                              class="fp-events-grid-item no-zoom fp-grid__item fp-grid-item__single border-bottom">
                               <section>
                                 <a class="fp-events-item click-trigger">
                                   <div class="fp-events-item__content">
                                     <span class="fp-events-item__subtitle">2019, HCMC</span>
-                                    <h3 class="fp-events-item__title">({{'updating' | translate}})
-                                    </h3>
+                                    <h3 class="fp-events-item__title">{{ item.title | translate}}</h3>
+                                    <br><br>
+                                    <span class="fp-ng-content-link">{{ 'Read article' | translate}}</span>
+                                  </div>
+                                  <div class="fp-ng-content-copy">
+                                    <button mat-icon-button color="medium" [matMenuTriggerFor]="actions">
+                                      <mat-icon color="gray">more_vert</mat-icon>
+                                    </button>
+
+                                    <mat-menu #actions="matMenu">
+                                      <button mat-menu-item (click)="update(item)">
+                                        <mat-icon color="gray">drive_file_rename_outline</mat-icon> Edit
+                                      </button>
+                                      <button mat-menu-item (click)="delete(item)">
+                                        <mat-icon color="gray">delete</mat-icon> Delete
+                                      </button>
+                                    </mat-menu>
                                   </div>
                                 </a>
                               </section>
@@ -104,7 +76,7 @@
                     </section>
                   </div>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 /* TABS */
-
 a.inactive {
   color: #000;
   opacity: 0.7;
@@ -101,6 +100,7 @@ a.active {
   justify-content: center;
   margin-left: 30px
 }
+
 @media screen and (min-width: 768px) {
   .sa_img {
     margin-left: 0
@@ -116,8 +116,13 @@ a.active {
     justify-content: center;
   }
 }
+
 .empty-data {
   // position: fixed !important;
   // left: 35%;
   display: block;
+}
+
+.fp-events-grid-item {
+  max-height: 120px !important;
 }
