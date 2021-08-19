@@ -145,9 +145,9 @@ exports.typeDefs = gql`
         createProject(input: ProjectInput!): Project
         updateAward(awardId: Int!, data: String): Award
 
-        postArticle(input: NewsInput!): NewsResponse
-        updateArticle(newId: ID!, input: NewsInput!): NewsResponse
-        deleteArticle(newId: ID!): Message
+        postArticle(input: NewsInput!): NewsResponse!
+        updateArticle(newsTitle: String!, input: NewsInput!): NewsResponse!
+        deleteArticle(newsTitle: String!): Message!
     }
 `;
 
@@ -171,28 +171,8 @@ const dateScalar = new GraphQLScalarType({
 // Provide resolver functions for your schema fields
 exports.resolvers = {
     Date: dateScalar,
-    UserResponse: {
-        __resolveType: (obj) => {
-            if (obj.name) {
-                return 'User';
-            }
-            if (obj.message) {
-                return 'Message';
-            }
-            return null;
-        }
-    },
-    NewsResponse: {
-        __resolveType: (obj) => {
-            if (obj.category) {
-                return 'News';
-            }
-            if (obj.message) {
-                return 'Message';
-            }
-            return null;
-        }
-    }, 
+    UserResponse: { ...UserResolvers.Response },
+    NewsResponse: { ...NewsResolvers.Response },
     Query: {
         ...UserResolvers.Query,
         ...AwardsResolvers.Query,
@@ -203,6 +183,7 @@ exports.resolvers = {
     Mutation: {
         ...UserResolvers.Mutation,
         ...AwardsResolvers.Mutation,
+        ...NewsResolvers.Mutation,
         ...MemberResolvers.Mutation,
         ...ProjectsResolvers.Mutation,
     }

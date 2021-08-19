@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { String } = Schema.Types;
+const { String, ObjectId } = Schema.Types;
 
 const newsSchema = new Schema(
     {
@@ -35,29 +35,29 @@ exports.postArticle = async (input) => {
     });
 }
 
-exports.updateArticle = async (newId, input) => {
-    await News.findByIdAndUpdate(newId, input, { returnOriginal: false }, (err, doc) => {
-        if (err) {
+exports.updateArticle = async (newsTitle, input) => {
+    try {
+        const result = await News.findOneAndUpdate({ "title": newsTitle }, input, { returnOriginal: false });
+        if (!result) {
             return {
                 success: false,
-                message: err
+                message: 'Cannot update article, try again!'
             }
         }
-        return doc;
-    });
+        return result;
+    } catch (error) {
+        return {
+            success: false,
+            message: error
+        }
+    }
 }
 
-exports.deleteArticle = async (newId) => {
-    await News.findByIdAndDelete(newId, (err, doc) => {
-        if (err) {
-            return {
-                success: false,
-                message: err
-            }
-        }
-        return {
-            success: true,
-            message: 'Delete item successfully!'
-        }
-    })
+exports.deleteArticle = async (newsTitle) => {
+    const result = await News.findOneAndDelete({ "title": newsTitle });
+    console.log(result)
+    return {
+        success: true,
+        message: 'Delete item successfully!'
+    }
 }

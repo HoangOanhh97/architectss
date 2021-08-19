@@ -1,6 +1,17 @@
 const User = require('../model/user');
 
 exports.UserResolvers = {
+    Response: {
+        __resolveType: (obj) => {
+            if (obj.name) {
+                return 'User';
+            }
+            if (obj.message) {
+                return 'Message';
+            }
+            return null;
+        }
+    },
     Query: {
         me: (_, { email }) => User.me(email),
         getUsers: () => User.getUsers(),
