@@ -14,7 +14,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localeVI from '@angular/common/locales/vi';
 
 import { DashboardComponent } from './agency/dashboard/dashboard.component';
@@ -31,6 +31,7 @@ import { GalleryComponent } from './agency/projects/gallery/gallery.component';
 import { DetailProjectComponent } from './shared/dialog/detail-project/detail-project.component';
 import { AuthGuard } from './shared/auth/auth-guard.service';
 import { AuthService } from './shared/auth/auth.service';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -68,10 +69,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         deps: [HttpClient]
       }
     }),
+    SnotifyModule.forRoot(),
     SharedModule
   ],
   providers: [
-    // { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthService,
     AuthGuard,
     SharedService,
@@ -83,6 +84,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: LOCALE_ID,
       useValue: 'vi-VN' // 'en-EN' for English-US...
     },
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService,
   ],
   exports: [],
   entryComponents: [

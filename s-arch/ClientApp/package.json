@@ -34,6 +34,7 @@
     "graphql": "^15.5.1",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
+    "ng-snotify": "^9.0.1",
     "ngx-bootstrap": "^6.2.0",
     "ngx-perfect-scrollbar": "^10.1.1",
     "pace-js": "^1.2.4",
