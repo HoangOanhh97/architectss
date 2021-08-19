@@ -134,4 +134,29 @@ $red: #ff3333;
   .mat-yellow {
     color: var(--bs-yellow, #ffc107) !important;
   }
+
+  .mat-dialog-title {
+    margin: 0 0 20px;
+    display: block;
+    padding: 0;
+  }
+
+  .mat-dialog-content {
+    display: block;
+    margin: 0px;
+    padding: 0 24px;
+    max-height: 65vh;
+    min-height: 350px !important;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  mat-form-field.mat-form-field {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .mat-focused .mat-form-field-required-marker {
+    color: $red;
+  }
 }

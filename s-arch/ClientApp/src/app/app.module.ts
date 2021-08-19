@@ -32,6 +32,7 @@ import { DetailProjectComponent } from './shared/dialog/detail-project/detail-pr
 import { AuthGuard } from './shared/auth/auth-guard.service';
 import { AuthService } from './shared/auth/auth.service';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -84,6 +85,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: LOCALE_ID,
       useValue: 'vi-VN' // 'en-EN' for English-US...
     },
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService,
   ],
