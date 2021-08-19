@@ -168,5 +168,13 @@
   "designing": "Designing",
   "Read article": "Read article",
   "Log Out": "Log Out",
-  "Select language": "Select language"
+  "Select language": "Select language",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "Save": "Save",
+  "Cancel": "Cancel",
+  "Description": "Description",
+  "Category": "Category",
+  "Article title": "Title",
+  "Please fill all blank fields!": "Please fill all blank fields!"
 }
