@@ -57,6 +57,8 @@ export class ApiService {
             title
             image
             descriptionHTML
+            link
+            created_at
           }
         }
       `

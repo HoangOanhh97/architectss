@@ -1,7 +1,6 @@
 <div mat-dialog-title class="modal-header position-relative">
   <h1>{{isCreated ? 'New' : 'Edit' }} Article</h1>
-  <button mat-icon-button autofocus="false" color="danger" mat-dialog-close class="position-absolute"
-    style="top: -2rem; right: -1rem;">
+  <button mat-icon-button color="danger" mat-dialog-close class="position-absolute" style="top: -2rem; right: -1rem;">
     <mat-icon style="margin-right: 7px;">close</mat-icon>
   </button>
 </div>
@@ -21,14 +20,16 @@
 
   <mat-form-field appearance="legacy" class="col-12">
     <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="article.descriptionHTML" rows="3"></textarea>
+    <textarea matInput [(ngModel)]="article.descriptionHTML" (change)="onChangeValue(article.descriptionHTML)" rows="5"></textarea>
   </mat-form-field>
+
+  <p *ngIf="isValid === false">TTTTTTTTT</p>
 
   <!-- <div class="col-12 mt-3">
     <input matInput class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadFiles($event)" />
   </div> -->
 </div>
 <div mat-dialog-actions style="float: right;">
-  <button *ngIf="!isCreated" mat-button autofocus="false" color="danger" mat-dialog-close>Cancel</button>
-  <button mat-button autofocus="false" color="success" (click)="onSave()">Save</button>
+  <button *ngIf="!isCreated" mat-button color="danger" mat-dialog-close>Cancel</button>
+  <button mat-button color="success" (click)="onSave()">Save</button>
 </div>

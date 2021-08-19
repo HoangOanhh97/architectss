@@ -35,7 +35,8 @@ export class NewsComponent implements OnInit {
   getArticles() {
     this.apiService.getNews().then(res => {
       this.articles = _.groupBy(res.data.getNews, 'category');
-      this.getArticlesByCategoryName("News");
+      const title = this.tabSelected === 1 ? 'News' : 'Events';
+      this.getArticlesByCategoryName(title);
     }).catch((reason) => {
       console.log('err: ', reason);
       this.http.get("assets/data/news.json").subscribe(r => {
@@ -83,7 +84,7 @@ export class NewsComponent implements OnInit {
       if (data) {
         this.apiService.postArticle(data).then(res => {
           if (res.data && res.data.updateArticle) {
-            this.snotify.success('Post article successfully!')
+            this.snackBar.open('Post article successfully!', null, { duration: 2000, horizontalPosition: 'center', verticalPosition: 'top' });
             this.getArticles();
             return;
           }
@@ -105,7 +106,7 @@ export class NewsComponent implements OnInit {
         const { category, title, descriptionHTML, image } = data;
         this.apiService.updateArticle(item.title, { category, title, descriptionHTML, image }).then(res => {
           if (res.data && res.data.updateArticle) {
-            this.snotify.success('Update Successfully!')
+            this.snackBar.open('Update Successfully!', null, { duration: 2000, horizontalPosition: 'center', verticalPosition: 'top' });
             this.getArticles();
             return;
           }
@@ -126,7 +127,10 @@ export class NewsComponent implements OnInit {
     }).afterDismissed().subscribe(data => {
       if (data.dismissedByAction) {
         this.apiService.deleteArticle(item.title).then(res => {
-          console.log(res)
+          if (res.data && res.data.deleteArticle) {
+            this.snackBar.open(res.data.deleteArticle.message, null, { duration: 2000, horizontalPosition: 'center', verticalPosition: 'top' });
+          }
+          this.getArticles();
         })
       }
     })

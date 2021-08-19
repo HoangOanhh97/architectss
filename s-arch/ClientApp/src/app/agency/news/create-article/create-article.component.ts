@@ -6,7 +6,8 @@ export interface IArticle {
   title: String,
   descriptionHTML: String,
   image: String,
-  category: String
+  category: String,
+  link: ''
 }
 @Component({
   selector: 'app-create-article',
@@ -15,7 +16,13 @@ export interface IArticle {
 })
 export class CreateArticleComponent implements OnInit {
   public isCreated: Boolean = true;
-  public article: any = {};
+  public article: IArticle = {
+    title: '',
+    descriptionHTML: '',
+    image: '',
+    category: '',
+    link: ''
+  };
   public isValid: Boolean = null;
 
   constructor(public dialogRef: MatDialogRef<CreateArticleComponent>, @Inject(MAT_DIALOG_DATA) public data: any,) {
@@ -33,14 +40,20 @@ export class CreateArticleComponent implements OnInit {
     }
   }
 
+  public onChangeValue(value) {
+    
+  }
+
   public onSave() {
     this.isValid = true;
+    console.log(this.article)
     Object.keys(this.article).forEach(k => {
-      if (['image'].includes(k)) {
+      if (['image', 'link', "created_at"].includes(k)) {
         this.article[k] = " "
         return;
       }
       if (this.isNullOrEmpty(this.article[k])) {
+        console.log(k)
         return this.isValid = false;
       }
     })
