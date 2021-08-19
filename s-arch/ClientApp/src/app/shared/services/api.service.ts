@@ -59,6 +59,7 @@ export class ApiService {
             descriptionHTML
             link
             created_at
+            updated_at
           }
         }
       `

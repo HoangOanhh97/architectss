@@ -52,7 +52,6 @@ exports.updateArticle = async (newsTitle, input) => {
 exports.deleteArticle = async (newsTitle) => {
     try {
         const result = await News.findOneAndDelete({ "title": newsTitle });
-        console.log(result);
         return utils.getStatus(true, 'Delete article successfully!');
     } catch (error) {
         return utils.getStatus(false, error);
