@@ -38,19 +38,19 @@ export class FooterComponent implements OnInit {
   }
 
   getProjectsByType(type) {
-    this.router.navigate(["agency/projects/types"], { queryParams: { name: type } })
+    this.router.navigate(["projects/types"], { queryParams: { name: type } })
   }
 
   projectsPage() {
-    this.router.navigate(["agency/projects"])
+    this.router.navigate(["projects"])
   }
 
   newsPage() {
-    this.router.navigate(["agency/news"]);
+    this.router.navigate(["news"]);
   }
 
   contactPage() {
-    this.router.navigate(["agency/contact"]);
+    this.router.navigate(["contact"]);
   }
 
   useLanguage(lang: string) {
