@@ -63,6 +63,56 @@ export class ApiService {
     });
   }
 
+  public postArticle(dataInsert) {
+    return apolloServer().mutate({
+      mutation: gql`
+        mutation postArticle($dataInsert: NewsInput!) {
+          postArticle(input: $dataInsert) {
+            ... on News {
+              _id
+            }
+            ... on Message {
+              message
+            }
+          }
+        }
+      `,
+      variables: { dataInsert }
+    })
+  }
+
+  public updateArticle(dataToPut) {
+    return apolloServer().mutate({
+      mutation: gql`
+        mutation updateArticle($dataToPut: NewsInput!) {
+          updateArticle(input: $dataToPut) {
+            ... on News {
+              _id
+            }
+            ... on Message {
+              message
+            }
+          }
+        }
+      `,
+      variables: { dataToPut }
+    })
+  }
+
+  public deleteArticle(id) {
+    return apolloServer().mutate({
+      mutation: gql`
+        mutation deleteArticle($id: ID!) {
+          deleteArticle(newId: $id) {
+            success
+            message
+          }
+        }
+      `,
+      variables: { id }
+    })
+  }
+
   public getProjectTypes() {
     return apolloServer().query({
       query: gql`

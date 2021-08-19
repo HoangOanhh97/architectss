@@ -24,7 +24,7 @@ exports.getNewsByCategory = async (args) => {
     return result;
 }
 
-exports.postNews = async (input) => {
+exports.postArticle = async (input) => {
     await News.create(input).then((doc) => {
         return doc;
     }).catch(err => {
@@ -35,12 +35,19 @@ exports.postNews = async (input) => {
     });
 }
 
-exports.updatedNews = async (newId, input) => {
-    const result = await News.findByIdAndUpdate(newId, input, { returnOriginal: false });
-    return result;
+exports.updateArticle = async (newId, input) => {
+    await News.findByIdAndUpdate(newId, input, { returnOriginal: false }, (err, doc) => {
+        if (err) {
+            return {
+                success: false,
+                message: err
+            }
+        }
+        return doc;
+    });
 }
 
-exports.deletedNews = async (newId) => {
+exports.deleteArticle = async (newId) => {
     await News.findByIdAndDelete(newId, (err, doc) => {
         if (err) {
             return {
@@ -50,7 +57,7 @@ exports.deletedNews = async (newId) => {
         }
         return {
             success: true,
-            message: 'Updated Successfully!'
+            message: 'Delete item successfully!'
         }
     })
 }

@@ -5,6 +5,8 @@ exports.NewsResolvers = {
         getNews: () => News.getNews(),
     },
     Mutation: {
-        postNews: (_, {input}) => News.postNews(input)
+        postArticle: (_, { input }) => News.postArticle(input),
+        updateArticle: (_, { newId, input }) => News.updateArticle(newId, input),
+        deleteArticle: (_, { newId }) => News.deleteArticle(newId)
     }
 }

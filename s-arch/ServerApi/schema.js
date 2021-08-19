@@ -145,7 +145,9 @@ exports.typeDefs = gql`
         createProject(input: ProjectInput!): Project
         updateAward(awardId: Int!, data: String): Award
 
-        postNews(input: NewsInput!): NewsResponse
+        postArticle(input: NewsInput!): NewsResponse
+        updateArticle(newId: ID!, input: NewsInput!): NewsResponse
+        deleteArticle(newId: ID!): Message
     }
 `;
 
