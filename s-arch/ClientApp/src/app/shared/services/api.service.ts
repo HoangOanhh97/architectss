@@ -66,8 +66,8 @@ export class ApiService {
   public postArticle(dataInsert) {
     return apolloServer().mutate({
       mutation: gql`
-        mutation postArticle($dataInsert: NewsInput!) {
-          postArticle(input: $dataInsert) {
+        mutation postArticle($value: NewsInput!) {
+          postArticle(input: $value) {
             ... on News {
               _id
             }
@@ -77,39 +77,44 @@ export class ApiService {
           }
         }
       `,
-      variables: { dataInsert }
+      variables: { value: dataInsert }
     })
   }
 
-  public updateArticle(dataToPut) {
+  public updateArticle(title, dataToPut) {
     return apolloServer().mutate({
       mutation: gql`
-        mutation updateArticle($dataToPut: NewsInput!) {
-          updateArticle(input: $dataToPut) {
+        mutation Mutation($title: String!, $value: NewsInput!) {
+          updateArticle(newsTitle: $title, input: $value) {
             ... on News {
               _id
+              category
+              title
+              image
+              descriptionHTML
             }
             ... on Message {
+              success
               message
             }
           }
         }
       `,
-      variables: { dataToPut }
+      variables: { title, value: dataToPut }
     })
   }
 
-  public deleteArticle(id) {
+  public deleteArticle(title) {
     return apolloServer().mutate({
       mutation: gql`
-        mutation deleteArticle($id: ID!) {
-          deleteArticle(newId: $id) {
+        mutation deleteArticle($title: String!) {
+          deleteArticle(newsTitle: $title) {
             success
             message
           }
         }
       `,
-      variables: { id }
+      variables: { title }
     })
   }
 

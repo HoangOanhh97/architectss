@@ -1,6 +1,7 @@
 <div mat-dialog-title class="modal-header position-relative">
   <h1>{{isCreated ? 'New' : 'Edit' }} Article</h1>
-  <button mat-icon-button autofocus="false" color="danger" mat-dialog-close class="position-absolute" style="top: -2rem; right: -1rem;">
+  <button mat-icon-button autofocus="false" color="danger" mat-dialog-close class="position-absolute"
+    style="top: -2rem; right: -1rem;">
     <mat-icon style="margin-right: 7px;">close</mat-icon>
   </button>
 </div>
@@ -28,9 +29,6 @@
   </div> -->
 </div>
 <div mat-dialog-actions style="float: right;">
-  <button mat-button *ngIf="isCreated" color="primary" (click)="create()">Add</button>
-  <ng-container *ngIf="!isCreated">
-    <button mat-button autofocus="false" color="danger" mat-dialog-close>Cancel</button>
-    <button mat-button autofocus="false" color="success" (click)="save()">Save</button>
-  </ng-container>
+  <button *ngIf="!isCreated" mat-button autofocus="false" color="danger" mat-dialog-close>Cancel</button>
+  <button mat-button autofocus="false" color="success" (click)="onSave()">Save</button>
 </div>

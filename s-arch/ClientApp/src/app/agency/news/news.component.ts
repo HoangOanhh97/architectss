@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmModalComponent } from 'src/app/shared/dialog/confirm-modal/confirm-modal.component';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-news',
@@ -24,7 +25,7 @@ export class NewsComponent implements OnInit {
   articles: any = {};
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService,
-    private dialog: MatDialog, private snackBar: MatSnackBar) {
+    private dialog: MatDialog, private snackBar: MatSnackBar, private snotify: SnotifyService) {
   }
 
   ngOnInit() {
@@ -91,7 +92,19 @@ export class NewsComponent implements OnInit {
         article: item
       }
     }).afterClosed().subscribe(res => {
-      console.log(res)
+      if (res) {
+        const { category, title, descriptionHTML, image } = res;
+        this.apiService.updateArticle(item.title, { category, title, descriptionHTML, image }).then(response => {
+          if (response.data && response.data.updateArticle) {
+            this.snotify.success('Update Successfully!')
+            this.getArticles();
+            return;
+          }
+          return this.snotify.error('Error!');
+        }).catch(err => {
+          this.snotify.error(err[0]?.message)
+        })
+      }
     })
   }
 
@@ -102,9 +115,10 @@ export class NewsComponent implements OnInit {
       verticalPosition: 'top',
       data: 'Are you sure you want to delete this article?'
     }).afterDismissed().subscribe(res => {
-      console.log(res)
       if (res.dismissedByAction) {
-
+        this.apiService.deleteArticle(item.title).then(response => {
+          console.log(response)
+        })
       }
     })
   }

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-create-article',
@@ -8,7 +9,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CreateArticleComponent implements OnInit {
   public isCreated: Boolean = true;
-  article: any = {};
+  public article: any = {};
+  public isValid: Boolean = null;
 
   constructor(public dialogRef: MatDialogRef<CreateArticleComponent>, @Inject(MAT_DIALOG_DATA) public data: any,) {
     this.isCreated = !!data.isCreated;
@@ -25,12 +27,20 @@ export class CreateArticleComponent implements OnInit {
     }
   }
 
-  public create() {
-
+  public onSave() {
+    this.isValid = true;
+    Object.keys(this.article).forEach(k => {
+      if (this.isNullOrEmpty(this.article[k])) {
+        return this.isValid = false;
+      }
+    })
+    if (this.isValid) {
+      this.dialogRef.close(this.article);
+    }
   }
 
-  public save() {
-
+  private isNullOrEmpty(value) {
+    return value === null || value === undefined || (value && _.trim(value) === '')
   }
 
 }
