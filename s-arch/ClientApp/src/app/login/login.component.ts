@@ -40,33 +40,28 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    try {
-      this.user.email = this.loginForm.controls['email'].value;
-      const pwd = encodeURIComponent(this.loginForm.controls['password'].value);
-      this.user.password = btoa(unescape(pwd));
-      this.authService.login(this.user).then(res => {
-        const result = res.data?.login || {};
-        if (result.success) {
-          this.snackBar.open('Login successfully!', null, { duration: 2000, verticalPosition: 'top' });
-          sessionStorage.setItem('currentUser', JSON.stringify({ email: this.user.email }))
-          this.authService.setToken(result.token);
-          this.router.navigate(['/']);
-        } else {
-          this.snackBar.open(result.message, null, { duration: 2000, verticalPosition: 'top' })
-        }
-      }).catch(error => {
-        console.log(error);
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    this.user.email = this.loginForm.controls['email'].value;
+    const pwd = encodeURIComponent(this.loginForm.controls['password'].value);
+    this.user.password = btoa(unescape(pwd));
+
+    this.authService.login(this.user).then(res => {
+      const result = res.data?.login || {};
+      if (result.success) {
+        this.snackBar.open('Welcome!', null, { duration: 2000, verticalPosition: 'top' });
+        this.authService.setToken(result.token);
+        window.location.href = '/';
+      } else {
+        this.snackBar.open(result.message, null, { duration: 2000, verticalPosition: 'top' })
+      }
+    }).catch(error => {
+      this.snackBar.open('Login Failed', null, { duration: 2000, verticalPosition: 'top' })
+    })
   }
 
   getErrorMessage(name) {
     if (this.loginForm.controls[name].hasError('required') || this.loginForm.controls[name].dirty) {
       return 'You must enter a value';
     }
-
     return this.loginForm.controls[name].hasError('email') ? 'Not a valid email' : null;
   }
 

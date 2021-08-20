@@ -15,6 +15,27 @@ export class ApiService {
     return throwError(error);
   }
 
+  public me() {
+    return apolloServer().query({
+      query: gql`
+        query Query {
+          me {
+            ... on User {
+              _id
+              name
+              email
+              role
+            }
+            ... on Message {
+              success
+              message
+            }
+          }
+        }
+      `
+    })
+  }
+
   public getMembers() {
     return apolloServer().query({
       query: gql`

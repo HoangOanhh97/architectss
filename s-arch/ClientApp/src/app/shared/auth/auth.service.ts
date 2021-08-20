@@ -81,12 +81,12 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    this._user = JSON.parse(sessionStorage.getItem('currentUser')) || {};
-    if (this.token && !this._user.name) {
+    // this._user = JSON.parse(sessionStorage.getItem('currentUser')) || {};
+    if (this.token && !this._user) {
       return apolloServer().query({
         query: gql`
-          query Query($email: String!) {
-            me(email: $email) {
+          query Query {
+            me {
               ... on User {
                 _id
                 name
@@ -99,17 +99,13 @@ export class AuthService {
               }
             }
           }
-        `,
-        variables: { "email": this._user.email }
+        `
       }).then(response => {
         const currentuser = response.data.me;
-        if (currentuser._id) {
+        if (currentuser.name) {
+          sessionStorage.setItem('currentUser', JSON.stringify(currentuser));
           this._user = currentuser;
-          sessionStorage.setItem('currentUser', JSON.stringify(currentuser))
-          window.location.href = '/dashboard';
-          return;
-        }
-        if (!currentuser.success) {
+        } else if (!currentuser.success) {
           this.router.navigate(['/login']);
         }
       }).catch(err => {
@@ -117,6 +113,6 @@ export class AuthService {
       })
     }
 
-    return this.token && this.token !== '';
+    return this.token !== '';
   }
 }

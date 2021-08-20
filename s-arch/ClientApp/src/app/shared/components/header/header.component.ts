@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { CommonService } from '../../services/common.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || {};
+  currentUser: any = JSON.parse(sessionStorage.getItem('currentUser')) || null;
   openHeaderSearch = false;
   opensearchNav = false;
   navActive: any;
@@ -27,7 +29,7 @@ export class HeaderComponent implements OnInit {
   imgLogo: any;
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private translate: TranslateService, cf: NgbDropdownConfig) {
+    private translate: TranslateService, cf: NgbDropdownConfig, private apiService: ApiService) {
     this.route.data.subscribe(r => {
       this.navActive = r.title;
       this.setImgLogo(this.navActive);
@@ -46,6 +48,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.currentUser || (this.currentUser && !this.currentUser.name)) {
+      this.apiService.me().then(res => {
+        this.currentUser = res.data.me;
+      })
+    }
   }
 
   setImgLogo(nav) {

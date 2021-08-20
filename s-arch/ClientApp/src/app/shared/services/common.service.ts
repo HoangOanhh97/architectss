@@ -8,11 +8,12 @@ import { HttpHeaders } from "@angular/common/http";
 })
 export class CommonService {
     accessToken = "";
-    static _currentUser ;
+    static _currentUser;
 
     constructor() {
         if (sessionStorage.getItem('sarch-token')) {
             this.accessToken = sessionStorage.getItem('sarch-token');
+            CommonService.user;
         }
     }
 
