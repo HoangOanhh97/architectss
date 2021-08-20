@@ -32,8 +32,7 @@ const users = new Schema(
             unique: true,
             required: true
         },
-        password: { type: String, require: true, trim: true },
-        decoded: { type: String, require: true }
+        password: { type: String, require: true, trim: true }
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 )
@@ -161,50 +160,26 @@ exports.login = async (data, context) => {
         if (!user) {
             return {
                 success: false,
-                message: 'No user with that email',
-                user: {
-                    _id: "",
-                    email: email
-                }
+                message: 'No user with that email'
             }
         }
         const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) {
             return {
                 success: false,
-                message: 'Incorrect password',
-                user: {
-                    _id: "",
-                    email: email
-                }
+                message: 'Incorrect password'
             }
         }
-
-        const userRole = await User_Role.findOne({ user: user._id }).populate("role");
         // return jwt
         const payload = { id: user["_id"], email: user["email"] };
         const token = await jwt.sign(payload, process.env.JWT_SECRET, {
             algorithm: "HS256", expiresIn: "1d"
         });
-        await this.Users.findOneAndUpdate({ email }, { "decoded": token }, { returnOriginal: false });
-        context.user = {
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            decoded: user.decoded,
-            role: userRole.role.role,
-        }
 
         return {
             success: true,
             message: 'Token is generated!',
-            token,
-            user: {
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                role: userRole.role.role
-            }
+            token
         };
     } catch (error) {
         console.log("Error authenticate: ", error);

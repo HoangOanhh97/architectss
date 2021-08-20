@@ -90,7 +90,6 @@ exports.typeDefs = gql`
         success: Boolean
         message: String
         token: String
-        user: User
     }
     type Query {
         me(email: String!): UserResponse

@@ -30,7 +30,15 @@ async function startApolloServer() {
       resolvers,
       context: ({ req }) => {
         // const token = req.headers['authorization'] || req.headers['x-access-token'] || null;
-        // return { token }
+        // if (!token) {
+        //   console.log('You must be logged in!');
+        //   return;
+        // }
+        // const user = jwt.verify(token, process.env.JWT_SECRET);
+        // if (!user) {
+        //   console.log('You must be logged in!');
+        //   return;
+        // };
       }
     });
     await server.start();
