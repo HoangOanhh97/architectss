@@ -83,7 +83,7 @@ export class NewsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         this.apiService.postArticle(data).then(res => {
-          if (res.data && res.data.updateArticle) {
+          if (res.data && res.data.postArticle) {
             this.snackBar.open('Post article successfully!', null, { duration: 2000, horizontalPosition: 'center', verticalPosition: 'top' });
             this.getArticles();
             return;
