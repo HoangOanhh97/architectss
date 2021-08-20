@@ -117,9 +117,11 @@ exports.assignUserRole = async (data) => {
 }
 
 exports.createUser = async (data) => {
-    const { name, email, role, password } = data;
-    const hashedPassword = await bcrypt.hashSync(password, 10);
+    const { name, email, role } = data;
     const roleItem = await Roles.findOne({ role }, '_id');
+
+    const pwd = new Buffer.from(data.password, 'base64').toString('ascii');
+    const hashedPassword = await bcrypt.hashSync(pwd, 10);
     const newUser = {
         name,
         email,
@@ -129,7 +131,7 @@ exports.createUser = async (data) => {
         const result = await this.Users.create(newUser);
         if (result && result.email) {
             await User_Role.create({ role: roleItem._id, user: result._id });
-        
+
             const payload = { id: result["_id"], email: result["email"] };
             const token = await jwt.sign(payload, process.env.JWT_SECRET, {
                 algorithm: "HS256", expiresIn: "2d"
@@ -159,13 +161,13 @@ exports.createUser = async (data) => {
 }
 
 exports.login = async (data, context) => {
-    const { email, password } = data;
+    const pwd = new Buffer.from(data.password, 'base64').toString('ascii');
     try {
-        const user = await this.Users.findOne({ email });
+        const user = await this.Users.findOne({ email: data.email });
         if (!user) {
             return utils.getStatus(false, 'No user with that email');
         }
-        const isValid = await bcrypt.compare(password, user.password);
+        const isValid = await bcrypt.compare(pwd, user.password);
         if (!isValid) {
             return utils.getStatus(false, 'Incorrect password');
         }
