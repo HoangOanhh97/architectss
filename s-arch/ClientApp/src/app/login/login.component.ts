@@ -40,21 +40,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.user.email = this.loginForm.controls['email'].value;
-    this.user.password = btoa(this.loginForm.controls['password'].value);
-    this.authService.login(this.user).then(res => {
-      const result = res.data?.login || {};
-      if (result.success) {
-        this.snackBar.open('Login successfully!', null, { duration: 2000, verticalPosition: 'top' })
-        this.authService.setToken(result.token);
-        this.router.navigate(['/']);
-      } else {
-        console.log(res.errors);
-        alert(result.message)
-      }
-    }).catch(error => {
+    try {
+      this.user.email = this.loginForm.controls['email'].value;
+      const pwd = encodeURIComponent(this.loginForm.controls['password'].value);
+      this.user.password = btoa(unescape(pwd));
+      this.authService.login(this.user).then(res => {
+        const result = res.data?.login || {};
+        if (result.success) {
+          this.snackBar.open('Login successfully!', null, { duration: 2000, verticalPosition: 'top' });
+          sessionStorage.setItem('currentUser', JSON.stringify({ email: this.user.email }))
+          this.authService.setToken(result.token);
+          this.router.navigate(['/']);
+        } else {
+          this.snackBar.open(result.message, null, { duration: 2000, verticalPosition: 'top' })
+        }
+      }).catch(error => {
+        console.log(error);
+      })
+    } catch (error) {
       console.log(error);
-    })
+    }
   }
 
   getErrorMessage(name) {
