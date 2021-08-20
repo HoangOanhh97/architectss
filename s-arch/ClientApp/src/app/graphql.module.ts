@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 // Apollo
-import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject } from "@apollo/client/core";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject } from "@apollo/client/core";
 import { environment } from 'src/environments/environment';
-import { CommonService } from './shared/services/common.service';
 
 const uri = environment.api; // <-- add the URL of the our GraphQL server here
 
@@ -12,8 +11,7 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   uri: uri,
   headers: {
     'Content-Type': 'application/json',
-    'authorization': localStorage.getItem('sarch-token') || null,
-    'x-access-token': localStorage.getItem('sarch-token') || null,
+    'authorization': sessionStorage.getItem('sarch-token') || null
   }
 });
 

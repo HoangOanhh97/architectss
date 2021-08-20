@@ -13,8 +13,8 @@ export class AuthService {
   _user: any;
 
   constructor(private router: Router, private commonService: CommonService) {
-    if (localStorage.getItem('sarch-token')) {
-      this.token = localStorage.getItem('sarch-token');
+    if (sessionStorage.getItem('sarch-token')) {
+      this.token = sessionStorage.getItem('sarch-token');
     }
   }
 
@@ -30,15 +30,9 @@ export class AuthService {
       mutation: gql`
           mutation login($loginInput: UserInput!) {
             login(input: $loginInput) {
+              success
               message
               token
-              user {
-                _id
-                email
-                name
-                role
-              }
-              success
             }
           }
         `,
@@ -51,12 +45,8 @@ export class AuthService {
       mutation: gql`
         mutation login($userInput: UserInput!) {
           registerUser(input: $registerUserInput) {
+            success
             message
-            token
-            user {
-              _id
-              email
-            }
           }
         }
       `,
@@ -66,6 +56,8 @@ export class AuthService {
 
   public logout() {
     this.token = null;
+    localStorage.clear();
+    sessionStorage.removeItem('currentUser');
   }
 
   public getToken(): string {
@@ -73,7 +65,7 @@ export class AuthService {
   }
 
   public setToken(t): void {
-    localStorage.setItem('sarch-token', t);
+    sessionStorage.setItem('sarch-token', t);
     this.commonService.accessToken = t;
     this.token = t;
   }
@@ -89,8 +81,10 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    this._user = JSON.parse(localStorage.getItem('currentUser')) || null;
+    this._user = JSON.parse(sessionStorage.getItem('currentUser')) || null;
     if (this.token && !this._user) {
+      this.router.navigate(['/']);
+      return this.token && this.token !== '';
       return apolloServer().query({
         query: gql`
           query Query($email: String!) {
@@ -113,7 +107,6 @@ export class AuthService {
         const currentuser = response.data.me;
         console.log(currentuser);
         if (currentuser._id) {
-          localStorage.setItem('currentUser', JSON.stringify(currentuser));
           this._user = currentuser;
           this.router.navigate(['/']);
           return;

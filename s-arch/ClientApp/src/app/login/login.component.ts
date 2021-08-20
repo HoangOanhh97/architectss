@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public hide = true;
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService,
+    private snackBar: MatSnackBar) {
     this.authService.logout();
     this.loginForm = this.fb.group({
       email: new FormControl(this.user.email, [Validators.required, Validators.email]),
@@ -39,11 +41,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.user.email = this.loginForm.controls['email'].value;
-    this.user.password = this.loginForm.controls['password'].value;
+    this.user.password = btoa(this.loginForm.controls['password'].value);
     this.authService.login(this.user).then(res => {
       const result = res.data?.login || {};
       if (result.success) {
-        localStorage.setItem('currentUser', JSON.stringify(result.user))
+        this.snackBar.open('Login successfully!', null, { duration: 2000, verticalPosition: 'top' })
         this.authService.setToken(result.token);
         this.router.navigate(['/']);
       } else {

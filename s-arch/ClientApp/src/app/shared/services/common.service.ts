@@ -11,20 +11,20 @@ export class CommonService {
     static _currentUser ;
 
     constructor() {
-        if (localStorage.getItem('sarch-token')) {
-            this.accessToken = localStorage.getItem('sarch-token');
+        if (sessionStorage.getItem('sarch-token')) {
+            this.accessToken = sessionStorage.getItem('sarch-token');
         }
     }
 
     public static get user (){
         if(this._currentUser == null){
-            this._currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            this._currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
         }
         return this._currentUser;
     }
 
     public static getAuthHeader(includeJsonContentType?: boolean): any {
-        const accessToken = localStorage.getItem('sarch-token');
+        const accessToken = sessionStorage.getItem('sarch-token');
         let headers = new HttpHeaders({
             'Authorization': `Bearer ${accessToken}`,
             'userId': CommonService._currentUser?._id || {}

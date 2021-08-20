@@ -10,7 +10,7 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+  currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || {};
   openHeaderSearch = false;
   opensearchNav = false;
   navActive: any;
