@@ -4,6 +4,7 @@ const { ObjectId, String } = Schema.Types;
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const utils = require('../services/utils');
 
 const user_role = new Schema(
     {
@@ -76,7 +77,7 @@ exports.me = async (email) => {
         };
         return result;
     } catch (error) {
-        return getStatus(false, 'Login failed.');
+        return utils.getStatus(false, 'Login failed.');
     }
 }
 
@@ -85,7 +86,7 @@ exports.getUsers = async () => {
         const result = await this.Users.find();
         return result;
     } catch (error) {
-        return { status: getStatus(false, error) };;
+        return utils.getStatus(false, error);
     }
 }
 
@@ -95,7 +96,7 @@ exports.getUserById = async (id) => {
         const result = await this.Users.findById(id);
         return result;
     } catch (error) {
-        return { status: getStatus(false, error) };;
+        return utils.getStatus(false, error);
     }
 }
 
@@ -109,9 +110,9 @@ exports.assignUserRole = async (data) => {
             console.log(value);
         });
 
-        return { success: true, message: "Assigned succesfully!" };
+        return utils.getStatus(true, "Assigned succesfully!");
     } catch (error) {
-        return { status: getStatus(false, error) };
+        return utils.getStatus(false, error);
     }
 }
 
@@ -124,33 +125,37 @@ exports.createUser = async (data) => {
         email,
         password: hashedPassword
     }
-
-    let user;
-    this.Users.create(newUser).then(async (response) => {
-        user = response;
-
-        await User_Role.create({ role: roleItem._id, user: response._id });
-
-        const payload = { id: user._id, email: user.email };
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1y' });
-
-        return {
-            success: true,
-            message: "Authentication succesfully!",
-            token,
-            user: {
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                role: roleItem.role
-            }
+    try {
+        const result = await this.Users.create(newUser);
+        if (result && result.email) {
+            await User_Role.create({ role: roleItem._id, user: result._id });
+        
+            const payload = { id: result["_id"], email: result["email"] };
+            const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+                algorithm: "HS256", expiresIn: "2d"
+            });
+            return { success: true, message: "Authentication succesfully!", token };
         }
-    }).catch(error => {
+        return { success: false, message: 'Registration failed', token: " " };
+    } catch (error) {
         console.log("Error registration: ", error);
-        this.Users.deleteOne({ email })
+        this.Users.deleteOne({ email });
+        return { success: false, message: error, token: " " };
+    }
+    // let user;
+    // this.Users.create(newUser).then(async (response) => {
+    //     user = response;
+    //     await User_Role.create({ role: roleItem._id, user: response._id });
 
-        return { status: getStatus(false, error) };
-    });
+    //     const payload = { id: user._id, email: user.email };
+    //     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1y' });
+
+    //     return { success: true, message: "Authentication succesfully!", token }
+    // }).catch(error => {
+    //     console.log("Error registration: ", error);
+    //     this.Users.deleteOne({ email });
+    //     return { success: false, message: error, token: " " };
+    // });
 }
 
 exports.login = async (data, context) => {
@@ -158,29 +163,19 @@ exports.login = async (data, context) => {
     try {
         const user = await this.Users.findOne({ email });
         if (!user) {
-            return {
-                success: false,
-                message: 'No user with that email'
-            }
+            return utils.getStatus(false, 'No user with that email');
         }
         const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) {
-            return {
-                success: false,
-                message: 'Incorrect password'
-            }
+            return utils.getStatus(false, 'Incorrect password');
         }
         // return jwt
         const payload = { id: user["_id"], email: user["email"] };
         const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-            algorithm: "HS256", expiresIn: "1d"
+            algorithm: "HS256", expiresIn: "2d"
         });
 
-        return {
-            success: true,
-            message: 'Token is generated!',
-            token
-        };
+        return { success: true, message: 'Token is generated!', token };
     } catch (error) {
         console.log("Error authenticate: ", error);
     }

@@ -143,6 +143,7 @@ exports.typeDefs = gql`
         registerUser(input: NewUserInput!): AuthPayload!
         login(input: UserInput!): AuthPayload!
         assignUserRole(input: UserRoleInput!): Message!
+        
         createMember(input: MemberInput!): Member
         createProject(input: ProjectInput!): Project
         updateAward(awardId: Int!, data: String): Award
