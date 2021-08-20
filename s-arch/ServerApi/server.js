@@ -29,24 +29,23 @@ async function startApolloServer() {
       typeDefs,
       resolvers,
       context: ({ req }) => {
-        // const token = req.headers['authorization'] || req.headers['x-access-token'] || null;
-        // if (!token) {
-        //   console.log('You must be logged in!');
-        //   return;
-        // }
-        // const user = jwt.verify(token, process.env.JWT_SECRET);
-        // if (!user) {
-        //   console.log('You must be logged in!');
-        //   return;
-        // };
+        const token = req.headers['authorization'] || null
+        return { token }
       }
     });
+    server.requestOptions.context
     await server.start();
     const app = express();
+    var rawBodySaver = function (req, res, buf, encoding) {
+      if (buf && buf.length) {
+        req.rawBody = buf.toString(encoding || 'utf8')
+      };
+    }
 
     server.applyMiddleware({
       app,
       path: '/api',
+      bodyParserConfig: { verify: rawBodySaver, type: '*/*' },
       onHealthCheck: () => {
         new Promise((resolve, reject) => {
           if (mongoose.connection.readyState > 0) {
@@ -60,19 +59,7 @@ async function startApolloServer() {
 
     var corsOptions = { origin: "http://localhost:4001" };
     app.use(cors(corsOptions));
-
-    var rawBodySaver = function (req, res, buf, encoding) {
-      if (buf && buf.length) {
-        req.rawBody = buf.toString(encoding || 'utf8')
-      };
-    }
-    // parse requests of content-type - application/json
-    app.use(bodyParser.json({ verify: rawBodySaver }));
-    // parse requests of content-type - application/x-www-form-urlencoded 
-    app.use(bodyParser.urlencoded({ verify: rawBodySaver, extended: true }));
-    // parse requests of content-type - */*
-    app.use(bodyParser.raw({ verify: rawBodySaver, type: '*/*' }));
-    app.use('/api/auth', require('./mutations/auth'));
+    // app.use('/api/auth', require('./mutations/auth'));
 
     const PORT = process.env.PORT || 4000;
     app.listen({ port: PORT }, () => {

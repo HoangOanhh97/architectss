@@ -92,7 +92,7 @@ exports.typeDefs = gql`
         token: String
     }
     type Query {
-        me(email: String!): UserResponse
+        me: UserResponse
         getUsers: [UserResponse]
         getUserById(id: Int!): UserResponse
         getAwards: [Award]

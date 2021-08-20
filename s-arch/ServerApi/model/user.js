@@ -61,12 +61,13 @@ const getStatus = (status, mess) => {
     }
 }
 
-exports.me = async (email) => {
-    if (!email) {
+exports.me = async (token) => {
+    if (!token) {
         return getStatus(false, 'You are not authenticated.');
     };
     try {
-        const user = await this.Users.findOne({ email }, 'name email created_at');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await this.Users.findOne({ email: decoded.email }, 'name email created_at');
         const userRole = await User_Role.findOne({ user: user._id }).populate("role");
 
         const result = {
@@ -158,7 +159,7 @@ exports.login = async (data, context) => {
             return utils.getStatus(false, 'Incorrect password');
         }
         // return jwt
-        const payload = { id: user["_id"], email: user["email"] };
+        const payload = { email: user["email"] };
         const token = await jwt.sign(payload, process.env.JWT_SECRET, {
             algorithm: "HS256", expiresIn: "2d"
         });

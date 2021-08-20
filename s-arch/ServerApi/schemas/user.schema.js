@@ -13,7 +13,7 @@ exports.UserResolvers = {
         }
     },
     Query: {
-        me: (_, { email }) => User.me(email),
+        me: (_, args, context) => User.me(context.token),
         getUsers: () => User.getUsers(),
         getUserById: (_, { id }) => User.getUserById(id),
     },
