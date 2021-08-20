@@ -144,29 +144,15 @@ exports.createUser = async (data) => {
         this.Users.deleteOne({ email });
         return { success: false, message: error, token: " " };
     }
-    // let user;
-    // this.Users.create(newUser).then(async (response) => {
-    //     user = response;
-    //     await User_Role.create({ role: roleItem._id, user: response._id });
-
-    //     const payload = { id: user._id, email: user.email };
-    //     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1y' });
-
-    //     return { success: true, message: "Authentication succesfully!", token }
-    // }).catch(error => {
-    //     console.log("Error registration: ", error);
-    //     this.Users.deleteOne({ email });
-    //     return { success: false, message: error, token: " " };
-    // });
 }
 
 exports.login = async (data, context) => {
-    const pwd = new Buffer.from(data.password, 'base64').toString('ascii');
     try {
         const user = await this.Users.findOne({ email: data.email });
         if (!user) {
             return utils.getStatus(false, 'No user with that email');
         }
+        const pwd = Buffer.from(data.password, 'base64').toString('ascii');
         const isValid = await bcrypt.compare(pwd, user.password);
         if (!isValid) {
             return utils.getStatus(false, 'Incorrect password');

@@ -5,17 +5,20 @@ import { AuthGuard } from './shared/auth/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./agency/agency.module').then(m => m.AgencyModule),
-    canActivate: [AuthGuard]
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: '**', redirectTo: '', pathMatch: 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

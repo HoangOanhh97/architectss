@@ -20,7 +20,7 @@ export class AuthService {
 
   get user() {
     if (!this._user) {
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     }
     return this._user;
   }
@@ -81,10 +81,8 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    this._user = JSON.parse(sessionStorage.getItem('currentUser')) || null;
-    if (this.token && !this._user) {
-      this.router.navigate(['/']);
-      return this.token && this.token !== '';
+    this._user = JSON.parse(sessionStorage.getItem('currentUser')) || {};
+    if (this.token && !this._user.name) {
       return apolloServer().query({
         query: gql`
           query Query($email: String!) {
@@ -105,19 +103,17 @@ export class AuthService {
         variables: { "email": this._user.email }
       }).then(response => {
         const currentuser = response.data.me;
-        console.log(currentuser);
         if (currentuser._id) {
           this._user = currentuser;
-          this.router.navigate(['/']);
+          sessionStorage.setItem('currentUser', JSON.stringify(currentuser))
+          window.location.href = '/dashboard';
           return;
-        } 
+        }
         if (!currentuser.success) {
-          alert(currentuser.message);
-          this.router.navigate(['login']);
+          this.router.navigate(['/login']);
         }
       }).catch(err => {
-        alert(err);
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
       })
     }
 

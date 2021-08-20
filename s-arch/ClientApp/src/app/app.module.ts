@@ -29,10 +29,10 @@ import { ProjectsTypeComponent } from './agency/projects/projects-type/projects-
 import { ProjectComponent } from './agency/projects/project/project.component';
 import { GalleryComponent } from './agency/projects/gallery/gallery.component';
 import { DetailProjectComponent } from './shared/dialog/detail-project/detail-project.component';
-import { AuthGuard } from './shared/auth/auth-guard.service';
 import { AuthService } from './shared/auth/auth.service';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { AuthGuard } from './shared/auth/auth-guard.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
