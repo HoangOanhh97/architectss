@@ -14,8 +14,8 @@ exports.UserResolvers = {
     },
     Query: {
         me: (_, args, context) => User.me(context.token),
-        getUsers: () => User.getUsers(),
-        getUserById: (_, { id }) => User.getUserById(id),
+        getUsers: (_, args, context) => User.getUsers(context.token),
+        getUserDetails: (_, { email }, context) => User.getUserDetails(context.token, email),
     },
     Mutation: {
         registerUser: (_, { input }) => User.createUser(input),

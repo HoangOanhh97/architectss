@@ -94,7 +94,7 @@ exports.typeDefs = gql`
     type Query {
         me: UserResponse
         getUsers: [UserResponse]
-        getUserById(id: Int!): UserResponse
+        getUserDetails(email: String!): UserResponse
         getAwards: [Award]
         getMembers: [Member]
         getMemberById(id: Int): Member

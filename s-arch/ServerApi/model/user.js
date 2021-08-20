@@ -62,42 +62,54 @@ const getStatus = (status, mess) => {
 }
 
 exports.me = async (token) => {
-    if (!token) {
+    const decoded = utils.isAuthenticated(token);
+    if (!decoded) {
         return getStatus(false, 'You are not authenticated.');
-    };
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await this.Users.findOne({ email: decoded.email }, 'name email created_at');
-        const userRole = await User_Role.findOne({ user: user._id }).populate("role");
+    } else {
+        try {
+            const user = await this.Users.findOne({ email: decoded.email }, 'name email created_at');
+            const userRole = await User_Role.findOne({ user: user._id }).populate("role");
 
-        const result = {
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            role: userRole.role.role
-        };
-        return result;
-    } catch (error) {
-        return utils.getStatus(false, 'Login failed.');
+            const result = {
+                ...user._doc,
+                role: userRole.role.role
+            };
+            return result;
+        } catch (error) {
+            return utils.getStatus(false, 'Login failed.');
+        }
     }
 }
 
-exports.getUsers = async () => {
-    try {
-        const result = await this.Users.find();
-        return result;
-    } catch (error) {
-        return utils.getStatus(false, error);
+exports.getUsers = async (token) => {
+    const decoded = utils.isAuthenticated(token);
+    if (!decoded) {
+        return getStatus(false, 'You are not authenticated.');
+    } else {
+        try {
+            const result = await this.Users.find();
+            return result;
+        } catch (error) {
+            return utils.getStatus(false, error);
+        }
     }
 }
 
-exports.getUserById = async (id) => {
-    try {
-        if (!id) throw new Error('You are not authenticated!');
-        const result = await this.Users.findById(id);
-        return result;
-    } catch (error) {
-        return utils.getStatus(false, error);
+exports.getUserDetails = async (token, email) => {
+    const decoded = utils.isAuthenticated(token);
+    if (!decoded || !id) {
+        return getStatus(false, 'You are not authenticated.');
+    } else {
+        try {
+            const user = await this.Users.findOne({ email }, 'name email created_at');
+            const userRole = await User_Role.findOne({ user: user._id }).populate("role");
+            return {
+                ...user._doc,
+                role: userRole.role.role
+            };
+        } catch (error) {
+            return utils.getStatus(false, error);
+        }
     }
 }
 
