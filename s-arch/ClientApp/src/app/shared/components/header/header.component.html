@@ -152,7 +152,7 @@
               class="no-auto-detection fp-nav-link">{{'Contact' | translate }}</a>
           </li>
 
-          <li class="fp-nav-list-item fp-nav-list-user"
+          <li class="fp-nav-list-item fp-nav-list-user" *ngIf="currentUser"
             [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
             <a title="currentUser" [matMenuTriggerFor]="menu" class="user_name no-auto-detection fp-nav-link">
               {{ currentUser.name }}
@@ -191,10 +191,11 @@
             </mat-menu>
           </li>
 
-          <li class="fp-nav-list-item fp-nav-list-logout"
+          <li class="fp-nav-list-item fp-nav-list-logout" *ngIf="currentUser"
             [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
-            <a [routerLink]="[ '/login']" class="no-auto-detection fp-nav-link">{{ currentUser.name }} -
-              {{'Log Out' | translate }}</a>
+            <a [routerLink]="[ '/login']" class="no-auto-detection fp-nav-link">
+              {{ currentUser.name }} - {{'Log Out' | translate }}
+            </a>
           </li>
 
           <li class="fp-nav-list-item fp-nav-list-language-selector"
