@@ -1,16 +1,25 @@
-<div class="res_award-dialog">
-  <div class="dialog-header is-hidden award" >
+<div mat-dialog-title class="modal-header position-relative">
+  <h3 class="dialog-title">{{awardDetail.name | translate}}</h3>
+  <button mat-icon-button color="white" mat-dialog-close class="position-absolute" style="top: -2rem; right: -1rem;">
+    <mat-icon style="margin-right: 7px;">close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content class="res_award-dialog">
+  <div class="dialog-header is-hidden award">
     <img src="../../../../{{awardDetail.imageUrl}}" class="award_img" width="100%">
   </div>
-  <h3 class="dialog-title">{{awardDetail.name | translate}}</h3>
   <div class="dialog-content" *ngIf="isShow == true">
     <span>{{awardDetail.content1 | translate}}</span>
     <br> <br>
     <span>Links:</span>
     <br>
-    <a href="{{awardDetail.content2 | translate}}" target="_blank"><span>{{awardDetail.content2 | translate}}</span></a>
+    <a href="{{awardDetail.content2 | translate}}" target="_blank" style="color: #fff !important;">
+      <span>{{awardDetail.content2 | translate}}</span>
+    </a>
     <br> <br>
-    <a href="{{awardDetail.content3 | translate}}" target="_blank"><span>{{awardDetail.content3 | translate}}</span></a>
+    <a href="{{awardDetail.content3 | translate}}" target="_blank" style="color: #fff !important;">
+      <span>{{awardDetail.content3 | translate}}</span>
+    </a>
   </div>
 
   <div class="dialog-content" *ngIf="isShow == false">
@@ -20,8 +29,7 @@
     <br> <br>
     <span>{{awardDetail.content3 | translate}}</span>
   </div>
-
-  <mat-dialog-actions align="end">
-    <button mat-button class="btn fp-button-primary fp-btn-award" (click)="closeDialod()">{{'close' | translate}}</button>
-  </mat-dialog-actions>
 </div>
+<!-- <div mat-dialog-actions style="float: right;">
+  <button mat-button color="danger" mat-dialog-close>{{'close' | translate}}</button>
+</div> -->
