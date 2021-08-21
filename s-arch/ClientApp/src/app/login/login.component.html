@@ -1,6 +1,6 @@
 <main id="login">
   <div class="box">
-    <div class="login-box">
+    <div class="login-box" (keyup.enter)="login()">
       <h2>Login</h2>
       <form [formGroup]="loginForm">
         <div class="user-box">
@@ -10,13 +10,13 @@
         <div class="user-box">
           <input [type]="hide ? 'password' : 'text'" name="password" required formControlName="password">
           <label>Password</label>
-          <button class="action_pwd" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <button class="action_pwd" mat-icon-button matSuffix (click)="hide = !hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </div>
 
         <div class="fp-action-fields">
-          <a href="#">Forgot Password?</a>
+          <a>Forgot Password?</a>
         </div>
         <a class="btn-submit" (click)="login()">
           <span></span>

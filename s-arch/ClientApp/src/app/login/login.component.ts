@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 import { AuthService } from '../shared/auth/auth.service';
 
 export interface IUser {
@@ -27,42 +28,38 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: new FormControl(this.user.email, [Validators.required, Validators.email]),
       password: new FormControl(this.user.password, Validators.required)
-    })
-
-    this.loginForm.valueChanges.subscribe(response => {
-      Object.keys(response).forEach(key => {
-        this.getErrorMessage(key);
-      })
-    })
+    });
   }
 
   ngOnInit(): void {
   }
 
   login() {
-    this.user.email = this.loginForm.controls['email'].value;
-    const pwd = encodeURIComponent(this.loginForm.controls['password'].value);
-    this.user.password = btoa(unescape(pwd));
+    if (this.isEmpty(this.loginForm.controls['email'].value) || this.isEmpty(this.loginForm.controls['password'].value)) {
+      this.snackBar.open(`You must be enter value.`, null, { duration: 2000, verticalPosition: 'top' });
+    } else {
+      this.user.email = this.loginForm.controls['email'].value;
+      const pwd = encodeURIComponent(this.loginForm.controls['password'].value);
+      this.user.password = btoa(unescape(pwd));
 
-    this.authService.login(this.user).then(res => {
-      const result = res.data?.login || {};
-      if (result.success) {
-        this.snackBar.open('Welcome!', null, { duration: 2000, verticalPosition: 'top' });
-        this.authService.setToken(result.token);
-        window.location.href = '/';
-      } else {
-        this.snackBar.open(result.message, null, { duration: 2000, verticalPosition: 'top' })
-      }
-    }).catch(error => {
-      this.snackBar.open('Login Failed', null, { duration: 2000, verticalPosition: 'top' })
-    })
+      this.authService.login(this.user).then(res => {
+        const result = res.data?.login || {};
+        if (result.success) {
+          this.snackBar.open('Welcome!', null, { duration: 2000, verticalPosition: 'top' });
+          this.authService.setToken(result.token);
+          window.location.href = '/';
+        } else {
+          this.snackBar.open(result.message, null, { duration: 2000, verticalPosition: 'top' })
+        }
+      }).catch(error => {
+        this.snackBar.open('Login Failed', null, { duration: 2000, verticalPosition: 'top' })
+      })
+    }
   }
 
-  getErrorMessage(name) {
-    if (this.loginForm.controls[name].hasError('required') || this.loginForm.controls[name].dirty) {
-      return 'You must enter a value';
-    }
-    return this.loginForm.controls[name].hasError('email') ? 'Not a valid email' : null;
+  isEmpty(value: String = ''): Boolean {
+    console.log(value.trim() === '' ? true : false)
+    return value.trim() === '' ? true : false;
   }
 
 }
