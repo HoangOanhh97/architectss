@@ -135,6 +135,11 @@ $red: #ff3333;
     color: var(--bs-yellow, #ffc107) !important;
   }
 
+  .mat-dialog-container {
+    background: #333 !important;
+    color: #fff;
+  }
+
   .mat-dialog-title {
     margin: 0 0 20px;
     display: block;
@@ -149,6 +154,22 @@ $red: #ff3333;
     min-height: 350px !important;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    color: #fff;
+
+    textarea, input, mat-label, .mat-select-value,
+    .mat-select-arrow,
+    .mat-form-field-label .mat-form-field-required-marker {
+      color: #fff;
+    }
+
+    .mat-form-field-invalid mat-label,
+    .mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
+      color: #f44336 !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+      background-color: #fff;
+    }
   }
 
   mat-form-field.mat-form-field {
