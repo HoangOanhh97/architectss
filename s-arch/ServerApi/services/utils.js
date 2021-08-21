@@ -1,11 +1,8 @@
-const jwt = require('jsonwebtoken');
-
-exports.isAuthenticated = (token) => {
-    if (!token) {
-        return null
+exports.isAuthenticated = (context) => {
+    const { user } = context;
+    if (!user) {
+        throw new Error('You are not authenticated.');
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    return decoded || null;
 }
 
 exports.getStatus = (status, mess) => {

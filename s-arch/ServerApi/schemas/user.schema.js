@@ -1,4 +1,5 @@
 const User = require('../model/user');
+const utils = require('../services/utils');
 
 exports.UserResolvers = {
     Response: {
@@ -13,13 +14,25 @@ exports.UserResolvers = {
         }
     },
     Query: {
-        me: (_, args, context) => User.me(context.token),
-        getUsers: (_, args, context) => User.getUsers(context.token),
-        getUserDetails: (_, { email }, context) => User.getUserDetails(context.token, email),
+        me: (_, args, { user }) => {
+            utils.isAuthenticated({ user });
+            return User.me(user.email);
+        },
+        getUsers: (_, args, context) => {
+            utils.isAuthenticated(context);
+            return User.getUsers();
+        },
+        getUserDetails: (_, { email }, context) => {
+            utils.isAuthenticated(context);
+            return User.getUserDetails(email);
+        },
     },
     Mutation: {
         registerUser: (_, { input }) => User.createUser(input),
         login: (_, { input }, context, info) => User.login(input, context),
-        assignUserRole: (_, { input }) => User.assignUserRole(input)
+        assignUserRole: (_, { input }, { user }) => {
+            utils.isAuthenticated({ user });
+            return User.assignUserRole(user, input);
+        }
     }
 }

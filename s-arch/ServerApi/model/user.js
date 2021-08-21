@@ -61,63 +61,51 @@ const getStatus = (status, mess) => {
     }
 }
 
-exports.me = async (token) => {
-    const decoded = utils.isAuthenticated(token);
-    if (!decoded) {
-        return getStatus(false, 'You are not authenticated.');
-    } else {
-        try {
-            const user = await this.Users.findOne({ email: decoded.email }, 'name email created_at');
-            const userRole = await User_Role.findOne({ user: user._id }).populate("role");
+exports.me = async (email) => {
+    try {
+        const user = await this.Users.findOne({ email }, 'name email created_at');
+        const userRole = await User_Role.findOne({ user: user._id }).populate("role");
 
-            const result = {
-                ...user._doc,
-                role: userRole.role.role
-            };
-            return result;
-        } catch (error) {
-            return utils.getStatus(false, 'Login failed.');
-        }
+        const result = {
+            ...user._doc,
+            role: userRole.role.role
+        };
+        return result;
+    } catch (error) {
+        return utils.getStatus(false, 'Login failed.');
     }
 }
 
-exports.getUsers = async (token) => {
-    const decoded = utils.isAuthenticated(token);
-    if (!decoded) {
-        return getStatus(false, 'You are not authenticated.');
-    } else {
-        try {
-            const result = await this.Users.find();
-            return result;
-        } catch (error) {
-            return utils.getStatus(false, error);
-        }
+exports.getUsers = async () => {
+    try {
+        return await this.Users.find();
+    } catch (error) {
+        return utils.getStatus(false, error);
     }
 }
 
-exports.getUserDetails = async (token, email) => {
-    const decoded = utils.isAuthenticated(token);
-    if (!decoded || !id) {
-        return getStatus(false, 'You are not authenticated.');
-    } else {
-        try {
-            const user = await this.Users.findOne({ email }, 'name email created_at');
-            const userRole = await User_Role.findOne({ user: user._id }).populate("role");
-            return {
-                ...user._doc,
-                role: userRole.role.role
-            };
-        } catch (error) {
-            return utils.getStatus(false, error);
-        }
+exports.getUserDetails = async (email) => {
+    try {
+        const user = await this.Users.findOne({ email }, 'name email created_at');
+        const userRole = await User_Role.findOne({ user: user._id }).populate("role");
+        return {
+            ...user._doc,
+            role: userRole.role.role
+        };
+    } catch (error) {
+        return utils.getStatus(false, error);
     }
 }
 
-exports.assignUserRole = async (data) => {
+exports.assignUserRole = async ({ email }, data) => {
+    const currentUser = await this.getUserDetails(email);
+    if (!currentUser || (currentUser && currentUser.role !== 'Admin')) {
+        return utils.getStatus(false, 'You do not have permission.')
+    }
+
     const { userId, role } = data;
     const roleItem = await Roles.findOne({ role }, '_id');
     const userItem = await Roles.findById(userId, '_id');
-
     try {
         User_Role.create({ role: roleItem._id, user: userItem._id }).then((value) => {
             console.log(value);
@@ -145,9 +133,9 @@ exports.createUser = async (data) => {
         if (result && result.email) {
             await User_Role.create({ role: roleItem._id, user: result._id });
 
-            const payload = { id: result["_id"], email: result["email"] };
+            const payload = { email: result["email"] };
             const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-                algorithm: "HS256", expiresIn: "2d"
+                algorithm: "HS256", expiresIn: "1y"
             });
             return { success: true, message: "Authentication succesfully!", token };
         }

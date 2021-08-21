@@ -29,8 +29,12 @@ async function startApolloServer() {
       typeDefs,
       resolvers,
       context: ({ req }) => {
-        const token = req.headers['authorization'] || null
-        return { token }
+        let token = req.headers['authorization'] || '';
+        token = token.replace('Bearer ', '');
+
+        if (token && token !== '') {
+          return { token, user: jwt.verify(token, process.env.JWT_SECRET) }
+        }
       }
     });
     server.requestOptions.context
@@ -59,7 +63,6 @@ async function startApolloServer() {
 
     var corsOptions = { origin: "http://localhost:4001" };
     app.use(cors(corsOptions));
-    // app.use('/api/auth', require('./mutations/auth'));
 
     const PORT = process.env.PORT || 4000;
     app.listen({ port: PORT }, () => {
