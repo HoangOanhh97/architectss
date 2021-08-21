@@ -147,7 +147,7 @@ exports.createUser = async (data) => {
     }
 }
 
-exports.login = async (data, context) => {
+exports.login = async (data) => {
     try {
         const user = await this.Users.findOne({ email: data.email });
         if (!user) {

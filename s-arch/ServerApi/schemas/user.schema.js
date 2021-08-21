@@ -29,7 +29,7 @@ exports.UserResolvers = {
     },
     Mutation: {
         registerUser: (_, { input }) => User.createUser(input),
-        login: (_, { input }, context, info) => User.login(input, context),
+        login: (_, { input }, context, info) => User.login(input),
         assignUserRole: (_, { input }, { user }) => {
             utils.isAuthenticated({ user });
             return User.assignUserRole(user, input);
