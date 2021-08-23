@@ -6,13 +6,21 @@ import { environment } from 'src/environments/environment';
 
 const uri = environment.api; // <-- add the URL of the our GraphQL server here
 
+const setHeaders = () => {
+  let headers = { 'Content-Type': 'application/json' }
+  if (sessionStorage.getItem('sarch-token')) {
+    return {
+      ...headers,
+      ...{ 'authorization': `Bearer ${sessionStorage.getItem('sarch-token')}` }
+    }
+  }
+  return headers;
+}
+
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache: new InMemoryCache(),
   uri: uri,
-  headers: {
-    'Content-Type': 'application/json',
-    'authorization': sessionStorage.getItem('sarch-token') || null
-  }
+  headers: setHeaders()
 });
 
 export function apolloServer(): ApolloClient<NormalizedCacheObject> {

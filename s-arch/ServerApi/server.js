@@ -30,7 +30,7 @@ async function startApolloServer() {
       resolvers,
       context: ({ req }) => {
         let token = req.headers['authorization'] || null;
-        if (!!token && token !== '') {
+        if (token && token !== '') {
           token = token.replace('Bearer ', '');
           return { token, user: jwt.verify(token, process.env.JWT_SECRET) }
         }
