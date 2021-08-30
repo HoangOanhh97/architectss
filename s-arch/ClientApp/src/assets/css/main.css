@@ -3664,7 +3664,8 @@ html {
 
 html body {
   height: 100%;
-  position: relative
+  position: relative;
+  overflow-x: hidden;
 }
 
 html #container-fluid {

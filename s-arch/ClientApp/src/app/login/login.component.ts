@@ -62,4 +62,9 @@ export class LoginComponent implements OnInit {
     return value.trim() === '' ? true : false;
   }
 
+  goToView() {
+    sessionStorage.setItem('isGuest', 'true');
+    window.location.href = '/';
+  }
+
 }

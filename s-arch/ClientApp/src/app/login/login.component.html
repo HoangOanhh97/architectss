@@ -1,4 +1,8 @@
 <main id="login">
+  <div class="w-100 text-center centre-centre">
+    <img src="../../assets/img/SA_Logo/logoSA.png" alt="S Architects" style="width: 150px;">
+    <h4 class="f-bold mat-gray">Passion - Unity - Creativity</h4>
+  </div>
   <div class="box">
     <div class="login-box" (keyup.enter)="login()">
       <h2>Login</h2>
@@ -15,7 +19,7 @@
           </button>
         </div>
 
-        <div class="fp-action-fields">
+        <div class="fp-action-fields" style="opacity: 0;">
           <a>Forgot Password?</a>
         </div>
         <a class="btn-submit" (click)="login()">
@@ -26,6 +30,10 @@
           Submit
         </a>
       </form>
+
+      <hr class="mat-white">
+
+      <a class="mat-white float-end" (click)="goToView()">Or visit as guest.</a>
     </div>
   </div>
 </main>
