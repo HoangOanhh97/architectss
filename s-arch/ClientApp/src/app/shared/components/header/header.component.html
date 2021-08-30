@@ -191,6 +191,13 @@
             </mat-menu>
           </li>
 
+          <li class="fp-nav-list-item" *ngIf="!currentUser || isGuest"
+            [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
+            <a [routerLink]="[ '/login']" class="no-auto-detection fp-nav-link">
+              {{'Log In' | translate }}
+            </a>
+          </li>
+
           <li class="fp-nav-list-item fp-nav-list-logout" *ngIf="currentUser"
             [ngClass]="{'opened-nav': !hide && !opensearchNav, 'myOpacity': opensearchNav}">
             <a [routerLink]="[ '/login']" class="no-auto-detection fp-nav-link">

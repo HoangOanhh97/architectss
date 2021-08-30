@@ -57,7 +57,7 @@ export class AuthService {
   public logout() {
     this.token = null;
     localStorage.clear();
-    sessionStorage.removeItem('currentUser');
+    sessionStorage.clear();
   }
 
   public getToken(): string {

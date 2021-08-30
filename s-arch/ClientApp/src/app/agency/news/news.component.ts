@@ -97,7 +97,7 @@ export class NewsComponent implements OnInit {
         this.apiService.postArticle(data).then(res => {
           if (res.data && res.data.postArticle) {
             this.snackBar.open('Post article successfully!', null, { duration: 2000, horizontalPosition: 'center', verticalPosition: 'top' });
-            this.getArticles();
+            this.ngOnInit();
             return;
           }
           return this.snotify.error('Error!');
@@ -142,7 +142,7 @@ export class NewsComponent implements OnInit {
           if (res.data && res.data.deleteArticle) {
             this.snackBar.open(res.data.deleteArticle.message, null, { duration: 2000, horizontalPosition: 'center', verticalPosition: 'top' });
           }
-          this.getArticles();
+          this.ngOnInit();
         })
       }
     })
