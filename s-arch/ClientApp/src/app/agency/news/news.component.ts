@@ -9,6 +9,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmModalComponent } from 'src/app/shared/dialog/confirm-modal/confirm-modal.component';
 import { SnotifyService } from 'ng-snotify';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-news',
@@ -23,6 +24,7 @@ export class NewsComponent implements OnInit {
     { title: 'Events' }
   ];
   articles: any = {};
+  appComponent = AppComponent;
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiService,
     private dialog: MatDialog, private snackBar: MatSnackBar, private snotify: SnotifyService) {
@@ -71,9 +73,19 @@ export class NewsComponent implements OnInit {
     // this.router.navigateByUrl('/news/' + n.id);
   }
 
+  public viewArticle(item) {
+    this.dialog.open(CreateArticleComponent, {
+      panelClass: 'col-md-6',
+      data: {
+        article: item,
+        title: 'view'
+      }
+    })
+  }
+
   public addArticle() {
     let dialogRef = this.dialog.open(CreateArticleComponent, {
-      panelClass: 'col-md-4',
+      panelClass: 'col-md-6',
       data: {
         isCreated: true,
       },
@@ -96,7 +108,7 @@ export class NewsComponent implements OnInit {
 
   public update(item) {
     this.dialog.open(CreateArticleComponent, {
-      panelClass: 'col-md-4',
+      panelClass: 'col-md-6',
       disableClose: true,
       data: {
         article: item

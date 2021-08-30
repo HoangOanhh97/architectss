@@ -15,7 +15,9 @@ export interface IArticle {
   styleUrls: ['./create-article.component.scss']
 })
 export class CreateArticleComponent implements OnInit {
-  public isCreated: Boolean = true;
+  public isCreated: boolean = false;
+  public isUpdated: boolean = false;
+  public isViewed: boolean = false;
   public article: IArticle = {
     title: '',
     descriptionHTML: '',
@@ -26,7 +28,9 @@ export class CreateArticleComponent implements OnInit {
   public isValid: Boolean = null;
 
   constructor(public dialogRef: MatDialogRef<CreateArticleComponent>, @Inject(MAT_DIALOG_DATA) public data: any,) {
-    this.isCreated = !!data.isCreated;
+    this.isCreated = data.title == 'create';
+    this.isUpdated = data.title == 'update';
+    this.isViewed = data.title == 'view';
     this.article = data.article || {};
   }
 

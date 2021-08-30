@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div class="component set-row-width text-right">
+        <div class="component set-row-width text-right" *ngIf="!appComponent.isGuest">
           <button mat-stroked-button color="dark" (click)="addArticle()">
             <mat-icon color="dark">add</mat-icon> Article
           </button>
@@ -59,12 +59,17 @@
                                     </button>
 
                                     <mat-menu #actions="matMenu">
-                                      <button mat-menu-item (click)="update(item)">
-                                        <mat-icon color="gray">drive_file_rename_outline</mat-icon> {{ 'Edit' | translate }}
+                                      <button mat-menu-item (click)="viewArticle(item)">
+                                        <mat-icon color="gray">description</mat-icon> {{ 'View' | translate }}
                                       </button>
-                                      <button mat-menu-item (click)="delete(item)">
-                                        <mat-icon color="gray">delete</mat-icon> {{ 'Delete' | translate }}
-                                      </button>
+                                      <ng-container *ngIf="!appComponent.isGuest">
+                                        <button mat-menu-item (click)="update(item)">
+                                          <mat-icon color="gray">drive_file_rename_outline</mat-icon> {{ 'Edit' | translate }}
+                                        </button>
+                                        <button mat-menu-item (click)="delete(item)">
+                                          <mat-icon color="gray">delete</mat-icon> {{ 'Delete' | translate }}
+                                        </button>
+                                      </ng-container>
                                     </mat-menu>
                                   </div>
                                 </a>

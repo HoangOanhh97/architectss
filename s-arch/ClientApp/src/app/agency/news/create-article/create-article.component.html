@@ -1,35 +1,43 @@
 <div mat-dialog-title class="modal-header position-relative">
-  <h1>{{isCreated ? 'New' : 'Edit' }} Article</h1>
+  <h1 *ngIf="!isViewed">{{isCreated ? 'New' : 'Edit' }} Article</h1>
+  <h1 *ngIf="isViewed && article">{{ article.title }}</h1>
   <button mat-icon-button color="danger" mat-dialog-close class="position-absolute" style="top: -2rem; right: -1rem;">
     <mat-icon style="margin-right: 7px;">close</mat-icon>
   </button>
 </div>
 <div mat-dialog-content class="w-100 row">
-  <mat-form-field appearance="legacy" class="col-12">
-    <mat-label>{{ 'Category' | translate }}</mat-label>
-    <mat-select required [(ngModel)]="article.category">
-      <mat-option value="News">{{ 'News' | translate}}</mat-option>
-      <mat-option value="Events">{{ 'Events' | translate}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <ng-container *ngIf="!isViewed">
+    <mat-form-field appearance="legacy" class="col-12">
+      <mat-label>{{ 'Category' | translate }}</mat-label>
+      <mat-select required [(ngModel)]="article.category">
+        <mat-option value="News">{{ 'News' | translate}}</mat-option>
+        <mat-option value="Events">{{ 'Events' | translate}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field appearance="legacy" class="col-12">
-    <mat-label>{{ 'Article title' | translate}}</mat-label>
-    <input matInput required [(ngModel)]="article.title">
-  </mat-form-field>
+    <mat-form-field appearance="legacy" class="col-12">
+      <mat-label>{{ 'Article title' | translate}}</mat-label>
+      <input matInput required [(ngModel)]="article.title">
+    </mat-form-field>
 
-  <mat-form-field appearance="legacy" class="col-12">
-    <mat-label>{{ 'Description' | translate }}</mat-label>
-    <textarea matInput [(ngModel)]="article.descriptionHTML" rows="5"></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="legacy" class="col-12">
+      <mat-label>{{ 'Description' | translate }}</mat-label>
+      <textarea matInput [(ngModel)]="article.descriptionHTML" rows="5"></textarea>
+    </mat-form-field>
 
-  <p *ngIf="isValid === false">{{ 'Please fill all blank fields!' | translate }}</p>
+    <p *ngIf="isValid === false">{{ 'Please fill all blank fields!' | translate }}</p>
 
-  <!-- <div class="col-12 mt-3">
-    <input matInput class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadFiles($event)" />
-  </div> -->
+    <!-- <div class="col-12 mt-3">
+      <input matInput class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadFiles($event)" />
+    </div> -->
+  </ng-container>
+
+  <ng-container *ngIf="isViewed">
+    <p class="mat-white" [innerHTML]="article.descriptionHTML" style="margin-top: 5px;"></p>
+  </ng-container>
+
 </div>
-<div mat-dialog-actions style="float: right;">
+<div mat-dialog-actions style="float: right;" *ngIf="!isViewed">
   <button *ngIf="!isCreated" mat-button color="danger" mat-dialog-close>{{ 'Cancel' | translate }}</button>
   <button mat-button color="success" (click)="onSave()">{{ 'Save' | translate }}</button>
 </div>
