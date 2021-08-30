@@ -81,7 +81,9 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    // this._user = JSON.parse(sessionStorage.getItem('currentUser')) || {};
+    if (sessionStorage.getItem('isGuest') === 'true') {
+      return true;
+    }
     if (this.token && !this._user) {
       return apolloServer().query({
         query: gql`

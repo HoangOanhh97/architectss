@@ -13,6 +13,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class HeaderComponent implements OnInit {
   currentUser: any = JSON.parse(sessionStorage.getItem('currentUser')) || null;
+  isGuest: boolean = !!sessionStorage.getItem('isGuest');
   openHeaderSearch = false;
   opensearchNav = false;
   navActive: any;
@@ -48,7 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.currentUser || (this.currentUser && !this.currentUser.name)) {
+    if (!this.isGuest && (!this.currentUser || (this.currentUser && !this.currentUser.name))) {
       this.apiService.me().then(res => {
         this.currentUser = res.data.me;
       })

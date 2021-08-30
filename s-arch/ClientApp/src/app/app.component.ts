@@ -9,12 +9,17 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 's-arch';
   page = "";
+  public static isGuest = false;
 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('vi');
     translate.use('vi');
     if (!localStorage.getItem('currentLang')) {
       localStorage.setItem('currentLang', 'vi');
+    }
+
+    if (sessionStorage.getItem('isGuest')) {
+      AppComponent.isGuest = !!sessionStorage.getItem('isGuest');
     }
 
   }
